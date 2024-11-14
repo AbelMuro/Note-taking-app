@@ -19,7 +19,7 @@ function EnterEmail() {
         if(isEmpty)
             setError('empty');
         else if(isInvalid)
-            setError('invalid')
+            setError('invalid');
     }
 
     const handleInvalid = (e) => {

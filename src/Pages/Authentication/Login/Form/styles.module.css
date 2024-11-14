@@ -1,7 +1,33 @@
 .form{
     width: 100%;
-    padding-top: 24px;
+    padding: 24px 0px 16px 0px;
+    border-bottom: 1px solid var(--colors-neutral-200, #E0E4EA);
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+.form_submit{
+    height: 44px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 19.2px */
+    letter-spacing: -0.3px;
+    border-radius: var(--corner-radius-8, 8px);
+    border: none;
+    background-color: var(--colors-blue-500, #335CFF);
+    cursor: pointer;
+}
+
+.form_submit:hover{
+    background-color: var(--colors-blue-700, #2547D0);
+}
+
+.form_submit:focus{
+    border-color: var(--colors-neutral-950, #0E121B);
+    outline: 2px solid var(--colors-neutral-600, #525866);
+    Outline-offset: 2px;
 }

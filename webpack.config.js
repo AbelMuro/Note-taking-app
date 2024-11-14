@@ -22,7 +22,7 @@ module.exports = {
     plugins: [                      
         new HtmlWebpackPlugin({               //this plugin will help us generate the production html file in our /dist
             filename: 'index.html',           //our production html file will be named index.html
-            favicon: './public/favicon-32x32.png',     //loading a favicon in our html template
+            favicon: './public/icons/favicon-32x32.png',     //loading a favicon in our html template
             template: './src/index.html'      //this is a template for our production html file, we are defining how the html will look like before we make our production html file
         }),
         new dotenv({systemvars: true}),        //this enables the use of env variables, you must use process.env.name_of_variable (systemvars tells us that any env variable defined in a web-host(netlify) is a system variable, and MUST be used for the app)
