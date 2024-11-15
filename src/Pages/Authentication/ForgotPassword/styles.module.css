@@ -1,0 +1,13 @@
+.forgot{
+    width: 540px;
+    height: 370px;
+    border-radius: var(--corner-radius-12, 12px);
+    border: 1px solid var(--colors-neutral-200, #E0E4EA);
+    background: #FFF;
+    box-shadow: 0px 8px 12px 0px rgba(240, 240, 240, 0.60);
+}
+
+.forgot_icon{
+    width: 95px;
+    height: 28px;
+}

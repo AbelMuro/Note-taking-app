@@ -1,4 +1,4 @@
-.login{
+.signup{
     width: 540px;
     height: auto;
     padding: 48px;
@@ -16,13 +16,13 @@
     box-shadow: 0px 8px 12px 0px rgba(240, 240, 240, 0.60);  
 }
 
-.login_logo{
+.signup_logo{
     width: 95px;
     height: 28px;
     margin-bottom: 8px;
 }
 
-.login_title{
+.signup_title{
     color: var(--colors-neutral-950, #0E121B);
     font-family: Inter;
     font-size: 1.5rem;
@@ -33,7 +33,7 @@
     margin: 0px 0px -8px 0px;
 }
 
-.login_message{
+.signup_message{
     color: var(--colors-neutral-600, #525866);
     font-family: Inter;
     font-size: 0.875rem;
@@ -44,7 +44,7 @@
     margin: 0px;
 }
 
-.login_account{
+.signup_account{
     color: var(--colors-neutral-600, #525866);
     font-family: Inter;
     font-size: 14px;
@@ -55,25 +55,29 @@
     margin: 0px;
 }
 
-.login_account > a{
+.signup_account > a{
     color: var(--colors-neutral-950, #0E121B);
     cursor: pointer;
 }
 
-.login_account > a:hover{
+.signup_account > a:hover{
     color: var(--colors-blue-500, #335CFF);
 }
 
 @media(max-width: 800px){
-    .login{
+    .signup{
         width: 522px;
         padding: 48px 32px;
     }
 }
 
 @media(max-width: 600px){
-    .login{
+    .signup{
         width: 343px;
-        padding: 40px 16px;
+        padding: 48px 16px;
+    }
+
+    .signup_message{
+        text-align: center;
     }
 }

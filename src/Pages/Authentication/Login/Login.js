@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {AuthContext} from '`/Authentication.js'
 import Form from './Form';
-import GoogleLogin from './GoogleLogin';
+import GoogleLogin from '`/GoogleLogin';
 import icons from '../icons';
 import * as styles from './styles.module.css';
 
-//i was working on the mobile version of this component, tablet is already done
 function Login(){
+    const {setAuth} = useContext(AuthContext);
+
+    const handleAuth = () => {
+        setAuth('sign up');
+    }
+
     return(
         <section className={styles.login}>
             <img className={styles.login_logo} src={icons['logo']}/>
@@ -18,7 +24,7 @@ function Login(){
             <Form/>
             <GoogleLogin/>
             <p className={styles.login_account}>
-                No account yet? <a>
+                No account yet? <a onClick={handleAuth}>
                     Sign Up
                 </a>
             </p>
