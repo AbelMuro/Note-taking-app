@@ -1,15 +1,17 @@
 import React from 'react';
 import './styles.css';
-import Authenticate from './Pages/Authentication';
+import Login from './Pages/Login';
+import SignUp from './Pages/SignUp';
+import ForgotPassword from './Pages/ForgotPassword';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-
-//i will need to refactor some code here, the sign up, login and forgot components should be in their own routes
 function App() {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Authenticate/>}/>
+                <Route path='/' element={<Login/>}/>
+                <Route path='/signup' element={<SignUp/>}/>
+                <Route path='/reset' element={<ForgotPassword/>}/>
             </Routes>
         </BrowserRouter>
     )

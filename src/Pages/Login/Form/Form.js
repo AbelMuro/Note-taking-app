@@ -1,5 +1,5 @@
 import React from 'react';
-import EnterEmail from './EnterEmail';
+import EnterEmail from '~/Common/EnterEmail';
 import EnterPassword from './EnterPassword';
 import * as styles from './styles.module.css';
 

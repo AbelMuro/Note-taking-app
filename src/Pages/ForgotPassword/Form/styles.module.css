@@ -1,0 +1,26 @@
+.form{
+    width: 100%;
+    display: flex;
+    padding: 24px 0px 0px 0px;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form_submit{
+    height: 44px;
+    border: none;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 19.2px */
+    letter-spacing: -0.3px;
+    border-radius: 8px;
+    background-color: var(--colors-blue-500, #335CFF);
+    cursor: pointer;
+}
+
+.form_submit:hover{
+    background-color: var(--colors-blue-700, #2547D0);
+}

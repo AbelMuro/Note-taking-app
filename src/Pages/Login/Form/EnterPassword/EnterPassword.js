@@ -1,20 +1,19 @@
-import React, {useState, useContext} from 'react';
-import {AuthContext} from '`/Authentication.js';
+import React, {useState} from 'react';
 import * as styles from './styles.module.css';
 import icons from '`/icons'
 import localIcons from  './icons';
+import {useNavigate} from 'react-router-dom';
 
 function EnterPassword(){
     const [password, setPassword] = useState('');
     const [displayPassword, setDisplayPassword] = useState(false);
     const [error, setError] = useState('');
-    const {setAuth} = useContext(AuthContext);
-    
-    const handleAuth = () => {
-        setAuth('forgot');
+    const navigate = useNavigate();
+
+    const handleForgot = () => {
+        navigate('/reset');
     }
-
-
+    
     const handleDisplayPassword = () => {
         setDisplayPassword(!displayPassword);
     } 
@@ -63,7 +62,7 @@ function EnterPassword(){
                     <img className={styles.eye_icon} src={localIcons['show']} onClick={handleDisplayPassword}/>
                 }
             </div>
-            <a className={styles.forgot_password} onClick={handleAuth}>
+            <a className={styles.forgot_password} onClick={handleForgot}>
                 Forgot
             </a>
             {error === 'empty' && 

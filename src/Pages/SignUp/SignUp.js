@@ -1,15 +1,16 @@
-import React, {useContext} from 'react';
-import {AuthContext} from '`/Authentication.js';
+import React from 'react';
 import Form from './Form';
-import GoogleLogin from '`/GoogleLogin';
+import GoogleLogin from '~/Common/GoogleLogin';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
+import {useNavigate} from 'react-router-dom';
 
 function SignUp() {
-    const {setAuth} = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const handleAuth = () => {
-        setAuth('login')
+
+    const handleNavigate = () => {
+        navigate('/');
     }
 
     return(        
@@ -24,7 +25,7 @@ function SignUp() {
             <Form/>
             <GoogleLogin/>
             <p className={styles.signup_account}>
-                Already have an account? <a onClick={handleAuth}>
+                Already have an account? <a onClick={handleNavigate}>
                     Login
                 </a>
             </p>
