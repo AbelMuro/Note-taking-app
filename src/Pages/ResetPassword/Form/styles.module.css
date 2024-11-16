@@ -1,9 +1,31 @@
 .form{
     width: 100%;
+    padding-top: 24px;
     display: flex;
-    padding: 24px 0px 0px 0px;
     flex-direction: column;
     gap: 16px;
+}
+
+.error{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--colors-red-500, #FB3748);
+    font-family: Inter;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 16.8px */
+}
+
+.error_icon{
+    width: 16px;
+    height: 16px;
+    background-color: red;
+    mask-image: url('./icons/icon-exclamation.svg');
+    mask-size: 16px 16px;
+    mask-position: center;
+    mask-repeat: no-repeat;
 }
 
 .form_submit{

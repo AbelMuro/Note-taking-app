@@ -8,6 +8,7 @@ function Form() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        navigate('/reset');
         //...
     }
 

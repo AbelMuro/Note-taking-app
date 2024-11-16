@@ -29,7 +29,7 @@
     font-weight: 700;
     line-height: 120%; /* 28.8px */
     letter-spacing: -0.5px;
-    margin: 0px;
+    margin: 0px 0px -8px 0px;
 }
 
 .forgot_desc{
@@ -47,5 +47,16 @@
     .forgot{
         width: 522px;
         padding: 48px 32px;    
+    }
+}
+
+@media(max-width: 600px){
+    .forgot{
+        width: 343px;
+        padding: 40px 16px;
+    }
+
+    .forgot_desc{
+        text-align: center;
     }
 }

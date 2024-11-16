@@ -3,8 +3,6 @@ import Form from './Form';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 
-// im finished with tablet, now i need to start with the mobile design
-
 function ForgotPassword() {
     return(
         <section className={styles.forgot}>

@@ -38,6 +38,11 @@
 .error_icon{
     width: 16px;
     height: 16px;
+    background-color: red;
+    mask-image: url('../icons/icon-exclamation.svg');
+    mask-size: 16px 16px;
+    mask-position: center;
+    mask-repeat: no-repeat;
 }
 
 .eye_icon{
@@ -54,29 +59,6 @@
     grid-row: 2/3; 
     width: 100%;
     position: relative;  
-}
-
-.forgot_password{
-    justify-self: end;
-    grid-column: 2/3;
-    grid-row: 1/2;
-    color: var(--colors-neutral-600, #525866);
-    font-family: Inter;
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: none;
-    text-decoration-thickness: auto;
-    text-underline-offset: auto;
-    text-underline-position: from-font;
-    cursor: pointer;
-}
-
-.forgot_password:hover{
-    color: var(--colors-blue-500, #335CFF);
 }
 
 .input{
