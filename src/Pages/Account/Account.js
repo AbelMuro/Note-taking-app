@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import * as styles from './styles.module.css';
 
+//this is where i left off
 function Account() {
 
     const getNotes = async () => {
