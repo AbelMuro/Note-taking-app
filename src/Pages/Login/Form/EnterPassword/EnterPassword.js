@@ -4,6 +4,8 @@ import icons from '`/icons'
 import localIcons from  './icons';
 import {useNavigate} from 'react-router-dom';
 
+
+//this is where i left off, i will need to change the classes based on the theme
 function EnterPassword(){
     const [password, setPassword] = useState('');
     const [displayPassword, setDisplayPassword] = useState(false);

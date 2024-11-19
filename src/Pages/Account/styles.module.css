@@ -1,0 +1,5 @@
+.container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 272px 1fr;
+}

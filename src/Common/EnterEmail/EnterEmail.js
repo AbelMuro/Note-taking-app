@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+import {useTheme} from '~/Hooks';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 
 function EnterEmail() {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
+    const [changeClass] = useTheme(styles);
 
     const handleEmail = (e) => {
         setEmail(e.target.value);
@@ -35,7 +37,7 @@ function EnterEmail() {
 
     return(
         <fieldset className={styles.container}>
-            <label className={styles.label}>
+            <label className={changeClass('label')}>
                 Email Address
             </label>
             <input 
@@ -43,7 +45,7 @@ function EnterEmail() {
                 name='email'
                 value={email}
                 placeholder='email@example.com'
-                className={styles.input} 
+                className={changeClass('input')} 
                 onBlur={handleBlur}
                 onChange={handleEmail}
                 onInvalid={handleInvalid}

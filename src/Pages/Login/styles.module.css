@@ -11,9 +11,17 @@
     left: 50%; 
     transform: translate(-50%, -50%);
     border-radius: var(--corner-radius-12, 12px);
-    border: 1px solid var(--colors-neutral-200, #E0E4EA);
+}
+
+.login.light{
     background-color: #FFF;
     box-shadow: 0px 8px 12px 0px rgba(240, 240, 240, 0.60);  
+    border: 1px solid var(--colors-neutral-200, #E0E4EA);
+}
+
+.login.dark{
+    border: 1px solid var(--colors-neutral-800, #232530);
+    background: var(--colors-neutral-950, #0E121B);
 }
 
 .login_logo{
@@ -23,7 +31,6 @@
 }
 
 .login_title{
-    color: var(--colors-neutral-950, #0E121B);
     font-family: Inter;
     font-size: 1.5rem;
     font-style: normal;
@@ -31,6 +38,14 @@
     line-height: 120%; /* 28.8px */
     letter-spacing: -0.5px;
     margin: 0px 0px -8px 0px;
+}
+
+.login_title.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.login_title.dark{
+    color: white;
 }
 
 .login_message{
@@ -42,6 +57,14 @@
     line-height: 130%; /* 18.2px */
     letter-spacing: -0.2px;
     margin: 0px;
+}
+
+.login_message.light{
+    color: var(--colors-neutral-600, #525866);
+}
+
+.login_message.dark{
+    color: var(--colors-neutral-300, #CACFD8);
 }
 
 .login_account{

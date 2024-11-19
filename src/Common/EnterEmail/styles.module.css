@@ -9,13 +9,20 @@
 }
 
 .label{
-    color: var(--colors-neutral-950, #0E121B);
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 500;
     line-height: 120%; /* 16.8px */
     letter-spacing: -0.2px;
+}
+
+.label.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.label.dark{
+    color: white;
 }
 
 .error{
@@ -37,7 +44,6 @@
 
 .input{
     height: 44px;
-    color: var(--colors-neutral-950, #0E121B);
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
@@ -46,13 +52,28 @@
     letter-spacing: -0.2px;
     padding: 12px 16px;
     border-radius: var(--corner-radius-8, 8px);
+}
+
+.input.light{
+    color: var(--colors-neutral-950, #0E121B);
     border: 1px solid var(--colors-neutral-300, #CACFD8);
     background-color: #FFF;
     box-shadow: 0px 1px 2px 0px rgba(10, 13, 20, 0.03);
 }
 
-.input:hover{
+.input.dark{
+    color: white;
+    border: 1px solid var(--colors-neutral-600, #525866);
+    background-color: transparent;
+    box-shadow: 0px 1px 2px 0px rgba(10, 13, 20, 0.03);
+}
+
+.input.light:hover{
     background-color: var(--colors-neutral-50, #F5F7FA);
+}
+
+.input.dark:hover{
+    background-color: var(--colors-neutral-800, #232530);
 }
 
 .input:user-invalid{
@@ -66,5 +87,5 @@
 .input:focus{
     border-color: var(--colors-neutral-950, #0E121B);
     outline: 2px solid var(--colors-neutral-600, #525866);
-    Outline-offset: 2px;
+    Outline-offset: 1px;
 }
