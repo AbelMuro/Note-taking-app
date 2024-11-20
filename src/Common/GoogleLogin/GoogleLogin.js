@@ -11,7 +11,7 @@ function GoogleLoginButton() {
     }
 
     const triggerGoogleSignIn = () => { 
-        google.accounts.id.prompt((notification) => { 
+        window.google.accounts.id.prompt((notification) => { 
             if(notification.isNotDisplayed()) 
                 console.log(notification.getNotDisplayedReason()); 
             else if(notification.isSkippedMoment()) 
@@ -23,7 +23,8 @@ function GoogleLoginButton() {
 
 
     useEffect(() => {
-        google.accounts.id.initialize({ 
+        console.log(window.google);
+        window.google.accounts.id.initialize({ 
             client_id: process.env.CLIENT_ID, 
             callback: handleCredentialResponse, 
         });
