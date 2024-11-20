@@ -1,15 +1,21 @@
 .container{
     width: 100%;
     padding: 8px 0px 16px 0px;
-    border-bottom: 1px solid var(--colors-neutral-200, #E0E4EA);
     display: flex;
     flex-direction: column;
     gap: 16px;
     align-items: center;
 }
 
+.container.light{
+    border-bottom: 1px solid var(--colors-neutral-200, #E0E4EA);
+}
+
+.container.dark{
+    border-bottom: 1px solid  var(--colors-neutral-800, #232530);
+}
+
 .container_title{
-    color: var(--colors-neutral-600, #525866);
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
@@ -17,6 +23,14 @@
     line-height: 130%; /* 18.2px */
     letter-spacing: -0.2px;
     margin: 0px;
+}
+
+.container_title.light{
+    color: var(--colors-neutral-600, #525866);
+}
+
+.container_title.dark{
+    color: var(--colors-neutral-300, #CACFD8)
 }
 
 .container_button{
@@ -27,9 +41,6 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
-    border: 1px solid var(--colors-neutral-300, #CACFD8);
-    background-color: var(--colors-white, #FFF);
-    color: var(--colors-neutral-950, #0E121B);
     font-family: Inter;
     font-size: 1rem;
     font-style: normal;
@@ -39,14 +50,30 @@
     cursor: pointer;
 }
 
+.container_button.light{
+    border: 1px solid var(--colors-neutral-300, #CACFD8);
+    background-color: var(--colors-white, #FFF);
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.container_button.dark{
+    border: 1px solid var(--colors-neutral-600, #525866);
+    background-color: transparent;
+    color: white;
+}
+
 .container_button:focus{
     border-color: var(--colors-neutral-950, #0E121B);
     outline: 2px solid var(--colors-neutral-600, #525866);
-    Outline-offset: 2px;
+    Outline-offset: 1px;
 }
 
-.container_button:hover{
+.container_button.light:hover{
     background-color: var(--colors-neutral-50, #F5F7FA);
+}
+
+.container_button.dark:hover{
+    background-color: var(--colors-neutral-800, #232530);
 }
 
 .login_account{

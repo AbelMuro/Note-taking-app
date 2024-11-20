@@ -6,7 +6,7 @@ import * as styles from './styles.module.css';
 function EnterEmail() {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
-    const [changeClass] = useTheme(styles);
+    const [,changeClass] = useTheme(styles);
 
     const handleEmail = (e) => {
         setEmail(e.target.value);

@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
+import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 import icons from '`/icons'
-import localIcons from  './icons';
 import {useNavigate} from 'react-router-dom';
 
 
 //this is where i left off, i will need to change the classes based on the theme
 function EnterPassword(){
+    const [theme, changeClass] = useTheme(styles);
     const [password, setPassword] = useState('');
     const [displayPassword, setDisplayPassword] = useState(false);
     const [error, setError] = useState('');
@@ -43,7 +44,7 @@ function EnterPassword(){
 
     return(
         <fieldset className={styles.container}>
-            <label className={styles.label}>
+            <label className={changeClass('label')}>
                 Password
             </label>
             <div className={styles.input_container}>
@@ -51,7 +52,7 @@ function EnterPassword(){
                     type={displayPassword ? 'text' : 'password'} 
                     name='password'
                     value={password}
-                    className={styles.input} 
+                    className={changeClass('input')} 
                     onBlur={handleBlur}
                     onChange={handlePassword}
                     onInvalid={handleInvalid}
@@ -59,9 +60,9 @@ function EnterPassword(){
                     />
                 {
                 displayPassword ? 
-                    <img className={styles.eye_icon} src={localIcons['hide']} onClick={handleDisplayPassword}/>
+                    <img className={styles.eye_icon} src={theme === 'light' ? icons['hide'] : icons['hideDark']} onClick={handleDisplayPassword}/>
                         :
-                    <img className={styles.eye_icon} src={localIcons['show']} onClick={handleDisplayPassword}/>
+                    <img className={styles.eye_icon} src={theme === 'light' ? icons['show'] : icons['showDark']} onClick={handleDisplayPassword}/>
                 }
             </div>
             <a className={styles.forgot_password} onClick={handleForgot}>

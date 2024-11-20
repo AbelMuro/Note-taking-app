@@ -1,10 +1,17 @@
 .form{
     width: 100%;
     padding: 24px 0px 16px 0px;
-    border-bottom: 1px solid var(--colors-neutral-200, #E0E4EA);
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+.form.light{
+    border-bottom: 1px solid var(--colors-neutral-200, #E0E4EA);
+}
+
+.form.dark{
+    border-bottom: 1px solid var(--colors-neutral-800, #232530);
 }
 
 .form_submit{
@@ -29,5 +36,5 @@
 .form_submit:focus{
     border-color: var(--colors-neutral-950, #0E121B);
     outline: 2px solid var(--colors-neutral-600, #525866);
-    Outline-offset: 2px;
+    Outline-offset: 1px;
 }

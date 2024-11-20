@@ -50,5 +50,5 @@
 .form_submit:focus{
     border-color: var(--colors-neutral-950, #0E121B);
     outline: 2px solid var(--colors-neutral-600, #525866);
-    Outline-offset: 2px;
+    Outline-offset: 1px;
 }

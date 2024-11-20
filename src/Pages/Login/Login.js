@@ -1,6 +1,5 @@
 import React, {memo} from 'react';
 import {useTheme} from '~/Hooks';
-import {useSelector} from 'react-redux';
 import Form from './Form';
 import GoogleLogin from '~/Common/GoogleLogin';
 import icons from '`/icons';
@@ -9,8 +8,7 @@ import {useNavigate} from 'react-router-dom';
 
 function Login(){
     const navigate = useNavigate();
-    const [changeClass] = useTheme(styles);
-    const theme = useSelector(state => state.theme.theme);
+    const [theme, changeClass] = useTheme(styles);
 
     const handleSignUp = () => {
         navigate('signup');
@@ -18,7 +16,10 @@ function Login(){
 
     return(
         <section className={changeClass('login')}>
-            <img className={styles.login_logo} src={theme === 'light' ? icons['logo'] : icons['darkLogo']}/>
+            {theme === 'light' ? 
+                <img className={styles.login_logo} src={icons['logo']}/> : 
+                <img className={styles.login_logo} src={icons['logoDark']}/>
+                }
             <h1 className={changeClass('login_title')}>
                 Welcome to Note
             </h1>
@@ -27,7 +28,7 @@ function Login(){
             </h2>
             <Form/>
             <GoogleLogin/>
-            <p className={styles.login_account}>
+            <p className={changeClass('login_account')}>
                 No account yet? <a onClick={handleSignUp}>
                     Sign Up
                 </a>

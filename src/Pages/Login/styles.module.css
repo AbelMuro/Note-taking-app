@@ -68,7 +68,6 @@
 }
 
 .login_account{
-    color: var(--colors-neutral-600, #525866);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -78,9 +77,24 @@
     margin: 0px;
 }
 
+.login_account.light{
+    color: var(--colors-neutral-600, #525866);
+}
+
+.login_account.dark{
+    color: var(--colors-neutral-300, #CACFD8);
+}
+
 .login_account > a{
-    color: var(--colors-neutral-950, #0E121B);
     cursor: pointer;
+}
+
+.login_account.light > a{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.login_account.dark > a {
+    color: white;
 }
 
 .login_account > a:hover{

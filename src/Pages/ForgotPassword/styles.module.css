@@ -10,10 +10,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: var(--corner-radius-12, 12px);
+}
+
+.forgot.light{
     border: 1px solid var(--colors-neutral-200, #E0E4EA);
     background: #FFF;
     box-shadow: 0px 8px 12px 0px rgba(240, 240, 240, 0.60);
 }
+
+.forgot.dark{
+    border: 1px solid var(--colors-neutral-800, #232530);
+    background-color: var(--colors-neutral-950, #0E121B);
+}
+
 
 .forgot_icon{
     width: 95px;
@@ -22,7 +31,6 @@
 }
 
 .forgot_title{
-    color: var(--colors-neutral-950, #0E121B);
     font-family: Inter;
     font-size: 1.5rem;
     font-style: normal;
@@ -32,8 +40,15 @@
     margin: 0px 0px -8px 0px;
 }
 
+.forgot_title.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.forgot_title.dark{
+    color: white;
+}
+
 .forgot_desc{
-    color: var(--colors-neutral-600, #525866);
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
@@ -41,6 +56,14 @@
     line-height: 130%; /* 18.2px */
     letter-spacing: -0.2px;
     margin: 0px;
+}
+
+.forgot_desc.light{
+    color: var(--colors-neutral-600, #525866);
+}
+
+.forgot_desc.dark{
+    color: var(--colors-neutral-300, #CACFD8);
 }
 
 @media(max-width: 800px){

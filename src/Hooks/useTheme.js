@@ -7,7 +7,7 @@ function useTheme(style) {
         return theme === 'light' ? [style[className], style['light']].join(' ') : [style[className], style['dark']].join(' ')
     }
 
-    return [changeClass];
+    return [theme, changeClass];
 }
 
 export default useTheme;
