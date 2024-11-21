@@ -4,7 +4,7 @@ import localIcons from './icons';
 import Tags from './Tags';
 import * as styles from './styles.module.css';
 
-
+//now i need to use the useTheme hook to change the styles from light to dark
 function NavigationBar(){
     const [option, setOption] = useState('all');
 
