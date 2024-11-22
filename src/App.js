@@ -14,7 +14,7 @@ function App() {
     useEffect(() => {
         const body = document.body;
         body.style.backgroundColor = theme === 'light' ? '#F3F5F8' : '#2B303B';
-    }, [theme])
+    }, [theme]);
 
 
     return(
@@ -24,7 +24,9 @@ function App() {
                     <Route path='/signup' element={<SignUp/>}/>
                     <Route path='/forgot' element={<ForgotPassword/>}/>
                     <Route path='/reset/:token' element={<ResetPassword/>}/>
-                    <Route path='/account' element={<Account/>}/>
+                    <Route path='/account' element={<Account/>}>
+                        <Route path='/account/notes' element={<></>}/>
+                    </Route>
                 </Routes>
             </BrowserRouter>            
 

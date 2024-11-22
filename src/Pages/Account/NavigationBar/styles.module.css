@@ -4,16 +4,16 @@
     padding: 12px 16px;
     display: flex;
     flex-direction: column;
+}
+
+.navigation.light{
     background-color: white;
     border-right: 1px solid var(--colors-neutral-200, #E0E4EA);
 }
 
-.navigation_line{
-    width: 100%;
-    height: 1px;
-    border: none;
-    background-color: var(--colors-neutral-200, rgba(224, 228, 234));
-    margin: 8px 0px;
+.navigation.dark{
+    background-color: var(--colors-base-black, #0E121B);
+    border-right: 1px solid var(--colors-neutral-800, #232530);
 }
 
 .navigation_logo{
@@ -31,7 +31,6 @@
     gap: 8px;
     background-color: transparent;
     border: none;
-    color: var(--colors-neutral-950, #0E121B);
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
@@ -42,10 +41,18 @@
     position: relative;
 }
 
+.navigation_link.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.navigation_link.dark{
+    color: white;
+}
+
+
 .navigation_link:nth-of-type(1) > .navigation_icon{
     width: 20px;
     height: 20px;
-    background-color: var(--colors-neutral-700, #2B303B);
     mask-image: url('/public/icons/icon-home.svg');
     mask-size: 20px 20px;
     mask-repeat: no-repeat;
@@ -55,11 +62,18 @@
 .navigation_link:nth-of-type(2) > .navigation_icon {
     width: 20px;
     height: 20px;
-    background-color: var(--colors-neutral-700, #2B303B);
     mask-image: url('/public/icons/icon-archive.svg');
     mask-size: 20px 20px;
     mask-repeat: no-repeat;
     mask-position: center;
+}
+
+.navigation_link > .navigation_icon.light{
+    background-color: var(--colors-neutral-700, #2B303B);
+}
+
+.navigation_link > .navigation_icon.dark{
+    background-color: #E0E4EA;
 }
 
 .navigation_arrow{
@@ -70,4 +84,20 @@
     bottom: 0;
     right: 12px;
     margin: auto;
+}
+
+.navigation_line{
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: var(--colors-neutral-200, rgba(224, 228, 234));
+    margin: 8px 0px;
+}
+
+.navigation_line.light{
+    background-color: var(--colors-neutral-200, rgba(224, 228, 234));
+}
+
+.navigation_line.dark{
+    background-color: var(--colors-neutral-800, #232530);
 }

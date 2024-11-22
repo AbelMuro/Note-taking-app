@@ -1,15 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useTheme} from '~/Hooks';
 import icons from '`/icons'
 import localIcons from './icons';
 import Tags from './Tags';
 import * as styles from './styles.module.css';
 
-//now i need to use the useTheme hook to change the styles from light to dark
 function NavigationBar(){
+    const [theme, changeClass] = useTheme(styles);
     const [option, setOption] = useState('all');
 
     const handleStyles = (selectedOption) => {
-        return option === selectedOption ? {backgroundColor: '#F3F5F8'} : {}
+        if(theme === 'light')
+            return option === selectedOption ? {backgroundColor: '#F3F5F8'} : {}
+        else 
+            return option === selectedOption ? {backgroundColor: '#232530'} : {}
     }
 
     const handleColor = (selectedOption) => {
@@ -20,26 +24,34 @@ function NavigationBar(){
         setOption(option);
     }
 
+    useEffect(() => {
+        console.log(option);
+    }, [option])
+
     return(
-        <nav className={styles.navigation}>
-            <img src={icons['logo']} className={styles.navigation_logo}/>
+        <nav className={changeClass('navigation')}>
+            {
+                theme === 'light' ? 
+                    <img src={icons['logo']} className={styles.navigation_logo}/> : 
+                    <img src={icons['logoDark']} className={styles.navigation_logo}/>
+            }
             <button 
-                className={styles.navigation_link} 
+                className={changeClass('navigation_link')} 
                 onClick={() => {handleOption('all')}}
                 style={handleStyles('all')}
                 >
-                <img className={styles.navigation_icon} style={handleColor('all')}/> All Notes
-                {option === 'all' && <img className={styles.navigation_arrow} src={localIcons['arrowRight']}/>}
+                <img className={changeClass('navigation_icon')} style={handleColor('all')}/> All Notes
+                {option === 'all' && <img className={styles.navigation_arrow} src={theme === 'light' ? localIcons['arrowRight'] : localIcons['arrowRightDark']}/>}
             </button>
             <button 
-                className={styles.navigation_link} 
+                className={changeClass('navigation_link')} 
                 onClick={() => {handleOption('archived')}}
                 style={handleStyles('archived')}
                 >
-                <img className={styles.navigation_icon} style={handleColor('archived')}/> Archived Notes
-                {option === 'archived' && <img className={styles.navigation_arrow} src={localIcons['arrowRight']}/>}
+                <img className={changeClass('navigation_icon')} style={handleColor('archived')}/> Archived Notes
+                {option === 'archived' && <img className={styles.navigation_arrow} src={theme === 'light' ? localIcons['arrowRight'] : localIcons['arrowRightDark']}/>}
             </button>
-            <hr className={styles.navigation_line}/>
+            <hr className={changeClass('navigation_line')}/>
             <Tags option={option} setOption={setOption} handleStyles={handleStyles} handleColor={handleColor}/>
         </nav>
     )

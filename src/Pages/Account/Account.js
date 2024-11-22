@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import NavigationBar from './NavigationBar';
+import HeaderBar from './HeaderBar';
 import * as styles from './styles.module.css';
 
 function Account() {
 
+    /* 
     const getNotes = async () => {
         try{
             const response = await fetch('http://localhost:4000/account', {
@@ -37,10 +39,12 @@ function Account() {
         getNotes();
     }, [])
 
+    */
 
     return(
         <main className={styles.container}>
             <NavigationBar/>
+            <HeaderBar/>
         </main>
     )
 }

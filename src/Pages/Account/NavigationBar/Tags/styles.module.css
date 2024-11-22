@@ -23,7 +23,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--colors-neutral-700, #2B303B);
     border-radius: 8px;
     font-family: Inter;
     font-size: 0.875rem;
@@ -35,14 +34,30 @@
     position: relative;
 }
 
+
+.tags_tag.light{
+    color: var(--colors-neutral-700, #2B303B);
+}
+
+.tags_tag.dark{
+    color: #E0E4EA;
+}
+
 .tags_icon{
     width: 20px;
     height: 20px;
-    background-color: #2B303B;
     mask-image: url('/public/icons/icon-tag.svg');
     mask-size: 20px 20px;
     mask-position: center;
     mask-repeat: no-repeat;
+}
+
+.tags_icon.light{
+    background-color: #2B303B;
+}
+
+.tags_icon.dark{
+    background-color: #E0E4EA;
 }
 
 .tags_arrow{
