@@ -3,11 +3,15 @@ import {useTheme} from '~/Hooks';
 import icons from '`/icons'
 import localIcons from './icons';
 import Tags from './Tags';
+import {useDispatch, useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
 
 function NavigationBar(){
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [theme, changeClass] = useTheme(styles);
-    const [option, setOption] = useState('all');
+    const option = useSelector(state => state.nav.nav);
 
     const handleStyles = (selectedOption) => {
         if(theme === 'light')
@@ -21,12 +25,16 @@ function NavigationBar(){
     }
 
     const handleOption = (option) => {
-        setOption(option);
+        dispatch({type: 'UPDATE_NAV', payload: option});
     }
 
     useEffect(() => {
-        console.log(option);
+        if(option !== 'settings')
+            navigate('/account/notes');
+        else
+            navigate('/account/settings');
     }, [option])
+
 
     return(
         <nav className={changeClass('navigation')}>
@@ -52,7 +60,7 @@ function NavigationBar(){
                 {option === 'archived' && <img className={styles.navigation_arrow} src={theme === 'light' ? localIcons['arrowRight'] : localIcons['arrowRightDark']}/>}
             </button>
             <hr className={changeClass('navigation_line')}/>
-            <Tags option={option} setOption={setOption} handleStyles={handleStyles} handleColor={handleColor}/>
+            <Tags  handleStyles={handleStyles} handleColor={handleColor}/>
         </nav>
     )
 }

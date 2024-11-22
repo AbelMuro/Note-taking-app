@@ -6,6 +6,7 @@ import SignUp from './Pages/SignUp';
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
 import Account from './Pages/Account';
+import DisplayNotes from './Pages/Account/Components/DisplayNotes';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
                     <Route path='/forgot' element={<ForgotPassword/>}/>
                     <Route path='/reset/:token' element={<ResetPassword/>}/>
                     <Route path='/account' element={<Account/>}>
-                        <Route path='/account/notes' element={<></>}/>
+                        <Route path='/account/notes' element={<DisplayNotes/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>            

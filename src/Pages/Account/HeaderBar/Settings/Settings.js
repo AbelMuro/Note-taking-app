@@ -1,8 +1,10 @@
 import React from 'react';
+import {useTheme} from '~/Hooks';
 import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
 
 function Settings() {
+    const [,changeClass] = useTheme(styles);
     const navigate = useNavigate();
 
     const handleSettings = () => {
@@ -11,7 +13,7 @@ function Settings() {
 
     return(
         <button className={styles.settings} onClick={handleSettings}>
-            <img className={styles.settings_icon}/>
+            <img className={changeClass('settings_icon')}/>
         </button>
     )
 }

@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import {Outlet} from 'react-router-dom';
 import NavigationBar from './NavigationBar';
 import HeaderBar from './HeaderBar';
 import * as styles from './styles.module.css';
@@ -45,6 +46,7 @@ function Account() {
         <main className={styles.container}>
             <NavigationBar/>
             <HeaderBar/>
+            <Outlet/>
         </main>
     )
 }

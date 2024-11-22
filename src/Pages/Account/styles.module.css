@@ -2,4 +2,5 @@
     width: 100%;
     display: grid;
     grid-template-columns: 272px 1fr;
+    grid-template-rows: 81px auto;
 }

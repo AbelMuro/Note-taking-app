@@ -1,0 +1,6 @@
+.notes{
+    grid-column: 2/3;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: 290px 1fr 258px;
+}

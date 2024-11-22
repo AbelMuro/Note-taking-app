@@ -1,13 +1,16 @@
 import React from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import {useTheme} from '~/Hooks';
 import icons from '../icons';
 import * as styles from './styles.module.css';
 
-function Tags({option, setOption, handleStyles, handleColor}){
+function Tags({handleStyles, handleColor}){
     const [theme, changeClass] = useTheme(styles);
+    const option = useSelector(state => state.nav.nav);
+    const dispatch = useDispatch();
 
     const handleTag = (selectedTag) => {
-        setOption(selectedTag);
+        dispatch({type: 'UPDATE_NAV', payload: selectedTag});
     }
 
     return(

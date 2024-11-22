@@ -1,0 +1,7 @@
+.note{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 24px;
+    background-color: white;
+}

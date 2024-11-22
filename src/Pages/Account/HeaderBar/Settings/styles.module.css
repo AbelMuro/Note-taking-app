@@ -19,6 +19,14 @@
     mask-repeat: no-repeat;
 }
 
+.settings_icon.light{
+    background-color: #717784;
+}
+
+.settings_icon.dark{
+    background-color: #99A0AE;
+}
+
 .settings_icon:hover{
     background-color: #484c54;
 }

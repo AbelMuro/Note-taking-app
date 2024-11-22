@@ -1,8 +1,10 @@
 import React from 'react';
+import {useTheme} from '~/Hooks';
 import {useSelector, useDispatch} from 'react-redux';
 import * as styles from './styles.module.css';
 
 function SearchBox() {
+    const [theme, changeClass] = useTheme(styles);
     const search = useSelector(state => state.search.search);
     const dispatch = useDispatch();
 
@@ -17,9 +19,9 @@ function SearchBox() {
                 type='search' 
                 value={search}
                 onChange={handleSearch}
-                className={styles.search_box} 
+                className={changeClass('search_box')} 
                 placeholder='Search by title, content, or tags...'/>  
-            <img className={styles.search_icon}/>          
+            <img className={changeClass('search_icon')}/>          
         </div>
 
     )
