@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import {useTheme} from '~/Hooks';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 
 function EnterTitle() {
+    const [theme, changeClass] = useTheme(styles);
     const [title, setTitle] = useState('');
     const [error, setError] = useState(false);
 
@@ -30,7 +32,7 @@ function EnterTitle() {
             <input 
                 type='text' 
                 name='title'
-                className={styles.input} 
+                className={changeClass('input')} 
                 value={title}
                 onChange={handleTitle}
                 onBlur={handleBlur}

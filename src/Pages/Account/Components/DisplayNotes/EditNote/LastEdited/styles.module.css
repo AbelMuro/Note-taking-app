@@ -1,0 +1,60 @@
+.container{
+    display: grid;
+    grid-template-columns: 115px 1fr;
+    column-gap: 8px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: Inter;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 18.2px */
+    letter-spacing: -0.2px;
+}
+
+.header.light{
+    color: var(--colors-neutral-700, #2B303B);
+}
+
+.header.dark{
+    color: #CACFD8;
+}
+
+.header_icon{
+    width: 16px;
+    height: 16px;
+    mask-image: url('/public/icons/icon-clock.svg');
+    mask-size: 16px 16px;
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+.header_icon.light{
+    background-color: #2B303B;
+}
+
+.header_icon.dark{
+    background-color: #CACFD8;
+}
+
+.date{
+    font-family: Inter;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 18.2px */
+    letter-spacing: -0.2px;
+    margin: 0px;
+}
+
+.date.light{
+    color: var(--colors-neutral-700, #2B303B);
+}
+
+.date.dark{
+    color: #CACFD8;
+}

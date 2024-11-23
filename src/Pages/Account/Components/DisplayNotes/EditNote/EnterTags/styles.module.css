@@ -11,7 +11,6 @@
     display: flex;
     align-items: center;
     gap: 6px;   
-    color: var(--colors-neutral-700, #2B303B);
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
@@ -20,13 +19,32 @@
     letter-spacing: -0.2px;
 }
 
+.header.light{
+    color: var(--colors-neutral-700, #2B303B);
+}
+
+.header.dark{
+    color: var(--colors-neutral-300,#CACFD8);
+}
+
 .header_icon{
     width: 16px;
     height: 16px;
+    mask-image: url('/public/icons/icon-tag.svg');
+    mask-repeat: no-repeat;
+    mask-size: 16px 16px;
+    mask-position: center;
+}
+
+.header_icon.light{
+    background-color: #2B303B;
+}
+
+.header_icon.dark{
+    background-color: #CACFD8;
 }
 
 .input{
-    color: var(--colors-neutral-950, #0E121B);
     border: 1px solid transparent;
     padding: 0px;
     margin: 0px;
@@ -37,11 +55,33 @@
     font-weight: 400;
     line-height: 130%; /* 18.2px */
     letter-spacing: -0.2px;
+    background-color: transparent;
 }
 
-.input:focus{
+.input.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.input.dark{
+    color: white;
+}
+
+.input.light:focus{
     border-color: #2B303B;
     outline: none;
+}
+
+.input.dark:focus{
+    border-color: var(--colors-neutral-600, #525866);
+    outline: none;
+}
+
+.input.light::placeholder{
+    color: #99A0AE;
+}
+
+.input.dark::placeholder{
+    color: var(--colors-neutral-400, #99A0AE);
 }
 
 .error_message{

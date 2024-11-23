@@ -60,6 +60,10 @@
     background-color: #E0E4EA;
 }
 
+.tags_tag:hover > .tags_icon{
+    background-color: rgb(51, 92, 255);
+}
+
 .tags_arrow{
     width: 24px;
     height: 24px;

@@ -1,11 +1,13 @@
 .container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     border: none;
     padding: 0px;
     margin: 0px;
 }
 
 .input{
-    color: var(--colors-neutral-950, #0E121B);
     border: 1px solid transparent;
     border-radius: 6px;
     padding: 0px;
@@ -18,13 +20,31 @@
     background-color: transparent;
 }
 
-.input:focus{
+.input.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.input.dark{
+    color: white;
+}
+
+
+.input.light:focus{
     border-color: #2B303B;
     outline: none;
 }
 
-.input::placeholder{
+input.dark:focus{
+    border-color: var(--colors-neutral-600, #525866);
+    outline: none;
+}
+
+.input.light::placeholder{
     color: var(--colors-neutral-950, #0E121B);
+}
+
+.input.dark::placeholder{
+    color: white;
 }
 
 .error_message{

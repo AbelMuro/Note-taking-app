@@ -9,5 +9,7 @@ import hide from './icon-hide-password.svg';
 import show from './icon-show-password.svg';
 import hideDark from './icon-hide-dark-password.svg';
 import showDark from './icon-show-dark-password.svg';
+import clock from './icon-clock.svg';
+import trash from './icon-delete.svg';
 
-export default {logo, logoDark, error, archive, tag, tagDark, home, hide, show, hideDark, showDark}
+export default {logo, logoDark, error, archive, tag, tagDark, home, hide, show, hideDark, showDark, clock, trash}

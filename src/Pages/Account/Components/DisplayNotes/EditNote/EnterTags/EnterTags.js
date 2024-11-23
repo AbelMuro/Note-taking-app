@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import {useTheme} from '~/Hooks';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 
 function EnterTags() {
+    const [theme, changeClass] = useTheme(styles);
     const [tags, setTags] = useState('');
     const [error, setError] = useState('');
 
@@ -28,14 +30,14 @@ function EnterTags() {
 
     return(
         <fieldset className={styles.container}>
-            <div className={styles.header}>
-                <img className={styles.header_icon} src={icons['tag']}/>
+            <div className={changeClass('header')}>
+                <img className={changeClass('header_icon')}/>
                 Tags
             </div>
             <input 
                 type='text'
                 name='tags'
-                className={styles.input} 
+                className={changeClass('input')} 
                 value={tags}
                 onChange={handleTags}
                 onBlur={handleBlur}

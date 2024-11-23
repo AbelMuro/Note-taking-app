@@ -5,3 +5,70 @@
     padding: 20px 24px;
     background-color: white;
 }
+
+.note.light{
+    background-color: white;
+}
+
+.note.dark{
+    background-color: var(--colors-base-black, #0E121B);
+}
+
+.note_line{
+    width: 100%;
+    height: 1px;
+    border: none;
+}
+
+.note_line.light{
+    background-color: var(--colors-neutral-200, #E0E4EA);
+}
+
+.note_line.dark{
+    background: var(--colors-neutral-800, #232530); 
+}
+
+.buttons{
+    display: flex;
+    gap: 16px;
+}
+
+.save{
+    width: 99px;
+    height: 41px;
+    border-radius: 8px;
+    background-color: var(--colors-blue-500, #335CFF);
+    border: none;
+    color: var(--colors-base-white, #FFF);
+    font-family: Inter;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 16.8px */
+    letter-spacing: -0.2px;
+    cursor: pointer;
+}
+
+.save:hover{
+    background-color: var(--colors-blue-700, #2547D0);
+}
+
+.cancel{
+    width: 78px;
+    height: 41px;
+    border-radius: var(--corner-radius-8, 8px);
+    background-color: var(--colors-neutral-100, #F3F5F8);
+    border: none;
+    color: var(--colors-neutral-600, #525866);
+    font-family: Inter;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 16.8px */
+    letter-spacing: -0.2px;
+    cursor: pointer;
+}
+
+.cancel:hover{
+    background-color: #dcdcdc;
+}

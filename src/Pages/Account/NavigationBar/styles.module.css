@@ -78,6 +78,10 @@
     background-color: #E0E4EA;
 }
 
+.navigation_link:hover > .navigation_icon{
+    background-color: rgb(51, 92, 255);
+}
+
 .navigation_arrow{
     width: 24px;
     height: 24px;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 

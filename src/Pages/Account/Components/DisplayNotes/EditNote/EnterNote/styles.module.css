@@ -1,0 +1,41 @@
+.textarea{
+    width: 100%;
+    height: 567px;
+    border: 1px solid transparent;
+    padding: 3px;
+    color: var(--colors-neutral-800, #232530);
+    font-family: Inter;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 18.2px */
+    letter-spacing: -0.2px;
+    border-radius: 6px;
+    resize: none;
+}
+
+.textarea:focus{
+    outline: none;
+    border-color: #2B303B;
+}
+
+.textarea::placeholder{
+    color: var(--colors-neutral-700, #2B303B);
+}
+
+.error_message{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--colors-red-500, #FB3748);
+    font-family: Inter;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 16.8px */
+}
+
+.error_icon{
+    width: 16px;
+    height: 16px;
+}
