@@ -1,17 +1,14 @@
 import React, {useState} from 'react';
+import {Outlet} from 'react-router-dom';
 import AllNotes from './AllNotes';
-import EditNote from './EditNote';
-import MiscButtons from './MiscButtons';
 import * as styles from './styles.module.css';
 
 function DisplayNote(){
-    const [note, setNote] = useState('id');
 
     return(
         <section className={styles.notes}>
-            <AllNotes note={note} setNote={setNote}/>
-            <EditNote note={note}/>
-            <MiscButtons/>
+            <AllNotes/>
+            <Outlet/>
         </section>
     )
 }

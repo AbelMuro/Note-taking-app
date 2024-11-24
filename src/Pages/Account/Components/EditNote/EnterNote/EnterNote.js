@@ -1,11 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
+import {useTheme} from '~/Hooks';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 
-//this is where i left off, i will need to change the theme here
-function EnterNote() {
+function EnterNote({prevNote}) {
+    const [, changeClass] = useTheme(styles);
     const [note, setNote] = useState('');
     const [error, setError] = useState('');
+    const {state} = useLocation();
+    const oldNote = state && state.note;
 
     const handleNote = (e) => {
         e.target.setCustomValidity('');
@@ -23,13 +27,21 @@ function EnterNote() {
 
     const handleInvalid = (e) => {
         e.target.setCustomValidity(' ');
-        setError('empty')
+        setError('empty');
     }
+
+    useEffect(() => {
+        setNote(prevNote || '');
+    }, [prevNote])
+
+    useEffect(() => {
+        setError('');
+    }, [oldNote])
     
     return(
         <>
             <textarea 
-                className={styles.textarea}
+                className={changeClass('textarea')}
                 name='note'
                 value={note}
                 onChange={handleNote}

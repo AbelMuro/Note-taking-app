@@ -58,3 +58,13 @@
 .date.dark{
     color: #CACFD8;
 }
+
+.empty{
+    color: var(--colors-neutral-400, #99A0AE);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 18.2px */
+    letter-spacing: -0.2px;
+}

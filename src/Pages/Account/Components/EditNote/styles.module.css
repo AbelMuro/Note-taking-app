@@ -57,9 +57,7 @@
     width: 78px;
     height: 41px;
     border-radius: var(--corner-radius-8, 8px);
-    background-color: var(--colors-neutral-100, #F3F5F8);
     border: none;
-    color: var(--colors-neutral-600, #525866);
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
@@ -69,6 +67,20 @@
     cursor: pointer;
 }
 
-.cancel:hover{
+.cancel.light{
+    color: var(--colors-neutral-600, #525866);
+    background-color: var(--colors-neutral-100, #F3F5F8);
+}
+
+.cancel.dark{
+    color: #99A0AE;
+    background-color: #232530;
+}
+
+.cancel.light:hover{
     background-color: #dcdcdc;
+}
+
+.cancel.dark:hover{
+    background-color: #424242;
 }

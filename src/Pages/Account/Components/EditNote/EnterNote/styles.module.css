@@ -4,6 +4,7 @@
     border: 1px solid transparent;
     padding: 3px;
     color: var(--colors-neutral-800, #232530);
+    background-color: transparent;
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
@@ -14,13 +15,30 @@
     resize: none;
 }
 
-.textarea:focus{
+.textarea.light{
+    color: var(--colors-neutral-800, #232530);
+}
+
+.textarea.dark{
+    color: var(--colors-neutral-100, #F3F5F8);
+}
+
+.textarea.light:focus{
     outline: none;
     border-color: #2B303B;
 }
 
-.textarea::placeholder{
+.textarea.dark:focus{
+    outline: none;
+    border-color: var(--colors-neutral-600, #525866);
+}
+
+.textarea.light::placeholder{
     color: var(--colors-neutral-700, #2B303B);
+}
+
+.textarea.dark::placeholder{
+    color: var(--colors-neutral-100, #F3F5F8);
 }
 
 .error_message{

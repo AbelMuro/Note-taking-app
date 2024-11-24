@@ -1,19 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 
-function EnterTags() {
-    const [theme, changeClass] = useTheme(styles);
+function EnterTags({prevTags}) {
+    const [,changeClass] = useTheme(styles);
     const [tags, setTags] = useState('');
     const [error, setError] = useState('');
+    const {state} = useLocation();
+    const note = state && state.note;
 
     const handleTags = (e) => {
-        e.target.setCustomValidity(' ');
-        const input = e.target.value;
-        setError('');
-        setTags(input);
+        let input = e.target.value;
+        input = input.replaceAll(',')
 
+        if(input.match(/[^a-zA-Z]/))
+            return;
+
+        e.target.setCustomValidity('');
+        setError('');
+        setTags(e.target.value);
     }
 
     const handleBlur = (e) => {
@@ -27,6 +34,14 @@ function EnterTags() {
         e.target.setCustomValidity(' ');
         setError('empty')
     }
+
+    useEffect(() => {
+        setTags(prevTags || '');
+    }, [prevTags])
+
+    useEffect(() => {
+        setError('');
+    }, [note])
 
     return(
         <fieldset className={styles.container}>
