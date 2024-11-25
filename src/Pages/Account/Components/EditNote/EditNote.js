@@ -9,10 +9,12 @@ import {useTheme} from '~/Hooks';
 import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
 
+
+//this is where i left off, i will need to create the route in node.js for the /update-archived-note
 function EditNote() {
     const navigate = useNavigate();
     const [,changeClass] = useTheme(styles);
-    const {state} = useLocation();
+    const {state, pathname} = useLocation();
     const note = state && state.note;
     const months = useRef(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
 
@@ -32,9 +34,17 @@ function EditNote() {
         const lastEdited = getCurrentDate();
 
         try{
-            const response = await fetch('http://localhost:4000/add-note', {
+            let url;
+            if(pathname === '/account/notes')
+                url = 'http://localhost:4000/add-note';
+            else if(pathname === '/account/notes/archive') 
+                url = 'http://localhost:4000/add-archived-note'
+
+            const response = await fetch(url, {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({title, tags, lastEdited, body}),
                 credentials: 'include'
             })
@@ -85,7 +95,14 @@ function EditNote() {
         const lastEdited = getCurrentDate();
 
         try{
-            const response = await fetch('http://localhost:4000/update-note', {
+            let url;
+
+            if(pathname === '/account/notes')
+                url = 'http://localhost:4000/update-note';
+            else if(pathname === '/account/notes/archive') 
+                url = 'http://localhost:4000/update-archived-note'
+
+            const response = await fetch(url, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -149,7 +166,6 @@ function EditNote() {
             </form>        
             <MiscButtons id={note && note.id}/>
         </>
-
     )
 }
 

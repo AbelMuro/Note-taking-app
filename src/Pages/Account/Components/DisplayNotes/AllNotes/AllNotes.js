@@ -1,37 +1,34 @@
 import React, {useState, useEffect} from 'react';
-import { ClipLoader } from 'react-spinners';
-import {useNavigate} from 'react-router-dom';
+import FormatNotes from '~/Common/Components/FormatNotes'
+import {useNavigate, useLocation} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function AllNotes() {
-    const [theme, changeClass] = useTheme(styles);
-    const [note, setNote] = useState('');
+    const [, changeClass] = useTheme(styles);
     const [allNotes, setAllNotes] = useState([]);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
-    const handleStyles = (id) => {
-        if(theme === 'light')
-            return note === id ? {backgroundColor: '#F3F5F8'} : {};
-        else
-            return note === id ? {backgroundColor: '#232530'} : {}
-    }
-
-    const handleNote = (note) => {
-        setNote(note.id);
-        navigate('/account/notes/', {state: {note} })
-    }   
-
+    const {pathname, state} = useLocation();
+    const note = state && state.note;
+  
     const handleNewNote = () => {
-        setNote('');
-        navigate('/account/notes/');
+        const selectedNote = document.getElementById('selected');
+        if(selectedNote)
+            selectedNote.style.backgroundColor = '';
+        navigate(pathname);
     }
 
     const getNotes = async () => {
         setLoading(true);
         try{
-            const response = await fetch('http://localhost:4000/get-notes', {
+            let url;
+            if(pathname === '/account/notes')
+                url = 'http://localhost:4000/get-notes';
+            else if(pathname === '/account/notes/archive') 
+                url = 'http://localhost:4000/get-archived-notes'
+
+            const response = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -51,6 +48,10 @@ function AllNotes() {
                     alert(message);
                 }, 500)
             }
+            else if(response.status === 404){
+                const message = await response.text();
+                console.log(message);
+            }
             else{
                 const message = await response.text();
                 console.log(message);
@@ -68,56 +69,27 @@ function AllNotes() {
         }
     }
 
+
     useEffect(() => {
         getNotes();
         document.addEventListener('notes-updated', getNotes);
-
         return () => document.removeEventListener('notes-update', getNotes);    
-    }, [])
+    }, [pathname])
 
     return(
         <div className={changeClass('notes')}>
             <button type='button' className={styles.notes_button} onClick={handleNewNote}>
                 + Create New Note
             </button>
-            {
-                loading ? 
-                    <div className={styles.loading}>
-                        <ClipLoader size='35px' color='#335cff'/>
-                    </div> : 
-                allNotes.map((note) => {
-                    const id = note.id;
-                    const title = note.title;
-                    const tags = note.tags.split(',');
-                    const date = note.lastEdited;
-
-                    return(
-                        <article 
-                            style={handleStyles(id)}
-                            className={styles.notes_note} 
-                            onClick={() => handleNote(note)}
-                            key={id}>
-                                <h2 className={changeClass('notes_title')}>
-                                    {title}
-                                </h2>
-                                <div className={changeClass('notes_tags')}>
-                                    {
-                                        tags.map((tag) => {
-                                            return(
-                                                <div className={styles.notes_tag} key={tag}>
-                                                    {tag}
-                                                </div> 
-                                            )
-                                        })
-                                    }
-                                </div>
-                                <p className={changeClass('notes_date')}>
-                                    {date}
-                                </p>
-                        </article>
-                    )
-                })
+            {pathname === '/account/notes/archive' && 
+                <p className={changeClass('notes_message')}>
+                    All your archived notes are stored here. You can restore or delete them anytime.
+                </p> 
             }
+            {!note && <div className={changeClass('notes_untitled')}>
+                Untitled Note
+            </div>}
+            <FormatNotes allNotes={allNotes} loading={loading}/>
         </div>
     )
 }

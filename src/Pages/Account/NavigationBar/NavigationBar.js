@@ -29,10 +29,12 @@ function NavigationBar(){
     }
 
     useEffect(() => {
-        if(option !== 'settings')
-            navigate('/account/notes');
-        else
+        if(option === 'settings')
             navigate('/account/settings');
+        else if(option === 'all')
+            navigate('/account/notes');
+        else if(option === 'archived')
+            navigate('/account/notes/archive');
     }, [option])
 
 

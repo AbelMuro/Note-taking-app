@@ -29,6 +29,7 @@ function App() {
                     <Route path='/account' element={<Account/>}>
                         <Route path='/account/notes' element={<DisplayNotes/>}>
                             <Route path='/account/notes/' element={<EditNote/>}/>
+                            <Route path='/account/notes/archive' element={<EditNote/>}/>
                         </Route>
                     </Route>
                 </Routes>

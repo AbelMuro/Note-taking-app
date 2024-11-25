@@ -17,7 +17,7 @@
     border-left: 1px solid var(--colors-neutral-800, #232530);
 }
 
-.misc{
+.archive_button{
     height: 44px;
     padding: 12px 16px;
     display: flex;
@@ -28,21 +28,21 @@
     cursor: pointer;
 }
 
-.misc:disabled{
+.archive_button:disabled{
     cursor: not-allowed;
 }
 
-.misc.light{
+.archive_button.light{
     border: 1px solid var(--colors-neutral-300, #CACFD8);
-    color: white;
+    color: #0E121B;
 }
 
-.misc.dark{
+.archive_button.dark{
     border: 1px solid var(--colors-neutral-600, #525866);
     color: white;
 }
 
-.misc_icon{
+.archive_icon{
     width: 20px;
     height: 20px;
     mask-size: 20px 20px;
@@ -50,22 +50,22 @@
     mask-position: center;
 }
 
-.misc_icon.light{
+.archive_icon.light{
     background-color: #0E121B;
 }
 
-.misc_icon.dark{
+.archive_icon.dark{
     background-color: white;
 }
 
-.misc:hover > .misc_icon{
+.archive_button:hover > .archive_icon{
     background-color: rgb(51, 92, 255);
 }
 
-.misc:nth-of-type(1) > .misc_icon{
+.archive_button:nth-of-type(1) > .archive_icon{
     mask-image: url('/public/icons/icon-archive.svg');
 }
 
-.misc:nth-of-type(2) > .misc_icon{
+.archive_button:nth-of-type(2) > .archive_icon{
     mask-image: url('/public/icons/icon-delete.svg');
 }
