@@ -4,9 +4,10 @@ import DeleteNote from './DeleteNote';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
+//this is where i left off, i will need to change the functionality of the buttons based on the current route in react-routers
 function MiscButtons({id}) {
     const [,changeClass] = useTheme(styles);
-    const {state} = useLocation();
+    const {pathname, state} = useLocation();
     const note = state && state.note;
 
     const handleArchive = async () => {

@@ -6,14 +6,12 @@ import EnterNote from './EnterNote';
 import MiscButtons from './MiscButtons';
 import {useLocation} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
-import {useNavigate} from 'react-router-dom';
 import {useUpdateNotes} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 
 function EditNote() {
     const [makeFetch] = useUpdateNotes();
-    const navigate = useNavigate();
     const [,changeClass] = useTheme(styles);
     const {state, pathname} = useLocation();
     const note = state && state.note;
