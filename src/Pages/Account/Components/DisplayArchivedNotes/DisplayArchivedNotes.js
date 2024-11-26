@@ -1,16 +1,16 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom';
-import AllNotes from './AllNotes';
+import AllArchivedNotes from './AllArchivedNotes';
 import * as styles from './styles.module.css';
 
-function DisplayNote(){
+function DisplayArchivedNotes(){
 
     return(
         <section className={styles.notes}>
-            <AllNotes/>
+            <AllArchivedNotes/>
             <Outlet/>
         </section>
     )
 }
 
-export default DisplayNote;
+export default DisplayArchivedNotes;

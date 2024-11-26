@@ -7,6 +7,7 @@ import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
 import Account from './Pages/Account';
 import DisplayNotes from './Pages/Account/Components/DisplayNotes';
+import DisplayArchivedNotes from './Pages/Account/Components/DisplayArchivedNotes'
 import EditNote from './Pages/Account/Components/EditNote';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -29,9 +30,12 @@ function App() {
                     <Route path='/account' element={<Account/>}>
                         <Route path='/account/notes' element={<DisplayNotes/>}>
                             <Route path='/account/notes/' element={<EditNote/>}/>
-                            <Route path='/account/notes/archive' element={<EditNote/>}/>
                         </Route>
+                        <Route path='/account/archived-notes' element={<DisplayArchivedNotes/>}>
+                            <Route path='/account/archived-notes/' element={<EditNote/>}/>
+                        </Route>                        
                     </Route>
+
                 </Routes>
             </BrowserRouter>            
 

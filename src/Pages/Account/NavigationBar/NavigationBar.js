@@ -34,7 +34,7 @@ function NavigationBar(){
         else if(option === 'all')
             navigate('/account/notes');
         else if(option === 'archived')
-            navigate('/account/notes/archive');
+            navigate('/account/archived-notes');
     }, [option])
 
 

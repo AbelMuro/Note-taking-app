@@ -7,11 +7,12 @@ import MiscButtons from './MiscButtons';
 import {useLocation} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import {useNavigate} from 'react-router-dom';
+import {useUpdateNotes} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 
-//this is where i left off, i will need to create the route in node.js for the /update-archived-note
 function EditNote() {
+    const [makeFetch] = useUpdateNotes();
     const navigate = useNavigate();
     const [,changeClass] = useTheme(styles);
     const {state, pathname} = useLocation();
@@ -33,57 +34,20 @@ function EditNote() {
         const body = e.target.elements.note.value;
         const lastEdited = getCurrentDate();
 
-        try{
-            let url;
-            if(pathname === '/account/notes')
-                url = 'http://localhost:4000/add-note';
-            else if(pathname === '/account/notes/archive') 
-                url = 'http://localhost:4000/add-archived-note'
+        let url;
+        if(pathname === '/account/notes')
+            url = 'http://localhost:4000/add-note';
+        else if(pathname === '/account/archived-notes') 
+            url = 'http://localhost:4000/add-archived-note'
 
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({title, tags, lastEdited, body}),
-                credentials: 'include'
-            })
-
-            if(response.status === 200){
-                const result = await response.text();
-                console.log(result);
-                alert(result);
-                const event = new Event('notes-updated');
-                document.dispatchEvent(event);
-            }
-            else if(response.status === 401){
-                const message = await response.text();
-                console.log(message);
-                navigate('/')
-                setTimeout(() => {
-                    alert(message);
-                }, 500)
-            }
-            else if(response.status === 404){
-                const message = await response.text();
-                console.log(message);
-                alert(message);
-            }
-
-            else{
-                const message = await response.text();
-                console.log(message);
-                alert('Internal Server Error has occurred');
-            }
-
-        }
-        catch(error){
-            const message = error.message;
-            console.log(message);
-            alert('Server is offline, please try again later')
-        }
-        finally{
-        }
+        await makeFetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({title, tags, lastEdited, body}),
+            credentials: 'include'
+        })
     }
 
     const handleUpdateNote = async (e) => {
@@ -94,56 +58,22 @@ function EditNote() {
         const body = e.target.elements.note.value;
         const lastEdited = getCurrentDate();
 
-        try{
-            let url;
+        let url;
+        if(pathname === '/account/notes')
+            url = 'http://localhost:4000/update-note';
+        else if(pathname === '/account/archived-notes') 
+            url = 'http://localhost:4000/update-archived-note';
 
-            if(pathname === '/account/notes')
-                url = 'http://localhost:4000/update-note';
-            else if(pathname === '/account/notes/archive') 
-                url = 'http://localhost:4000/update-archived-note'
-
-            const response = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    id, title, tags, body, lastEdited
-                }),
-                credentials: 'include'
-            });
-
-            if(response.status === 200){
-                const result = await response.text();
-                console.log(result);
-                alert(result);
-                const event = new Event('notes-updated');
-                document.dispatchEvent(event);
-            }
-            else if(response.status === 401){
-                const message = await response.text();
-                console.log(message);
-                navigate('/');
-                setTimeout(() => {
-                    alert(message);
-                }, 500)
-            }
-            else if(response.status === 404){
-                const message = await response.text();
-                console.log(message);
-                alert(message);
-            }
-            else{
-                const message = await response.text();
-                console.log(message);
-                alert('Internal Server Error has occurred');
-            }
-        }
-        catch(error){
-            const message = error.message;
-            console.log(message);
-            alert('Server is offline, please try again later')
-        }
+        await makeFetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id, title, tags, body, lastEdited
+            }),
+            credentials: 'include'
+        });
     }
 
     return(
