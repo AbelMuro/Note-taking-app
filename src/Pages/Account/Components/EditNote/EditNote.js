@@ -22,7 +22,7 @@ function EditNote() {
         const day = currentDate.getDate();
         const month = currentDate.getMonth();
         const year = currentDate.getFullYear();
-        return  `${day} ${months.current[month]} ${year}`;
+        return `${day} ${months.current[month]} ${year}`;
     }
 
     const handleAddNewNote = async (e) => {
@@ -32,13 +32,15 @@ function EditNote() {
         const body = e.target.elements.note.value;
         const lastEdited = getCurrentDate();
 
-        let url;
+        let params;
         if(pathname === '/account/notes')
-            url = 'http://localhost:4000/add-note';
+            params = 'notes';
         else if(pathname === '/account/archived-notes') 
-            url = 'http://localhost:4000/add-archived-note'
+            params = 'archived';
+        else
+            params = 'tags'
 
-        await makeFetch(url, {
+        await makeFetch(`http://localhost:4000/add-note/${params}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,6 +48,8 @@ function EditNote() {
             body: JSON.stringify({title, tags, lastEdited, body}),
             credentials: 'include'
         })
+        const event = new Event('update-tags');
+        document.dispatchEvent(event);
     }
 
     const handleUpdateNote = async (e) => {
@@ -56,13 +60,7 @@ function EditNote() {
         const body = e.target.elements.note.value;
         const lastEdited = getCurrentDate();
 
-        let url;
-        if(pathname === '/account/notes')
-            url = 'http://localhost:4000/update-note';
-        else if(pathname === '/account/archived-notes') 
-            url = 'http://localhost:4000/update-archived-note';
-
-        await makeFetch(url, {
+        await makeFetch(`http://localhost:4000/update-note`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -72,6 +70,8 @@ function EditNote() {
             }),
             credentials: 'include'
         });
+        const event = new Event('update-tags');
+        document.dispatchEvent(event);
     }
 
     return(
@@ -92,7 +92,7 @@ function EditNote() {
                     </button>
                 </div>
             </form>        
-            <MiscButtons id={note && note.id}/>
+            <MiscButtons/>
         </>
     )
 }

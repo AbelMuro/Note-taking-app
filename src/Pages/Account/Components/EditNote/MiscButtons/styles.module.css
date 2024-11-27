@@ -17,7 +17,7 @@
     border-left: 1px solid var(--colors-neutral-800, #232530);
 }
 
-.archive_button{
+.misc_button{
     height: 44px;
     padding: 12px 16px;
     display: flex;
@@ -28,21 +28,21 @@
     cursor: pointer;
 }
 
-.archive_button:disabled{
+.misc_button:disabled{
     cursor: not-allowed;
 }
 
-.archive_button.light{
+.misc_button.light{
     border: 1px solid var(--colors-neutral-300, #CACFD8);
     color: #0E121B;
 }
 
-.archive_button.dark{
+.misc_button.dark{
     border: 1px solid var(--colors-neutral-600, #525866);
     color: white;
 }
 
-.archive_icon{
+.misc_icon{
     width: 20px;
     height: 20px;
     mask-size: 20px 20px;
@@ -50,22 +50,22 @@
     mask-position: center;
 }
 
-.archive_icon.light{
+.misc_icon.light{
     background-color: #0E121B;
 }
 
-.archive_icon.dark{
+.misc_icon.dark{
     background-color: white;
 }
 
-.archive_button:hover > .archive_icon{
+.misc_button:hover > .misc_icon{
     background-color: rgb(51, 92, 255);
 }
 
-.archive_button:nth-of-type(1) > .archive_icon{
+#archive{
     mask-image: url('/public/icons/icon-archive.svg');
 }
 
-.archive_button:nth-of-type(2) > .archive_icon{
-    mask-image: url('/public/icons/icon-delete.svg');
+#restore{
+    mask-image: url('/public//icons/icon-restore.svg');
 }

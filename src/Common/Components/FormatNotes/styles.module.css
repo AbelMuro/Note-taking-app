@@ -97,6 +97,14 @@
     margin: 0px;
 }
 
+#selected.light{
+    background-color: '#F3F5F8'    
+}
+
+#selected.dark{
+    background-color: '#232530'   
+}
+
 .notes_date.light{
     color: var(--colors-neutral-700, #2B303B);
 }

@@ -32,7 +32,7 @@ function FormatNotes({allNotes, loading}) {
                     <ClipLoader size='35px' color='#335cff'/>
                 </div> : 
                 <div className={styles.notes_all}>
-                    {allNotes.map((currentNote) => {
+                    {allNotes && allNotes.map((currentNote) => {
                         const id = currentNote.id;
                         const title = currentNote.title;
                         const tags = currentNote.tags.split(',');

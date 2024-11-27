@@ -5,13 +5,7 @@ function useGetNotes(){
 
     const makeFetch = async (url, options) => {
         try{
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include'
-            });
+            const response = await fetch(url, options);
             
             if(response.status === 200){
                 const result = await response.json();
@@ -23,7 +17,7 @@ function useGetNotes(){
                 navigate('/')
                 setTimeout(() => {
                     alert(message);
-                }, 500)
+                }, 600)
             }
             else if(response.status === 404){
                 const message = await response.text();
@@ -42,7 +36,7 @@ function useGetNotes(){
         }
     }
 
-    return [makeFetch]
+    return [makeFetch];
 }
 
 

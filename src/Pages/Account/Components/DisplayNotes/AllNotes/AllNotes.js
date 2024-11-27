@@ -5,8 +5,11 @@ import {useNavigate, useLocation} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
+//this is where i left off, i will need to create a loading screen with skeleton components, then i will need to implement the search box
+//im already done with the tags component, i will also need to add a loading icon for the EditNote component as well (save note button)
+
 function AllNotes() {
-    const [allNotes, loading] = useNotes('http://localhost:4000/get-notes');
+    const [allNotes, loading] = useNotes('http://localhost:4000/get-notes/notes');
     const [, changeClass] = useTheme(styles);
     const navigate = useNavigate();
     const {pathname, state} = useLocation();
