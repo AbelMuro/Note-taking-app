@@ -1,4 +1,5 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
+import { ClipLoader } from 'react-spinners';
 import EnterTitle from './EnterTitle';
 import EnterTags from './EnterTags';
 import LastEdited from './LastEdited';
@@ -9,8 +10,10 @@ import {useTheme} from '~/Hooks';
 import {useUpdateNotes} from '~/Hooks';
 import * as styles from './styles.module.css';
 
-
+//this is where i left off, i will need to figure out what the cancel button does in this component
+// and i will need to implement the search route and the settings route
 function EditNote() {
+    const [loading, setLoading] = useState(false);
     const [makeFetch] = useUpdateNotes();
     const [,changeClass] = useTheme(styles);
     const {state, pathname} = useLocation();
@@ -27,20 +30,21 @@ function EditNote() {
 
     const handleAddNewNote = async (e) => {
         e.preventDefault();
+        setLoading(true);
         const title = e.target.elements.title.value;
         const tags = e.target.elements.tags.value;
         const body = e.target.elements.note.value;
         const lastEdited = getCurrentDate();
 
         let params;
-        if(pathname === '/account/notes')
+        if(pathname === '/account')
             params = 'notes';
         else if(pathname === '/account/archived-notes') 
             params = 'archived';
         else
             params = 'tags'
 
-        await makeFetch(`http://localhost:4000/add-note/${params}`, {
+        const result = await makeFetch(`http://localhost:4000/add-note/${params}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,19 +52,26 @@ function EditNote() {
             body: JSON.stringify({title, tags, lastEdited, body}),
             credentials: 'include'
         })
-        const event = new Event('update-tags');
-        document.dispatchEvent(event);
+        setTimeout(() => {
+            alert(result)
+        }, 500);
+        setLoading && setLoading(false);
+        const eventNotes = new Event('notes-updated');
+        document.dispatchEvent(eventNotes);     
+        const eventTags = new Event('update-tags');
+        document.dispatchEvent(eventTags);
     }
 
     const handleUpdateNote = async (e) => {
         e.preventDefault()
+        setLoading(true);
         const id = note.id;
         const title = e.target.elements.title.value;
         const tags = e.target.elements.tags.value;
         const body = e.target.elements.note.value;
         const lastEdited = getCurrentDate();
 
-        await makeFetch(`http://localhost:4000/update-note`, {
+        const result = await makeFetch(`http://localhost:4000/update-note`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -70,6 +81,12 @@ function EditNote() {
             }),
             credentials: 'include'
         });
+        setTimeout(() => {
+            alert(result)
+        }, 500);
+        setLoading && setLoading(false);
+        const eventNotes = new Event('notes-updated');
+        document.dispatchEvent(eventNotes);  
         const event = new Event('update-tags');
         document.dispatchEvent(event);
     }
@@ -85,7 +102,7 @@ function EditNote() {
                 <hr className={changeClass('note_line')}/>
                 <div className={styles.buttons}>
                     <button className={styles.save}>
-                        Save Note
+                        {loading ? <ClipLoader size='30px' color='white'/>  : 'Save Note'}
                     </button>
                     <button className={changeClass('cancel')}>
                         Cancel

@@ -20,7 +20,7 @@ function useNotes(initialUrl){
 
     useEffect(() => {
         document.addEventListener('notes-updated', fetchNotes);
-        return () => document.removeEventListener('notes-update', fetchNotes);    
+        return () => document.removeEventListener('notes-updated', fetchNotes);    
     }, [url])
 
     return [allNotes, loading, setUrl]

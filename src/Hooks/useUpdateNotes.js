@@ -9,12 +9,8 @@ function useUpdateNotes(){
 
             if(response.status === 200){
                 const result = await response.text();
-                console.log(result);
-                setTimeout(() => {
-                    alert(result);
-                }, 500)
-                const event = new Event('notes-updated');
-                document.dispatchEvent(event);
+                console.log(result);     
+                return result;          
             }
             else if(response.status === 401){
                 const message = await response.text();

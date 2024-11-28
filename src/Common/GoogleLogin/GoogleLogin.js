@@ -23,7 +23,6 @@ function GoogleLoginButton() {
 
 
     useEffect(() => {
-        console.log(window.google);
         window.google.accounts.id.initialize({ 
             client_id: process.env.CLIENT_ID, 
             callback: handleCredentialResponse, 

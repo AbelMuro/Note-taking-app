@@ -1,25 +1,27 @@
 import React, {useState, useEffect} from 'react';
-import {useNotes} from '~/Hooks';
-import { useNavigate} from 'react-router-dom';
-import { ClipLoader } from 'react-spinners';
+import {useNavigate} from 'react-router-dom';
+import LoadingTags from './LoadingTags';
 import {useGetNotes} from '~/Hooks';
-import {useSelector, useDispatch} from 'react-redux';
 import {useTheme} from '~/Hooks';
 import icons from '../icons';
 import * as styles from './styles.module.css';
 
-function Tags({handleStyles, handleColor}){
+function Tags({option, handleStyles, handleColor}){
     const navigate = useNavigate();
     const [allTags, setAllTags] = useState([]);
     const [loading, setLoading] = useState(false);
     const [makeFetch] = useGetNotes();
     const [theme, changeClass] = useTheme(styles);
-    const option = useSelector(state => state.nav.nav);
-    const dispatch = useDispatch();
 
-    const handleTag = (selectedTag) => {
-        dispatch({type: 'UPDATE_NAV', payload: selectedTag});
-        navigate(`/account/${selectedTag}`);
+    const handleTag = (option) => {
+        if(option === 'settings')
+            navigate('/account/settings');
+        else if(option === 'all')
+            navigate('/account');
+        else if(option === 'archived')
+            navigate('/account/archived-notes');
+        else
+            navigate(`/account/${option}`);
     }
 
     const getTags = async () => {
@@ -45,7 +47,7 @@ function Tags({handleStyles, handleColor}){
                 Tags
             </h1>
             {
-                loading ? <ClipLoader size='35px' color='#335CFF'/> : allTags.map((tag) => {
+                loading ? <LoadingTags/> : allTags.map((tag) => {
                     return(
                         <div className={changeClass('tags_tag')} style={handleStyles(tag)} onClick={() => handleTag(tag)} key={tag}>
                             <img className={changeClass('tags_icon')} style={handleColor(tag)}/>

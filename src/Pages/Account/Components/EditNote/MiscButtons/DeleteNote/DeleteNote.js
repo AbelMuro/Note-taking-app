@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useUpdateNotes} from '~/Hooks';
 import { ClipLoader } from 'react-spinners';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import {motion, AnimatePresence} from 'framer-motion';
 import { overlayVariant, dialogVariant } from './Variants';
@@ -12,8 +12,8 @@ function DeleteNote({id}) {
     const [loading, setLoading] = useState(false);
     const [,changeClass] = useTheme(styles);
     const [open, setOpen] = useState(false);
-    const {pathname, state} = useLocation();
-    const note = state && state.note;
+    const {pathname} = useLocation();
+    const navigate = useNavigate();
 
     const handleOpen = () => {
         setOpen(!open);
@@ -21,23 +21,31 @@ function DeleteNote({id}) {
 
     const handleDelete = async () => {
         setLoading(true);
-        const params = pathname === '/account/notes' ? 'notes' : 'archived';
-        await makeFetch(`http://localhost:4000/delete-note/${id}`, {
+        const result = await makeFetch(`http://localhost:4000/delete-note/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
             },
             credentials: 'include',
         });
+
         setLoading && setLoading(false);
         setOpen && setOpen(false);
+        navigate(pathname);
+        setTimeout(() => {
+            alert(result)   
+        }, 500);
+        const eventNotes = new Event('notes-updated');
+        document.dispatchEvent(eventNotes);     
+        const eventTags = new Event('update-tags');
+        document.dispatchEvent(eventTags);
     }
 
     return(
         <>
-            <button type='button' className={changeClass('deleteButton')} onClick={handleOpen} disabled={note ? false : true}>
-                <img className={changeClass('deleteButton_icon')}/>
-                Delete Note
+            <button type='button' className={changeClass('deleteButton')} onClick={handleOpen} style={loading ? {justifyContent: 'center'} : {}}>
+                {!loading && <img className={changeClass('deleteButton_icon')}/>}
+                {loading ? <ClipLoader size='30px' color='#335CFF'/> : 'Delete Note'}
             </button>      
             <AnimatePresence>
                 {open && <motion.div 
@@ -71,7 +79,7 @@ function DeleteNote({id}) {
                                     Cancel
                                 </button>
                                 <button className={styles.dialog_delete} onClick={handleDelete}>
-                                    {loading ? <ClipLoader size='35px' color='#335CFF'/> : 'Delete Note'}
+                                    {loading ? <ClipLoader size='30px' color='#335CFF'/> : 'Delete Note'}
                                 </button>
                             </section>
                     </motion.dialog>

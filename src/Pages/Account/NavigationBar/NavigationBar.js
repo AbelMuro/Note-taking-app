@@ -3,15 +3,15 @@ import {useTheme} from '~/Hooks';
 import icons from '`/icons'
 import localIcons from './icons';
 import Tags from './Tags';
-import {useDispatch, useSelector} from 'react-redux';
+import {useLocation} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
 
 function NavigationBar(){
+    const {pathname} = useLocation();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const [theme, changeClass] = useTheme(styles);
-    const option = useSelector(state => state.nav.nav);
+    const [option, setOption] = useState('all');
 
     const handleStyles = (selectedOption) => {
         if(theme === 'light')
@@ -25,25 +25,33 @@ function NavigationBar(){
     }
 
     const handleOption = (option) => {
-        dispatch({type: 'UPDATE_NAV', payload: option});
-    }
-
-    useEffect(() => {
         if(option === 'settings')
             navigate('/account/settings');
         else if(option === 'all')
-            navigate('/account/notes');
+            navigate('/account');
         else if(option === 'archived')
             navigate('/account/archived-notes');
-    }, [option])
+        else
+            navigate(`/account/${option}`);
+    }
+
+    useEffect(() => {
+        if(pathname === '/account')
+            setOption('all');
+        else if(pathname === '/account/archived-notes')
+            setOption('archived');
+        else {
+            const tag = pathname.split('/')[2];
+            setOption(tag);
+        }
+    }, [pathname])
 
 
     return(
         <nav className={changeClass('navigation')}>
-            {
-                theme === 'light' ? 
-                    <img src={icons['logo']} className={styles.navigation_logo}/> : 
-                    <img src={icons['logoDark']} className={styles.navigation_logo}/>
+            {theme === 'light' ? 
+                <img src={icons['logo']} className={styles.navigation_logo}/> : 
+                <img src={icons['logoDark']} className={styles.navigation_logo}/>
             }
             <button 
                 className={changeClass('navigation_link')} 
@@ -62,7 +70,7 @@ function NavigationBar(){
                 {option === 'archived' && <img className={styles.navigation_arrow} src={theme === 'light' ? localIcons['arrowRight'] : localIcons['arrowRightDark']}/>}
             </button>
             <hr className={changeClass('navigation_line')}/>
-            <Tags  handleStyles={handleStyles} handleColor={handleColor}/>
+            <Tags option={option} handleStyles={handleStyles} handleColor={handleColor}/>
         </nav>
     )
 }

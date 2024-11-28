@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { ClipLoader } from 'react-spinners';
+import LoadingNotes from './LoadingNotes'
 import {useNavigate, useLocation} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
@@ -26,11 +26,8 @@ function FormatNotes({allNotes, loading}) {
         setSelectedNote('');
     }, [allNotes])
 
-
     return loading ? 
-                <div className={styles.loading}>
-                    <ClipLoader size='35px' color='#335cff'/>
-                </div> : 
+                <LoadingNotes/> : 
                 <div className={styles.notes_all}>
                     {allNotes && allNotes.map((currentNote) => {
                         const id = currentNote.id;

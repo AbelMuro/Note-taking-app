@@ -29,8 +29,8 @@ function App() {
                     <Route path='/forgot' element={<ForgotPassword/>}/>
                     <Route path='/reset/:token' element={<ResetPassword/>}/>
                     <Route path='/account' element={<Account/>}>
-                        <Route path='/account/notes' element={<DisplayNotes/>}>
-                            <Route path='/account/notes/' element={<EditNote/>}/>
+                        <Route path='/account/' element={<DisplayNotes/>}>
+                            <Route path='/account/' element={<EditNote/>}/>
                         </Route>
                         <Route path='/account/archived-notes' element={<DisplayArchivedNotes/>}>
                             <Route path='/account/archived-notes/' element={<EditNote/>}/>
