@@ -23,11 +23,12 @@ function GoogleLoginButton() {
 
 
     useEffect(() => {
+        if(!window.google) return;
         window.google.accounts.id.initialize({ 
             client_id: process.env.CLIENT_ID, 
             callback: handleCredentialResponse, 
         });
-    }, [])
+    }, [window.google])
 
     return(
             <section className={changeClass('container')}>

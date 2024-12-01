@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import LoadingNotes from './LoadingNotes'
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useNavigate, useLocation, useParams} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
+import {getRootofRoute} from '~/Common/Functions';
 import * as styles from './styles.module.css';
 
 function FormatNotes({allNotes, loading}) {
+    const {tags} = useParams();
     const [theme, changeClass] = useTheme(styles);
     const [selectedNote, setSelectedNote] = useState('');
     const navigate = useNavigate();
@@ -14,12 +16,16 @@ function FormatNotes({allNotes, loading}) {
         if(theme === 'light')
             return selectedNote === id ? {backgroundColor: '#F3F5F8'} : {};
         else
-            return selectedNote === id ? {backgroundColor: '#232530'} : {}
+            return selectedNote === id ? {backgroundColor: '#232530'} : {};
     }
 
     const handleNote = (note) => {
         setSelectedNote(note.id);
-        navigate(pathname, {state: {note} });
+        const route = getRootofRoute(pathname);
+        if(route === '/account/tags')
+            navigate(`${route}/${tags}/${note.title}`, {state: {note}})
+        else 
+            navigate(`${route}/${note.title}`, {state: {note}});
     } 
 
     useEffect(() => {
@@ -29,7 +35,7 @@ function FormatNotes({allNotes, loading}) {
     return loading ? 
                 <LoadingNotes/> : 
                 <div className={styles.notes_all}>
-                    {allNotes && allNotes.map((currentNote) => {
+                    {allNotes.length !== 0 ? allNotes.map((currentNote) => {
                         const id = currentNote.id;
                         const title = currentNote.title;
                         const tags = currentNote.tags.split(',');
@@ -61,7 +67,9 @@ function FormatNotes({allNotes, loading}) {
                                     </p>
                             </article>
                         )
-                    })}                    
+                    }) : <p className={styles.message}>
+                            You don’t have any notes yet. Start a new note to capture your thoughts and ideas.
+                        </p>}                    
                 </div>
             
     

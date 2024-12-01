@@ -41,6 +41,7 @@
 }
 
 .notes_title{
+    word-wrap: break-word;
     font-family: Inter;
     font-size: 1rem;
     font-style: normal;
@@ -66,6 +67,7 @@
 }
 
 .notes_tag{
+    word-wrap: break-word;
     height: 18px;
     padding: 2px 6px;
     border-radius: 4px;
@@ -112,3 +114,18 @@
 .notes_date.dark{
     color: #CACFD8;
 }
+
+.message{
+    padding: 8px;
+    margin: 0px;
+    border-radius: 8px;
+    border: 1px solid var(--colors-neutral-200, #E0E4EA);
+    background-color: var(--colors-neutral-100, #F3F5F8);
+    color: var(--colors-neutral-950, #0E121B);
+    font-family: Inter;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 18.2px */
+    letter-spacing: -0.2px;
+    }

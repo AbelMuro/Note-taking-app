@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {getRootofRoute} from '~/Common/Functions';
 import { ClipLoader } from 'react-spinners';
 import {useUpdateNotes} from '~/Hooks';
 import {useLocation, useNavigate} from 'react-router-dom';
@@ -6,7 +7,6 @@ import DeleteNote from './DeleteNote';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
-//this is where i left off, i will need to change the functionality of the buttons based on the current route in react-routers
 function MiscButtons() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -14,7 +14,6 @@ function MiscButtons() {
     const [,changeClass] = useTheme(styles);
     const {pathname, state} = useLocation();
     const note = state && state.note;
-
 
     const handleArchive = async () => {
         const id = note.id;
@@ -31,13 +30,16 @@ function MiscButtons() {
         setTimeout(() => {
             alert(result)
         }, 500)
-        if(pathname === '/account' || pathname === '/account/archived-notes'){
+
+        const route = getRootofRoute(pathname);
+
+        if(route === '/account/tags')
+            navigate(pathname, {state: {note: {...note, archived: true}}})        
+        else{
             const eventNotes = new Event('notes-updated');
             document.dispatchEvent(eventNotes);  
-            navigate(pathname);
+            navigate(route);
         }
-        else
-            navigate(pathname, {state: {note: {...note, archived: true}}})
     }
 
     const handleRestore = async () => {
@@ -55,18 +57,20 @@ function MiscButtons() {
         setTimeout(() => {
             alert(result)
         }, 500)
-        if(pathname === '/account' || pathname === '/account/archived-notes' ){
+        const route = getRootofRoute(pathname);
+
+        if(pathname.startsWith('/account/tags'))
+            navigate(pathname, {state: {note: {...note, archived: false}}})        
+        else{
             const eventNotes = new Event('notes-updated');
-            document.dispatchEvent(eventNotes); 
-            navigate(pathname);  
-        }    
-        else
-            navigate(pathname, {state: {note: {...note, archived: false}}})
+            document.dispatchEvent(eventNotes);  
+            navigate(route);
+        }
     }
 
     return(
         <section className={changeClass('container')}>
-            {note && <>
+            {!note.newNote && <>
                 {note.archived ? 
                     <button className={changeClass('misc_button')} onClick={handleRestore} style={loading ? {justifyContent: 'center'} : {}}>
                         {!loading && <img className={changeClass('misc_icon')} id={styles.restore}/>}

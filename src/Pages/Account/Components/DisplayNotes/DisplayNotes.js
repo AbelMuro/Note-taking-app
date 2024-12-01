@@ -3,8 +3,7 @@ import {Outlet} from 'react-router-dom';
 import AllNotes from './AllNotes';
 import * as styles from './styles.module.css';
 
-function DisplayNote(){
-
+function DisplayNotes(){
     return(
         <section className={styles.notes}>
             <AllNotes/>
@@ -13,4 +12,4 @@ function DisplayNote(){
     )
 }
 
-export default DisplayNote;
+export default DisplayNotes;

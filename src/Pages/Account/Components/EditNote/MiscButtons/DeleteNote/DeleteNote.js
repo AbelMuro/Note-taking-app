@@ -1,18 +1,20 @@
 import React, {useState} from 'react';
 import {useUpdateNotes} from '~/Hooks';
 import { ClipLoader } from 'react-spinners';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useNavigate, useParams, useLocation} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import {motion, AnimatePresence} from 'framer-motion';
 import { overlayVariant, dialogVariant } from './Variants';
 import * as styles from './styles.module.css';
+import getRootofRoute from '~/Common/Functions/getRootofRoute';
 
 function DeleteNote({id}) {
+    const {tags} = useParams();
+    const {pathname} = useLocation();
     const [makeFetch] = useUpdateNotes();
     const [loading, setLoading] = useState(false);
     const [,changeClass] = useTheme(styles);
     const [open, setOpen] = useState(false);
-    const {pathname} = useLocation();
     const navigate = useNavigate();
 
     const handleOpen = () => {
@@ -31,7 +33,12 @@ function DeleteNote({id}) {
 
         setLoading && setLoading(false);
         setOpen && setOpen(false);
-        navigate(pathname);
+        const route = getRootofRoute(pathname);
+        if(route === '/account/tags')    
+            navigate(`${route}/${tags}`);
+        else
+            navigate(`${route}`)
+        
         setTimeout(() => {
             alert(result)   
         }, 500);

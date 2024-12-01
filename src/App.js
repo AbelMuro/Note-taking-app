@@ -9,9 +9,11 @@ import Account from './Pages/Account';
 import DisplayNotes from './Pages/Account/Components/DisplayNotes';
 import DisplayArchivedNotes from './Pages/Account/Components/DisplayArchivedNotes'
 import EditNote from './Pages/Account/Components/EditNote';
-import DisplayTag from './Pages/Account/Components/DisplayTag';
+import DisplayTags from './Pages/Account/Components/DisplayTags';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
+
+//i fixed MOST of the bugs in the app, now i can finally focus on the settings route and the search route
 function App() {
     const theme = useSelector(state => state.theme.theme);
 
@@ -30,13 +32,13 @@ function App() {
                     <Route path='/reset/:token' element={<ResetPassword/>}/>
                     <Route path='/account' element={<Account/>}>
                         <Route path='/account/' element={<DisplayNotes/>}>
-                            <Route path='/account/' element={<EditNote/>}/>
+                            <Route path='/account/:note' element={<EditNote/>}/>
                         </Route>
                         <Route path='/account/archived-notes' element={<DisplayArchivedNotes/>}>
-                            <Route path='/account/archived-notes/' element={<EditNote/>}/>
+                            <Route path='/account/archived-notes/:archiveNote' element={<EditNote/>}/>
                         </Route>
-                        <Route path='/account/:tag' element={<DisplayTag/>}>
-                            <Route path='/account/:tag/' element={<EditNote/>}/>
+                        <Route path='/account/tags/:tags' element={<DisplayTags/>}>
+                            <Route path='/account/tags/:tags/:tag' element={<EditNote/>}/>
                         </Route>                        
                     </Route>
                 </Routes>

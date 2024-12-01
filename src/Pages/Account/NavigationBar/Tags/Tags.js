@@ -14,14 +14,7 @@ function Tags({option, handleStyles, handleColor}){
     const [theme, changeClass] = useTheme(styles);
 
     const handleTag = (option) => {
-        if(option === 'settings')
-            navigate('/account/settings');
-        else if(option === 'all')
-            navigate('/account');
-        else if(option === 'archived')
-            navigate('/account/archived-notes');
-        else
-            navigate(`/account/${option}`);
+        navigate(`/account/tags/${option}`);
     }
 
     const getTags = async () => {

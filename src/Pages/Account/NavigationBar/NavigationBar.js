@@ -3,12 +3,12 @@ import {useTheme} from '~/Hooks';
 import icons from '`/icons'
 import localIcons from './icons';
 import Tags from './Tags';
-import {useLocation} from 'react-router-dom';
-import {useNavigate} from 'react-router-dom';
+import {getRootofRoute} from '~/Common/Functions';
+import {useLocation, useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
 
 function NavigationBar(){
-    const {pathname} = useLocation();
+    const {pathname, state} = useLocation();
     const navigate = useNavigate();
     const [theme, changeClass] = useTheme(styles);
     const [option, setOption] = useState('all');
@@ -25,23 +25,23 @@ function NavigationBar(){
     }
 
     const handleOption = (option) => {
-        if(option === 'settings')
-            navigate('/account/settings');
-        else if(option === 'all')
+        if(option === 'all')
             navigate('/account');
         else if(option === 'archived')
             navigate('/account/archived-notes');
-        else
-            navigate(`/account/${option}`);
     }
 
     useEffect(() => {
-        if(pathname === '/account')
-            setOption('all');
-        else if(pathname === '/account/archived-notes')
+        const route = getRootofRoute(pathname);
+
+        if(route === '/account/archived-notes')
             setOption('archived');
-        else {
-            const tag = pathname.split('/')[2];
+        else if(route === '/account/settings')
+            setOption('settings');
+        else if(route === '/account')
+            setOption('all');
+        else{
+            const tag = pathname.split('/')[3];
             setOption(tag);
         }
     }, [pathname])

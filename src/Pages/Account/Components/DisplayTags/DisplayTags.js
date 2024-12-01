@@ -3,7 +3,7 @@ import AllNotes from './AllNotes';
 import {Outlet} from 'react-router-dom';
 import * as styles from './styles.module.css';
 
-function DisplayTag(){
+function DisplayTags(){
     return(
         <section className={styles.notes}>
             <AllNotes/>
@@ -12,4 +12,4 @@ function DisplayTag(){
     )
 }
 
-export default DisplayTag;
+export default DisplayTags;

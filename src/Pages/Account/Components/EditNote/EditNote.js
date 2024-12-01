@@ -5,18 +5,17 @@ import EnterTags from './EnterTags';
 import LastEdited from './LastEdited';
 import EnterNote from './EnterNote';
 import MiscButtons from './MiscButtons';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import {useUpdateNotes} from '~/Hooks';
 import * as styles from './styles.module.css';
 
-//this is where i left off, i will need to figure out what the cancel button does in this component
-// and i will need to implement the search route and the settings route
 function EditNote() {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [makeFetch] = useUpdateNotes();
     const [,changeClass] = useTheme(styles);
-    const {state, pathname} = useLocation();
+    const {state} = useLocation();
     const note = state && state.note;
     const months = useRef(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
 
@@ -28,6 +27,10 @@ function EditNote() {
         return `${day} ${months.current[month]} ${year}`;
     }
 
+    const handleCancel = (e) => {
+
+    }   
+
     const handleAddNewNote = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -36,15 +39,7 @@ function EditNote() {
         const body = e.target.elements.note.value;
         const lastEdited = getCurrentDate();
 
-        let params;
-        if(pathname === '/account')
-            params = 'notes';
-        else if(pathname === '/account/archived-notes') 
-            params = 'archived';
-        else
-            params = 'tags'
-
-        const result = await makeFetch(`http://localhost:4000/add-note/${params}`, {
+        const result = await makeFetch(`http://localhost:4000/add-note/notes`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -56,6 +51,7 @@ function EditNote() {
             alert(result)
         }, 500);
         setLoading && setLoading(false);
+        navigate(`/account/${title}`)
         const eventNotes = new Event('notes-updated');
         document.dispatchEvent(eventNotes);     
         const eventTags = new Event('update-tags');
@@ -91,26 +87,26 @@ function EditNote() {
         document.dispatchEvent(event);
     }
 
-    return(
-        <>
-            <form className={changeClass('note')} onSubmit={note ? handleUpdateNote : handleAddNewNote}>
-                <EnterTitle prevTitle={note && note.title}/>
-                <EnterTags prevTags={note && note.tags}/>
-                <LastEdited lastEdited={note && note.lastEdited}/>
+    return note && (
+       <>
+            <form className={changeClass('note')} onSubmit={note.newNote ? handleAddNewNote : handleUpdateNote}>
+                <EnterTitle prevTitle={(note.title)}/>
+                <EnterTags prevTags={(note.tags)}/>
+                <LastEdited lastEdited={(note.lastEdited)}/>
                 <hr className={changeClass('note_line')}/>
-                <EnterNote prevNote={note && note.body}/>
+                <EnterNote prevNote={note.body}/>
                 <hr className={changeClass('note_line')}/>
                 <div className={styles.buttons}>
                     <button className={styles.save}>
                         {loading ? <ClipLoader size='30px' color='white'/>  : 'Save Note'}
                     </button>
-                    <button className={changeClass('cancel')}>
+                    <button type='button' className={changeClass('cancel')} onClick={handleCancel}>
                         Cancel
                     </button>
-                </div>
+                </div> 
             </form>        
-            <MiscButtons/>
-        </>
+            <MiscButtons/>                
+        </>     
     )
 }
 

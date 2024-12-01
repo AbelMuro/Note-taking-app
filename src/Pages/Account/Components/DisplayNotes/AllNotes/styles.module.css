@@ -7,31 +7,6 @@
     gap: 16px;
 }
 
-.notes_untitled{
-    height: 35px;
-    display: flex;
-    align-items: center;
-    padding: 0px 8px;
-    font-family: Inter;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 120%; /* 19.2px */
-    letter-spacing: -0.3px;
-    border-radius: var(--spacing-075, 6px);
-    margin-bottom: -12px;
-}
-
-.notes_untitled.light{
-    background-color: var(--colors-neutral-100, #F3F5F8);
-    color: var(--colors-neutral-950, #0E121B);
-}
-
-.notes_untitled.dark{
-    background-color: var(--colors-neutral-800, #232530);
-    color: #FFFFFF;
-}
-
 .notes_message{
     color: var(--colors-neutral-200, #E0E4EA);
     font-family: Inter;
