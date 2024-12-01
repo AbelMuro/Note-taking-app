@@ -1,21 +1,23 @@
 import React, {useRef, useState} from 'react';
+import {getRootofRoute} from '~/Common/Functions';
 import { ClipLoader } from 'react-spinners';
 import EnterTitle from './EnterTitle';
 import EnterTags from './EnterTags';
 import LastEdited from './LastEdited';
 import EnterNote from './EnterNote';
 import MiscButtons from './MiscButtons';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import {useUpdateNotes} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function EditNote() {
+    const {tags} = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [makeFetch] = useUpdateNotes();
     const [,changeClass] = useTheme(styles);
-    const {state} = useLocation();
+    const {pathname, state} = useLocation();
     const note = state && state.note;
     const months = useRef(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
 
@@ -27,8 +29,12 @@ function EditNote() {
         return `${day} ${months.current[month]} ${year}`;
     }
 
-    const handleCancel = (e) => {
-
+    const handleCancel = () => {
+        const route = getRootofRoute(pathname);
+        if(route === '/account/tags')
+            navigate(`${route}/${tags}`);
+        else
+            navigate(route);
     }   
 
     const handleAddNewNote = async (e) => {
