@@ -14,6 +14,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 
 //i fixed MOST of the bugs in the app, now i can finally focus on the settings route and the search route
+//ALSO, i will need to unmount the EditNote component when the user clicks on the cancel button
 function App() {
     const theme = useSelector(state => state.theme.theme);
 
