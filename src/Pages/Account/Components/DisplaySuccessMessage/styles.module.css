@@ -1,0 +1,90 @@
+.success_message{
+    position: absolute;
+    right: 64px;
+    bottom: 64px;
+    width: 400px;
+    height: 32px;
+    padding: var(--spacing-100, 8px);
+    border-radius: var(--spacing-100, 8px);
+    display: grid;
+    grid-template-columns: 16px 1fr 85px 16px;
+    align-items: center;
+    column-gap: 8px;
+    font-family: Inter;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; 
+    letter-spacing: -0.2px;
+}
+
+.success_message.light{
+    border: 1px solid var(--colors-neutral-200, #E0E4EA);
+    background-color: #FFF;
+    box-shadow: 0px 16px 32px -12px rgba(14, 18, 27, 0.10);
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.success_message.dark{
+    border: 1px solid var(--colors-neutral-700, #2B303B);
+    background: var(--colors-neutral-800, #232530);
+    box-shadow: 0px 16px 32px -12px var(--colors-base-black, #0E121B);
+    color: white;
+}
+
+.success_icon{
+    width: 16px;
+    height: 16px
+}
+
+.success_link{
+    text-align: right;
+    font-family: Inter;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.2px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    cursor: pointer;
+}
+
+.success_link.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.success_link.dark{
+    color: white;
+}
+
+.success_link.light:hover{
+    color: var(--colors-neutral-950, #000000);
+}
+
+.success_link.dark:hover{
+    color: rgb(192, 192, 192);
+}
+
+.success_close{
+    width: 16px;
+    height: 16px;
+    background-color: #99A0AE;
+    mask-image: url('/public/icons/icon-cross.svg');
+    mask-size: 16px 16px;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.success_close.light:hover{
+    background-color: #767b85;
+}
+
+.success_close.dark:hover{
+    background-color: #bdc6d8
+}

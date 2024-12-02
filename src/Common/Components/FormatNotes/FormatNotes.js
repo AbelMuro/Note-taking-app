@@ -1,16 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import LoadingNotes from './LoadingNotes'
-import {useNavigate, useLocation, useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
-import {getRootofRoute} from '~/Common/Functions';
 import * as styles from './styles.module.css';
 
 function FormatNotes({allNotes, loading}) {
-    const {tags} = useParams();
     const [theme, changeClass] = useTheme(styles);
     const [selectedNote, setSelectedNote] = useState('');
     const navigate = useNavigate();
-    const {pathname} = useLocation();
 
     const handleStyles = (id) => {
         if(theme === 'light')
@@ -21,11 +18,7 @@ function FormatNotes({allNotes, loading}) {
 
     const handleNote = (note) => {
         setSelectedNote(note.id);
-        const route = getRootofRoute(pathname);
-        if(route === '/account/tags')
-            navigate(`${route}/${tags}/${note.title}`, {state: {note}})
-        else 
-            navigate(`${route}/${note.title}`, {state: {note}});
+        navigate(`${note.title}`, {state: {note}})
     } 
 
     useEffect(() => {
@@ -67,7 +60,7 @@ function FormatNotes({allNotes, loading}) {
                                     </p>
                             </article>
                         )
-                    }) : <p className={styles.message}>
+                    }) : <p className={changeClass('message')}>
                             You don’t have any notes yet. Start a new note to capture your thoughts and ideas.
                         </p>}                    
                 </div>

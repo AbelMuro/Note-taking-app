@@ -119,13 +119,22 @@
     padding: 8px;
     margin: 0px;
     border-radius: 8px;
-    border: 1px solid var(--colors-neutral-200, #E0E4EA);
-    background-color: var(--colors-neutral-100, #F3F5F8);
-    color: var(--colors-neutral-950, #0E121B);
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
     line-height: 130%; /* 18.2px */
     letter-spacing: -0.2px;
-    }
+}
+
+.message.light{
+    border: 1px solid var(--colors-neutral-200, #E0E4EA);
+    background-color: var(--colors-neutral-100, #F3F5F8);
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.message.dark{
+    border: 1px solid var(--colors-neutral-700, #2B303B);
+    background-color: var(--colors-neutral-800, #232530);
+    color: white;
+}

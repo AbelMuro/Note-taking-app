@@ -1,15 +1,15 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom';
-import AllNotes from './AllNotes';
+import NavigationBar from './NavigationBar'
 import * as styles from './styles.module.css';
 
-function DisplayNotes(){
+function Settings() {
     return(
-        <section className={styles.notes}>
-            <AllNotes/>
+        <section className={styles.container}>
+            <NavigationBar/>
             <Outlet/>
         </section>
     )
 }
 
-export default DisplayNotes;
+export default Settings;

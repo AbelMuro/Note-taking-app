@@ -6,7 +6,6 @@ import {useTheme} from '~/Hooks';
 import {motion, AnimatePresence} from 'framer-motion';
 import { overlayVariant, dialogVariant } from './Variants';
 import * as styles from './styles.module.css';
-import getRootofRoute from '~/Common/Functions/getRootofRoute';
 
 function DeleteNote({id}) {
     const {tags} = useParams();
@@ -23,7 +22,7 @@ function DeleteNote({id}) {
 
     const handleDelete = async () => {
         setLoading(true);
-        const result = await makeFetch(`http://localhost:4000/delete-note/${id}`, {
+        await makeFetch(`http://localhost:4000/delete-note/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,19 +32,13 @@ function DeleteNote({id}) {
 
         setLoading && setLoading(false);
         setOpen && setOpen(false);
-        const route = getRootofRoute(pathname);
-        if(route === '/account/tags')    
-            navigate(`${route}/${tags}`);
-        else
-            navigate(`${route}`)
-        
-        setTimeout(() => {
-            alert(result)   
-        }, 500);
+        navigate('..')        
         const eventNotes = new Event('notes-updated');
         document.dispatchEvent(eventNotes);     
         const eventTags = new Event('update-tags');
         document.dispatchEvent(eventTags);
+        const eventSuccess = new Event('note-deleted');
+        document.dispatchEvent(eventSuccess);
     }
 
     return(
@@ -86,7 +79,7 @@ function DeleteNote({id}) {
                                     Cancel
                                 </button>
                                 <button className={styles.dialog_delete} onClick={handleDelete}>
-                                    {loading ? <ClipLoader size='30px' color='#335CFF'/> : 'Delete Note'}
+                                    {loading ? <ClipLoader size='30px' color='#FFF'/> : 'Delete Note'}
                                 </button>
                             </section>
                     </motion.dialog>

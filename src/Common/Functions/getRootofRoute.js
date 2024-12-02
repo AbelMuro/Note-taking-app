@@ -7,6 +7,8 @@ export default function getRootofRoute(pathname){                   //used by th
         return '/account/tags';
     else if(pathname.startsWith('/account/settings'))
         return '/account/settings'
+    else if(pathname.startsWith('/account/search'))
+        return '/account/search';
     else
         return '/account';
 }

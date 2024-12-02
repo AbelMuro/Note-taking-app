@@ -1,23 +1,21 @@
 import React, {useRef, useState} from 'react';
-import {getRootofRoute} from '~/Common/Functions';
 import { ClipLoader } from 'react-spinners';
 import EnterTitle from './EnterTitle';
 import EnterTags from './EnterTags';
 import LastEdited from './LastEdited';
 import EnterNote from './EnterNote';
 import MiscButtons from './MiscButtons';
-import {useLocation, useNavigate, useParams} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import {useUpdateNotes} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function EditNote() {
-    const {tags} = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [makeFetch] = useUpdateNotes();
     const [,changeClass] = useTheme(styles);
-    const {pathname, state} = useLocation();
+    const {state} = useLocation();
     const note = state && state.note;
     const months = useRef(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
 
@@ -30,11 +28,7 @@ function EditNote() {
     }
 
     const handleCancel = () => {
-        const route = getRootofRoute(pathname);
-        if(route === '/account/tags')
-            navigate(`${route}/${tags}`);
-        else
-            navigate(route);
+        navigate('..');
     }   
 
     const handleAddNewNote = async (e) => {
@@ -53,15 +47,15 @@ function EditNote() {
             body: JSON.stringify({title, tags, lastEdited, body}),
             credentials: 'include'
         })
-        setTimeout(() => {
-            alert(result)
-        }, 500);
+        if(!result) return;
         setLoading && setLoading(false);
-        navigate(`/account/${title}`)
+        navigate(`/account/${title}`, {state: {note: {id: result, title, tags, body, lastEdited, archived: false}}})
         const eventNotes = new Event('notes-updated');
         document.dispatchEvent(eventNotes);     
         const eventTags = new Event('update-tags');
         document.dispatchEvent(eventTags);
+        const eventCreated = new Event('note-created');
+        document.dispatchEvent(eventCreated);
     }
 
     const handleUpdateNote = async (e) => {
@@ -83,22 +77,35 @@ function EditNote() {
             }),
             credentials: 'include'
         });
-        setTimeout(() => {
-            alert(result)
-        }, 500);
+        if(!result) return;
         setLoading && setLoading(false);
         const eventNotes = new Event('notes-updated');
         document.dispatchEvent(eventNotes);  
         const event = new Event('update-tags');
         document.dispatchEvent(event);
+        const eventCreated = new Event('note-updated');
+        document.dispatchEvent(eventCreated);
     }
 
     return note && (
        <>
             <form className={changeClass('note')} onSubmit={note.newNote ? handleAddNewNote : handleUpdateNote}>
-                <EnterTitle prevTitle={(note.title)}/>
-                <EnterTags prevTags={(note.tags)}/>
-                <LastEdited lastEdited={(note.lastEdited)}/>
+                <EnterTitle prevTitle={(note.title)}/>                
+                <fieldset className={styles.note_metadata}>
+                    <EnterTags prevTags={(note.tags)}/>
+                    {note.archived && 
+                        <div className={styles.status}>
+                            <div className={changeClass('status_header')}>
+                                <img className={changeClass('status_icon')} />
+                                Status
+                            </div>
+                            <p className={changeClass('status_archived')}>
+                                Archived
+                            </p>
+                        </div>
+                    }
+                    <LastEdited lastEdited={(note.lastEdited)}/>                
+                </fieldset>
                 <hr className={changeClass('note_line')}/>
                 <EnterNote prevNote={note.body}/>
                 <hr className={changeClass('note_line')}/>

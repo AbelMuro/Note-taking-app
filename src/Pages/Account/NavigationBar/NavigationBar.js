@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useTheme} from '~/Hooks';
 import icons from '`/icons'
-import localIcons from './icons';
 import Tags from './Tags';
 import {getRootofRoute} from '~/Common/Functions';
 import {useLocation, useNavigate} from 'react-router-dom';
@@ -59,7 +58,7 @@ function NavigationBar(){
                 style={handleStyles('all')}
                 >
                 <img className={changeClass('navigation_icon')} style={handleColor('all')}/> All Notes
-                {option === 'all' && <img className={styles.navigation_arrow} src={theme === 'light' ? localIcons['arrowRight'] : localIcons['arrowRightDark']}/>}
+                {option === 'all' && <img className={styles.navigation_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
             </button>
             <button 
                 className={changeClass('navigation_link')} 
@@ -67,7 +66,7 @@ function NavigationBar(){
                 style={handleStyles('archived')}
                 >
                 <img className={changeClass('navigation_icon')} style={handleColor('archived')}/> Archived Notes
-                {option === 'archived' && <img className={styles.navigation_arrow} src={theme === 'light' ? localIcons['arrowRight'] : localIcons['arrowRightDark']}/>}
+                {option === 'archived' && <img className={styles.navigation_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
             </button>
             <hr className={changeClass('navigation_line')}/>
             <Tags option={option} handleStyles={handleStyles} handleColor={handleColor}/>

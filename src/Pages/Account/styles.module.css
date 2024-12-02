@@ -4,5 +4,12 @@
     display: grid;
     grid-template-columns: 272px 1fr;
     grid-template-rows: 81px auto;
-    background: #FFF;
+}
+
+.container.light{
+    background-color: #FFF;
+}
+
+.container.dark{
+    background-color: var(--colors-base-black, #0E121B);
 }

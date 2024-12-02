@@ -5,7 +5,7 @@ import {useParams} from 'react-router-dom';
 import FormatNotes from '~/Common/Components/FormatNotes'
 import * as styles from './styles.module.css';
 
-function AllNotes() {
+function AllTaggedNotes() {
     const {tags} = useParams();
     const [allNotes, loading, setUrl] = useNotes(`http://localhost:4000/get-notes/${tags}`);
     const [, changeClass] = useTheme(styles);
@@ -22,4 +22,4 @@ function AllNotes() {
     )
 }
 
-export default AllNotes;
+export default AllTaggedNotes;

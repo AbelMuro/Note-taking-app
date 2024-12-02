@@ -12,5 +12,9 @@ import showDark from './icon-show-dark-password.svg';
 import clock from './icon-clock.svg';
 import trash from './icon-delete.svg';
 import restore from './icon-restore.svg';
+import arrowRight from './icon-chevron-right.svg';
+import arrowRightDark from './icon-chevron-dark-right.svg';
+import checkmark from './icon-checkmark.svg';
+import close from './icon-cross.svg';
 
-export default {logo, logoDark, error, archive, tag, tagDark, home, hide, show, hideDark, showDark, clock, trash, restore}
+export default {logo, logoDark, error, archive, tag, tagDark, home, hide, show, hideDark, showDark, clock, trash, restore, arrowRight, arrowRightDark, checkmark, close}

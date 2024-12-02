@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import LoadingTags from './LoadingTags';
 import {useGetNotes} from '~/Hooks';
 import {useTheme} from '~/Hooks';
-import icons from '../icons';
+import icons from '`/icons';
 import * as styles from './styles.module.css';
 
 function Tags({option, handleStyles, handleColor}){

@@ -1,8 +1,7 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
 import {useTheme} from '~/Hooks';
 import Form from './Form';
-import GoogleLogin from '~/Common/GoogleLogin';
+import GoogleLogin from '~/Common/Components/GoogleLogin';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 import {useNavigate} from 'react-router-dom';

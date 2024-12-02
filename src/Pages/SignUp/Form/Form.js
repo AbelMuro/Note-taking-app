@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useTheme} from '~/Hooks';
-import EnterEmail from '~/Common/EnterEmail';
+import EnterEmail from '~/Common/Components/EnterEmail';
 import EnterPassword from './EnterPassword';
 import {ClipLoader} from 'react-spinners';
 import { useNavigate } from 'react-router-dom';
