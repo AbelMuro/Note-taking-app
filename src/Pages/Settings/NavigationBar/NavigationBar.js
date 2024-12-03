@@ -11,9 +11,13 @@ function NavigationBar(){
 
     const handleStyles = (option) => {
         if(option === setting)
-            return {backgroundColor: '#F3F5F8'}
+            return theme === 'light' ? {backgroundColor: '#F3F5F8'} : {backgroundColor: '#232530'};
         else
             return {}
+    }
+
+    const handleIcon = (option) => {
+        return option === setting ? {backgroundColor: '#335CFF'} : {};
     }
 
     const handleSetting = (setting) => {
@@ -25,25 +29,25 @@ function NavigationBar(){
     }, [setting])
 
     return(
-        <nav className={styles.nav}>
-            <button className={styles.nav_button} onClick={() => handleSetting('theme')} style={handleStyles('theme')}>
-                <img className={styles.nav_icon_theme}/>
+        <nav className={changeClass('nav')}>
+            <button className={changeClass('nav_button')} onClick={() => handleSetting('theme')} style={handleStyles('theme')}>
+                <img className={changeClass('nav_icon_theme')} style={handleIcon('theme')}/>
                 Color Theme
                 {setting === 'theme' && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
             </button>
-            <button className={styles.nav_button} onClick={() => handleSetting('font')} style={handleStyles('font')}>
-                <img className={styles.nav_icon_font}/>
+            <button className={changeClass('nav_button')} onClick={() => handleSetting('font')} style={handleStyles('font')}>
+                <img className={changeClass('nav_icon_font')} style={handleIcon('font')}/>
                 Font Theme
                 {setting === 'font' && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
             </button>
-            <button className={styles.nav_button} onClick={() => handleSetting('password')} style={handleStyles('password')}>
-                <img className={styles.nav_icon_lock}/>
+            <button className={changeClass('nav_button')} onClick={() => handleSetting('password')} style={handleStyles('password')}>
+                <img className={changeClass('nav_icon_lock')} style={handleIcon('password')}/>
                  Change Password
                 {setting === 'password' && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
             </button>
-            <hr className={styles.nav_line}/>
-            <button className={styles.nav_button} onClick={() => handleSetting('logout')} style={handleStyles('logout')}>
-                <img className={styles.nav_icon_logout}/>
+            <hr className={changeClass('nav_line')}/>
+            <button className={changeClass('nav_button')} onClick={() => handleSetting('logout')} style={handleStyles('logout')}>
+                <img className={changeClass('nav_icon_logout')} style={handleIcon('logout')}/>
                  Logout
                 {setting === 'logout' && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
             </button>

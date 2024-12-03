@@ -17,7 +17,6 @@
 }
 
 .theme_title{
-    color: var(--colors-neutral-950, #0E121B);
     font-family: Inter;
     font-size: 1rem;
     font-style: normal;
@@ -27,8 +26,15 @@
     margin: 0px;
 }
 
+.theme_title.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.theme_title.dark{
+    color: white;
+}
+
 .theme_desc{
-    color: var(--colors-neutral-700, #2B303B);
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
@@ -36,4 +42,12 @@
     line-height: 130%; /* 18.2px */
     letter-spacing: -0.2px;
     margin: 0px 0px 7px 0px;
+}
+
+.theme_desc.light{
+    color: var(--colors-neutral-700, #2B303B);
+}
+
+.theme_desc.dark{
+    color: #CACFD8;
 }

@@ -2,10 +2,17 @@
     width: 100%;
     height: 100%;
     padding: 20px 16px 20px 32px;
-    border-right: 1px solid var(--colors-neutral-200, #E0E4EA);
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+.nav.light{
+    border-right: 1px solid var(--colors-neutral-200, #E0E4EA);
+}
+
+.nav.dark{
+    border-right: 1px solid var(--colors-neutral-800, #232530);
 }
 
 .nav_button{
@@ -16,7 +23,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--colors-neutral-950, #0E121B);
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
@@ -25,6 +31,14 @@
     letter-spacing: -0.2px;
     position: relative;
     cursor: pointer;
+}
+
+.nav_button.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.nav_button.dark{
+    color: #E0E4EA;
 }
 
 .nav_arrow{
@@ -47,6 +61,20 @@
     mask-repeat: no-repeat;
     mask-position: center;
     background-color: #0E121B;    
+}
+
+.nav_icon_theme.light, 
+.nav_icon_font.light,
+.nav_icon_lock.light,
+.nav_icon_logout.light{
+    background-color: #0E121B;    
+}
+
+.nav_icon_theme.dark, 
+.nav_icon_font.dark,
+.nav_icon_lock.dark,
+.nav_icon_logout.dark{
+    background-color: #E0E4EA;    
 }
 
 .nav_icon_theme{
@@ -76,7 +104,15 @@
     width: 100%;
     height: 1px;
     padding: 0px;
-    background-color: var(--colors-neutral-200, #E0E4EA);
     border: none;
     margin: 0px;
 }
+
+.nav_line.light{
+    background-color: var(--colors-neutral-200, #E0E4EA);
+}
+
+.nav_line.dark{
+    background-color: var(--colors-neutral-800, #232530);
+}
+

@@ -8,9 +8,15 @@
     column-gap: 16px;
     row-gap: 6px;
     border-radius: var(--corner-radius-12, 12px);
-    border: 1px solid var(--colors-neutral-200, #E0E4EA);  
-    background-color: white;
     cursor: pointer;
+}
+
+.button.light{
+    border: 1px solid var(--colors-neutral-200, #E0E4EA);  
+}
+
+.button.dark{
+    border: 1px solid var(--colors-neutral-800, #232530);
 }
 
 .button_icon_container{
@@ -19,26 +25,40 @@
     width: 40px;
     height: 40px;
     border-radius: 12px;
-    border: 1px solid var(--colors-neutral-200, #E0E4EA);
-    background-color: #FFF;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.button_icon_container.light{
+    border: 1px solid var(--colors-neutral-200, #E0E4EA);
+    background-color: #FFF;
+}
+
+.button_icon_container.dark{
+    border: 1px solid var(--colors-neutral-700, #2B303B);
+    background-color: var(--colors-neutral-950, #0E121B);
+}
+
 .button_icon{
     width: 24px;
     height: 24px;
-    background-color: #0E121B;
     mask-size: 24px 24px;
     mask-repeat: no-repeat;
     mask-position: center;
 }
 
+.button_icon.light{
+    background-color: #0E121B;
+}
+
+.button_icon.dark{
+    background-color: #FFFFFF;
+}
+
 .button_title{
     grid-column: 2/3;
     grid-row: 1/2;
-    color: var(--colors-neutral-950, #0E121B);
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
@@ -48,10 +68,17 @@
     margin: 0px;
 }
 
+.button_title.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.button_title.dark{
+    color: white;
+}
+
 .button_desc{
     grid-column: 2/3;
     grid-row: 2/3;
-    color: var(--colors-neutral-700, #2B303B);
     font-family: Inter;
     font-size: 0.75rem;
     font-style: normal;
@@ -61,6 +88,14 @@
     margin: 0px;
 }
 
+.button_desc.light{
+    color: var(--colors-neutral-700, #2B303B);
+}
+
+.button_desc.dark{
+    color: #CACFD8;
+}
+
 .radio{
     grid-column: 3/4;
     grid-row: 1/3;
@@ -68,16 +103,25 @@
     width: 16px;
     height: 16px;
     border-radius: 100%;
-    border: 1px solid #E0E4EA;
     position: relative;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.radio.light{
+    border-color: #E0E4EA;
+}
+
+.radio.dark{
+    border-color: #525866;
 }
 
 .radio_checked{
     position: absolute;
     width: 16px;
     height: 16px;
-    inset: 0;
-    margin: auto;
+    top: -1px;
+    left: -1px;
 }
 
 .radio > input{

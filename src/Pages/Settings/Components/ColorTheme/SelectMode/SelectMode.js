@@ -1,15 +1,24 @@
-import React  from 'react';
+import React from 'react';
+import {useDispatch} from 'react-redux';
+import {useTheme} from '~/Hooks';
 import icons from './icons';
 import * as styles from './styles.module.css';
 
-function SelectMode({theme, handleTheme, mode, title, desc}) {
+function SelectMode({mode, title, desc}) {
+    const dispatch = useDispatch();
+    const [theme, changeClass] = useTheme(styles);
 
     const handleStyles = () => {
         if(theme === mode)
-            return {backgroundColor: '#F3F5F8'}
+            return theme === 'light' ? {backgroundColor: '#F3F5F8'} : {backgroundColor: '#2B303B'};
         else
             return {};
     }
+
+    const handleTheme = (theme) => {
+        dispatch({type: 'UPDATE_THEME', payload: theme});
+    }
+
 
     const handleIcon = () => {
         if(mode === 'light')
@@ -21,17 +30,17 @@ function SelectMode({theme, handleTheme, mode, title, desc}) {
     }
 
     return(
-        <label className={styles.button} htmlFor={mode} style={handleStyles()}>
-            <div className={styles.button_icon_container}>
-                <img className={styles.button_icon} style={handleIcon()}/>
+        <label className={changeClass('button')} htmlFor={mode} style={handleStyles()}>
+            <div className={changeClass('button_icon_container')}>
+                <img className={changeClass('button_icon')} style={handleIcon()}/>
             </div>
-            <h2 className={styles.button_title}>
+            <h2 className={changeClass('button_title')}>
                 {title}
             </h2>
-            <p className={styles.button_desc}>
+            <p className={changeClass('button_desc')}>
                 {desc}
             </p>
-            <label className={styles.radio} htmlFor={mode}>
+            <label className={changeClass('radio')} htmlFor={mode}>
                 {theme === mode && <img className={styles.radio_checked} src={icons['checked']}/>}
                 <input type='radio' id={mode} checked={theme === mode} onChange={() => handleTheme(mode)}/>
             </label>
