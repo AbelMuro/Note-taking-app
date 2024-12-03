@@ -1,6 +1,6 @@
 import { createAction, createReducer } from '@reduxjs/toolkit'
             
-const changeTheme = createAction('CHANGE_THEME')
+const changeTheme = createAction('UPDATE_THEME')
 const initialState = { theme: 'light' }
 
 const counterReducer = createReducer(initialState, (builder) => {       //builder, as the name implies, is an object that builds the reducer with .addCase
