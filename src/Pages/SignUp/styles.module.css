@@ -31,7 +31,7 @@
 }
 
 .signup_title{
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
@@ -49,7 +49,7 @@
 }
 
 .signup_message{
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
@@ -67,7 +67,7 @@
 }
 
 .signup_account{
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;

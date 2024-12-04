@@ -6,7 +6,7 @@ import * as styles from './styles.module.css';
 
 function NavigationBar(){
     const navigate = useNavigate();
-    const [setting, setSetting] = useState('theme');
+    const [setting, setSetting] = useState('');
     const [theme, changeClass] = useTheme(styles);
 
     const handleStyles = (option) => {
@@ -30,10 +30,10 @@ function NavigationBar(){
 
     return(
         <nav className={changeClass('nav')}>
-            <button className={changeClass('nav_button')} onClick={() => handleSetting('theme')} style={handleStyles('theme')}>
-                <img className={changeClass('nav_icon_theme')} style={handleIcon('theme')}/>
+            <button className={changeClass('nav_button')} onClick={() => handleSetting('')} style={handleStyles('')}>
+                <img className={changeClass('nav_icon_theme')} style={handleIcon('')}/>
                 Color Theme
-                {setting === 'theme' && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
+                {setting === '' && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
             </button>
             <button className={changeClass('nav_button')} onClick={() => handleSetting('font')} style={handleStyles('font')}>
                 <img className={changeClass('nav_icon_font')} style={handleIcon('font')}/>

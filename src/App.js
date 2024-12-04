@@ -13,6 +13,7 @@ import AllTaggedNotes from './Pages/Account/Components/AllTaggedNotes';
 import AllSearchedNotes from './Pages/Account/Components/AllSearchedNotes';
 import Settings from './Pages/Settings';
 import ColorTheme from './Pages/Settings/Components/ColorTheme';
+import FontTheme from './Pages/Settings/Components/FontTheme';
 import EditNote from './Pages/Account/Components/EditNote';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -51,8 +52,8 @@ function App() {
                             <Route path='/account/search/:note' element={<EditNote/>}/>
                         </Route>    
                         <Route path='/account/settings' element={<Settings/>}> 
-                            <Route path='/account/settings/theme' element={<ColorTheme/>}/>
-                            <Route path='/account/settings/font' element={<></>}/>
+                            <Route path='/account/settings/' element={<ColorTheme/>}/>
+                            <Route path='/account/settings/font' element={<FontTheme/>}/>
                             <Route path='/account/settings/password' element={<></>}/>
                         </Route>                
                     </Route>

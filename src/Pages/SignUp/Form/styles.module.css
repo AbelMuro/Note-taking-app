@@ -17,7 +17,7 @@
 .form_submit{
     height: 44px;
     color: #FFF;
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;

@@ -1,34 +1,32 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {useTheme} from '~/Hooks';
 import icons from '`/icons';
+import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
-function SelectMode({mode, title, desc}) {
-    const dispatch = useDispatch();
+function SelectMode({font, setFont, mode, title, desc}) {
     const [theme, changeClass] = useTheme(styles);
-    const originalTheme = useSelector(state => state.theme.theme);
 
     const handleStyles = () => {
-        if(originalTheme === mode)
+        if(font === mode)
             return theme === 'light' ? {backgroundColor: '#F3F5F8'} : {backgroundColor: '#2B303B'};
         else
             return {};
     }
 
-    const handleTheme = (theme) => {
-        dispatch({type: 'UPDATE_THEME', payload: theme});
+    const handleFont = (font) => {
+        setFont(font);
     }
 
 
     const handleIcon = () => {
-        if(mode === 'light')
-            return {maskImage: 'url(/icons/icon-sun.svg)'};
-        else if(mode === 'dark')
-            return {maskImage: 'url(/icons/icon-moon.svg)'}
+        if(mode === 'sans-serif')
+            return {maskImage: 'url(/icons/icon-font-sans-serif.svg)'};
+        else if(mode === 'monospace')
+            return {maskImage: 'url(/icons/icon-font-monospace.svg)'}
         else
-            return {maskImage: 'url(/icons/icon-system-theme.svg)'}
+            return {maskImage: 'url(/icons/icon-font-serif.svg)'}
     }
+
 
     return(
         <label className={changeClass('button')} htmlFor={mode} style={handleStyles()}>
@@ -42,8 +40,8 @@ function SelectMode({mode, title, desc}) {
                 {desc}
             </p>
             <label className={changeClass('radio')} htmlFor={mode}>
-                {originalTheme === mode && <img className={styles.radio_checked} src={icons['checked']}/>}
-                <input type='radio' id={mode} checked={originalTheme === mode} onChange={() => handleTheme(mode)}/>
+                {font === mode && <img className={styles.radio_checked} src={icons['checked']}/>}
+                <input type='radio' id={mode} checked={font === mode} onChange={() => handleFont(mode)}/>
             </label>
         </label>
     )

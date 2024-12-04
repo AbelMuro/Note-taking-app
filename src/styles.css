@@ -1,15 +1,15 @@
 @font-face {
-    font-family: 'Inter';
+    font-family: 'sans-serif';
     src: url('../public/fonts/Inter-VariableFont_opsz\,wght.ttf');
 }
 
 @font-face {
-    font-family: 'NotoSerif';
+    font-family: 'serif';
     src: url('../public/fonts/NotoSerif-VariableFont_wdth\,wght.ttf');
 }
 
 @font-face{
-    font-family: 'SourceCodePro';
+    font-family: 'monospace';
     src: url('../public/fonts/SourceCodePro-VariableFont_wght.ttf')
 }
 
@@ -23,4 +23,8 @@ body{
 * {
     box-sizing: border-box;
     transition: all 0.2s linear;
+}
+
+:root{
+    --font: 'sans-serif'
 }

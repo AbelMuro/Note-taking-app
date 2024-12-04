@@ -20,7 +20,7 @@
 }
 
 .header_title{
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;

@@ -54,7 +54,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
@@ -88,7 +88,7 @@
 }
 
 .status_archived{
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
@@ -112,7 +112,7 @@
     background-color: var(--colors-blue-500, #335CFF);
     border: none;
     color: var(--colors-base-white, #FFF);
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 500;
@@ -130,7 +130,7 @@
     height: 41px;
     border-radius: var(--corner-radius-8, 8px);
     border: none;
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 500;

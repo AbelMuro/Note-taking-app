@@ -31,7 +31,7 @@
 }
 
 .forgot_title{
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
@@ -49,7 +49,7 @@
 }
 
 .forgot_desc{
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;

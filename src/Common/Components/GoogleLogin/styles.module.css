@@ -16,7 +16,7 @@
 }
 
 .container_title{
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
@@ -41,7 +41,7 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 1rem;
     font-style: normal;
     font-weight: 500;
@@ -78,7 +78,7 @@
 
 .login_account{
     color: var(--colors-neutral-600, #525866);
-    font-family: Inter;
+    font-family: var(--font);
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
