@@ -7,6 +7,13 @@
     border-radius: var(--corner-radius-8, 8px);    
     background-color: transparent;
     cursor: pointer;
+    color: var(--colors-neutral-950, #0E121B);
+    font-family: var(--font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 16.8px */
+    letter-spacing: -0.2px;
 }
 
 .misc_button:disabled{

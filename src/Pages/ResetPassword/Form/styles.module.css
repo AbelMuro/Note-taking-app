@@ -22,7 +22,7 @@
     width: 16px;
     height: 16px;
     background-color: red;
-    mask-image: url('./icons/icon-exclamation.svg');
+    mask-image: url('/public/icons/icon-exclamation.svg');
     mask-size: 16px 16px;
     mask-position: center;
     mask-repeat: no-repeat;

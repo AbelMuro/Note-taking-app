@@ -1,0 +1,66 @@
+.form{
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form_title{
+    font-family: var(--font);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 19.2px */
+    letter-spacing: -0.3px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.form_title.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.form_title.dark{
+    color: white;
+}
+
+.form_submit{
+    width: 132px;
+    height: 41px;
+    align-self: end;
+    border: none;
+    color: #FFF;
+    font-family: var(--font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 16.8px */
+    letter-spacing: -0.2px;
+    border-radius: var(--corner-radius-8, 8px);
+    background-color: var(--colors-blue-500, #335CFF);
+    cursor: pointer; 
+}
+
+.form_submit:hover{
+    background-color: #2547D0;
+}
+
+.message{
+    align-self: end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: var(--colors-red-500, #FB3748);
+    font-family: var(--font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 16.8px */
+    margin: 0px 0px -10px 0px;
+}
+
+.message_icon{
+    width: 16px;
+    height: 16px;
+}

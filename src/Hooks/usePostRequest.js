@@ -1,6 +1,6 @@
 import {useNavigate} from 'react-router-dom';
 
-function useUpdateNotes(){
+function usePostRequest(){
     const navigate = useNavigate();
     
     const makeFetch = async (url, options) => {
@@ -19,6 +19,13 @@ function useUpdateNotes(){
                 setTimeout(() => {
                     alert(message);
                 }, 500)
+            }
+            else if(response.status === 403){
+                const message = await response.text();
+                console.log(message);
+                setTimeout(() => {
+                    alert(message);
+                }, 600)
             }
             else if(response.status === 404){
                 const message = await response.text();
@@ -42,4 +49,4 @@ function useUpdateNotes(){
     return [makeFetch];
 }
 
-export default useUpdateNotes;
+export default usePostRequest;

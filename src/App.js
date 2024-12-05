@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import { useSelector } from 'react-redux';
 import './styles.css';
 import Login from './Pages/Login';
@@ -15,15 +15,18 @@ import Settings from './Pages/Settings';
 import ColorTheme from './Pages/Settings/Components/ColorTheme';
 import FontTheme from './Pages/Settings/Components/FontTheme';
 import EditNote from './Pages/Account/Components/EditNote';
+import ChangePassword from './Pages/Settings/Components/ChangePassword';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-
-
-//i fixed MOST of the bugs in the app, now i can finally focus on the settings route and the search route
-//ALSO, i will need to display a message to the user if there is any unsaved progress in the EdtNote component when the user clicks on the cancel button
 
 
 function App() {
     const theme = useSelector(state => state.theme.theme);
+
+    useLayoutEffect(() => {
+        const preferredFont = localStorage.getItem('users-preferred-font');
+        const root = document.documentElement;
+        root.style.setProperty('--font', preferredFont || 'sans-serif');
+    }, [])
 
     useEffect(() => {
         const body = document.body;
@@ -54,7 +57,7 @@ function App() {
                         <Route path='/account/settings' element={<Settings/>}> 
                             <Route path='/account/settings/' element={<ColorTheme/>}/>
                             <Route path='/account/settings/font' element={<FontTheme/>}/>
-                            <Route path='/account/settings/password' element={<></>}/>
+                            <Route path='/account/settings/password' element={<ChangePassword/>}/>
                         </Route>                
                     </Route>
                 </Routes>

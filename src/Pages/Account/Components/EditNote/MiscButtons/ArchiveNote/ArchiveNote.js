@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useTheme} from '~/Hooks'
 import { ClipLoader } from 'react-spinners';
-import {useUpdateNotes} from '~/Hooks';
+import {usePostRequest} from '~/Hooks';
 import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
 import {AnimatePresence, motion} from 'framer-motion';
@@ -12,7 +12,7 @@ function ArchiveNote({id, archived}){
     const [,changeClass] = useTheme(styles);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const [makeFetch] = useUpdateNotes();
+    const [makeFetch] = usePostRequest();
 
     const handleOpen = () => {
         setOpen(!open);
@@ -36,8 +36,8 @@ function ArchiveNote({id, archived}){
         })
         setLoading && setLoading(false);
         handleNavigate();
-        const event = new Event('note-archived');
-        document.dispatchEvent(event);
+        const eventCreated = new CustomEvent('display-message', {'detail': {message: 'Note has been archived', link: 'Archived Notes'}})
+        document.dispatchEvent(eventCreated);
     }
 
     const handleRestore = async () => {
@@ -52,8 +52,8 @@ function ArchiveNote({id, archived}){
         })
         setLoading && setLoading(false);
         handleNavigate();
-        const event = new Event('note-restored');
-        document.dispatchEvent(event);
+        const eventCreated = new CustomEvent('display-message', {'detail': {message: 'Note has been restored', link: 'All Notes'}})
+        document.dispatchEvent(eventCreated);
     }
 
     return <>

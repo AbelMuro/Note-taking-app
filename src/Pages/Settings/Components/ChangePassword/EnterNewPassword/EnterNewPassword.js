@@ -1,20 +1,14 @@
 import React, {useState} from 'react';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
-import icons from '`/icons'
-import {useNavigate} from 'react-router-dom';
+import icons from  '`/icons';
 
 function EnterPassword(){
     const [theme, changeClass] = useTheme(styles);
-    const [password, setPassword] = useState('');
     const [displayPassword, setDisplayPassword] = useState(false);
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const navigate = useNavigate();
 
-    const handleForgot = () => {
-        navigate('/forgot');
-    }
-    
     const handleDisplayPassword = () => {
         setDisplayPassword(!displayPassword);
     } 
@@ -27,9 +21,12 @@ function EnterPassword(){
 
     const handleBlur = (e) => {
         const isEmpty = e.target.validity.valueMissing;
+        const isInvalid = e.target.validity.patternMismatch;
 
         if(isEmpty)
             setError('empty');
+        else if(isInvalid)
+            setError('invalid');
     }
 
     const handleInvalid = (e) => {
@@ -38,19 +35,22 @@ function EnterPassword(){
 
         if(isEmpty)
             setError('empty');
+        else
+            setError('invalid')
     }
 
     return(
         <fieldset className={styles.container}>
             <label className={changeClass('label')}>
-                Password
+                New Password
             </label>
             <div className={styles.input_container}>
                 <input 
                     type={displayPassword ? 'text' : 'password'} 
-                    name='password'
+                    name='new-password'
                     value={password}
                     className={changeClass('input')} 
+                    pattern={'.{8,}'}
                     onBlur={handleBlur}
                     onChange={handlePassword}
                     onInvalid={handleInvalid}
@@ -63,14 +63,10 @@ function EnterPassword(){
                     <img className={styles.eye_icon} src={theme === 'light' ? icons['show'] : icons['showDark']} onClick={handleDisplayPassword}/>
                 }
             </div>
-            <a className={styles.forgot_password} onClick={handleForgot}>
-                Forgot
-            </a>
-            {error === 'empty' && 
-                <div className={styles.error}>
-                    <img className={styles.error_icon} src={icons['error']}/>
-                    Can't be empty
-                </div>}
+            <div className={changeClass('password_requirement')} style={error ? {color: '#FB3748'} : {}}>
+                <img style={error ? {backgroundColor: '#FB3748'} : {}}/>
+                At least 8 characters
+            </div>
         </fieldset>
     )
 }

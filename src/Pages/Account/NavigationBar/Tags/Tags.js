@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import LoadingTags from './LoadingTags';
-import {useGetNotes} from '~/Hooks';
+import {useGetRequest} from '~/Hooks';
 import {useTheme} from '~/Hooks';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
@@ -10,7 +10,7 @@ function Tags({option, handleStyles, handleColor}){
     const navigate = useNavigate();
     const [allTags, setAllTags] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [makeFetch] = useGetNotes();
+    const [makeFetch] = useGetRequest();
     const [theme, changeClass] = useTheme(styles);
 
     const handleTag = (option) => {

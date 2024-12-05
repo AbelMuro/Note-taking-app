@@ -1,6 +1,7 @@
 import useTheme from './useTheme.js';
-import useUpdateNotes from "./useUpdateNotes.js";
-import useGetNotes from './useGetNotes.js';
+import usePostRequest from "./usePostRequest.js";
+import useGetRequest from './useGetRequest.js';
 import useNotes from './useNotes.js';
+import useFont from './useFont.js';
 
-export {useTheme, useUpdateNotes, useGetNotes, useNotes};
+export {useTheme, usePostRequest, useGetRequest, useNotes, useFont};

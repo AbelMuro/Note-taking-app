@@ -2,18 +2,12 @@ import React, {useState} from 'react';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 import icons from '`/icons'
-import {useNavigate} from 'react-router-dom';
 
-function EnterPassword(){
+function ConfirmPassword(){
     const [theme, changeClass] = useTheme(styles);
     const [password, setPassword] = useState('');
     const [displayPassword, setDisplayPassword] = useState(false);
     const [error, setError] = useState('');
-    const navigate = useNavigate();
-
-    const handleForgot = () => {
-        navigate('/forgot');
-    }
     
     const handleDisplayPassword = () => {
         setDisplayPassword(!displayPassword);
@@ -43,12 +37,12 @@ function EnterPassword(){
     return(
         <fieldset className={styles.container}>
             <label className={changeClass('label')}>
-                Password
+                Confirm New Password
             </label>
             <div className={styles.input_container}>
                 <input 
                     type={displayPassword ? 'text' : 'password'} 
-                    name='password'
+                    name='confirm-password'
                     value={password}
                     className={changeClass('input')} 
                     onBlur={handleBlur}
@@ -63,9 +57,6 @@ function EnterPassword(){
                     <img className={styles.eye_icon} src={theme === 'light' ? icons['show'] : icons['showDark']} onClick={handleDisplayPassword}/>
                 }
             </div>
-            <a className={styles.forgot_password} onClick={handleForgot}>
-                Forgot
-            </a>
             {error === 'empty' && 
                 <div className={styles.error}>
                     <img className={styles.error_icon} src={icons['error']}/>
@@ -75,4 +66,4 @@ function EnterPassword(){
     )
 }
 
-export default EnterPassword;
+export default ConfirmPassword;

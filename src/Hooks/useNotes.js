@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react';
-import {useGetNotes} from '~/Hooks'
+import {useGetRequest} from '~/Hooks'
 
 function useNotes(initialUrl){
     const [url, setUrl] = useState(initialUrl);
-    const [makeFetch] = useGetNotes();
+    const [makeFetch] = useGetRequest();
     const [allNotes, setAllNotes] = useState([]);
     const [loading, setLoading] = useState(false);
 

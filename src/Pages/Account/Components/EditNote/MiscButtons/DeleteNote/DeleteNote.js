@@ -1,16 +1,14 @@
 import React, {useState} from 'react';
-import {useUpdateNotes} from '~/Hooks';
+import {usePostRequest} from '~/Hooks';
 import { ClipLoader } from 'react-spinners';
-import {useNavigate, useParams, useLocation} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import {motion, AnimatePresence} from 'framer-motion';
 import { overlayVariant, dialogVariant } from './Variants';
 import * as styles from './styles.module.css';
 
 function DeleteNote({id}) {
-    const {tags} = useParams();
-    const {pathname} = useLocation();
-    const [makeFetch] = useUpdateNotes();
+    const [makeFetch] = usePostRequest();
     const [loading, setLoading] = useState(false);
     const [,changeClass] = useTheme(styles);
     const [open, setOpen] = useState(false);
@@ -37,8 +35,8 @@ function DeleteNote({id}) {
         document.dispatchEvent(eventNotes);     
         const eventTags = new Event('update-tags');
         document.dispatchEvent(eventTags);
-        const eventSuccess = new Event('note-deleted');
-        document.dispatchEvent(eventSuccess);
+        const eventCreated = new CustomEvent('display-message', {'detail': {message: 'Note has been deleted', link: ''}})
+        document.dispatchEvent(eventCreated);
     }
 
     return(

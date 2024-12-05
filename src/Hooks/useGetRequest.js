@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function useGetNotes(){
+function useGetRequest(){
     const navigate = useNavigate();
 
     const makeFetch = async (url, options) => {
@@ -15,6 +15,13 @@ function useGetNotes(){
                 const message = await response.text();
                 console.log(message);
                 navigate('/')
+                setTimeout(() => {
+                    alert(message);
+                }, 600)
+            }
+            else if(response.status === 403){
+                const message = await response.text();
+                console.log(message);
                 setTimeout(() => {
                     alert(message);
                 }, 600)
@@ -40,4 +47,4 @@ function useGetNotes(){
 }
 
 
-export default useGetNotes;
+export default useGetRequest;

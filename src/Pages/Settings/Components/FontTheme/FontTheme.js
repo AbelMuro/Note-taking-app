@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useTheme} from '~/Hooks';
+import {useTheme, useFont} from '~/Hooks';
 import SelectMode from './SelectMode';
 import * as styles from './styles.module.css';
 
@@ -8,7 +8,7 @@ import * as styles from './styles.module.css';
 //i will also need to get the font option from the local storage before the app is mounted.
 function ColorTheme(){
     const [, changeClass] = useTheme(styles);
-    const [font, setFont] = useState('sans-serif');
+    const [font, setFont] = useFont();
 
     useEffect(() => {
         const root = document.documentElement;

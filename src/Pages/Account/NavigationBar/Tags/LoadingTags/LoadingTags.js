@@ -17,12 +17,12 @@ function LoadingTags() {
 
     return(
         <section className={styles.container}>
-            <Skeleton containerClassName={styles.loading_tag}/>
-            <Skeleton containerClassName={styles.loading_tag}/>
-            <Skeleton containerClassName={styles.loading_tag}/>
-            <Skeleton containerClassName={styles.loading_tag}/>
-            <Skeleton containerClassName={styles.loading_tag}/>
-            <Skeleton containerClassName={styles.loading_tag}/>
+            <Skeleton containerClassName={styles.loading_tag} baseColor={handleColor()} highlightColor={handleHighlight()}/>
+            <Skeleton containerClassName={styles.loading_tag} baseColor={handleColor()} highlightColor={handleHighlight()}/>
+            <Skeleton containerClassName={styles.loading_tag} baseColor={handleColor()} highlightColor={handleHighlight()}/>
+            <Skeleton containerClassName={styles.loading_tag} baseColor={handleColor()} highlightColor={handleHighlight()}/>
+            <Skeleton containerClassName={styles.loading_tag} baseColor={handleColor()} highlightColor={handleHighlight()}/>
+            <Skeleton containerClassName={styles.loading_tag} baseColor={handleColor()} highlightColor={handleHighlight()}/>
         </section>
     )
 }

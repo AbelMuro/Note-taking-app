@@ -24,49 +24,20 @@ function DisplaySuccessMessage(){
             navigate('/account');
     }
 
-    const archiveSuccessMessage = () => {
-        setMessage('Note archived.');
-        setLink('Archived Notes');
+    const displayMessage = (e) => {
+        const message = e.detail.message;
+        const link = e.detail.link;
+        setMessage(message);
+        setLink(link);
         handleOpen();
     }
 
-    const deleteSuccessMessage = () => {
-        setMessage('Note deleted.');
-        setLink('');
-        handleOpen();
-    }
-
-    const updateSuccessMessage = () => {
-        setMessage('Note saved successfully!');
-        setLink('');
-        handleOpen();
-    }
-
-    const restoredSuccessMessage = () => {
-        setMessage('Note restored.');
-        setLink('All Notes');
-        handleOpen(); 
-    }
-
-    const newNoteSuccessMessage = () => {
-        setMessage('Note created successfully!');
-        setLink('All Notes');
-        handleOpen(); 
-    }
 
     useEffect(() => {
-        document.addEventListener('note-archived', archiveSuccessMessage);
-        document.addEventListener('note-deleted', deleteSuccessMessage);
-        document.addEventListener('note-updated', updateSuccessMessage);
-        document.addEventListener('note-restored', restoredSuccessMessage);
-        document.addEventListener('note-created', newNoteSuccessMessage);
+        document.addEventListener('display-message', displayMessage);
 
         return () => {
-            document.removeEventListener('note-archived', archiveSuccessMessage);
-            document.removeEventListener('note-deleted', deleteSuccessMessage);
-            document.removeEventListener('note-updated', updateSuccessMessage);
-            document.removeEventListener('note-restored', restoredSuccessMessage);
-            document.removeEventListener('note-created', newNoteSuccessMessage);
+            document.removeEventListener('display-message', displayMessage);
         }
     }, [])
 

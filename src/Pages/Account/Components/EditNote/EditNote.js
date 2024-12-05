@@ -7,13 +7,13 @@ import EnterNote from './EnterNote';
 import MiscButtons from './MiscButtons';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
-import {useUpdateNotes} from '~/Hooks';
+import {usePostRequest} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function EditNote() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const [makeFetch] = useUpdateNotes();
+    const [makeFetch] = usePostRequest();
     const [,changeClass] = useTheme(styles);
     const {state} = useLocation();
     const note = state && state.note;
@@ -54,7 +54,7 @@ function EditNote() {
         document.dispatchEvent(eventNotes);     
         const eventTags = new Event('update-tags');
         document.dispatchEvent(eventTags);
-        const eventCreated = new Event('note-created');
+        const eventCreated = new CustomEvent('display-message', {'detail': {message: 'Note successfully created!', link: 'All Notes'}})
         document.dispatchEvent(eventCreated);
     }
 
@@ -83,7 +83,7 @@ function EditNote() {
         document.dispatchEvent(eventNotes);  
         const event = new Event('update-tags');
         document.dispatchEvent(event);
-        const eventCreated = new Event('note-updated');
+        const eventCreated = new CustomEvent('display-message', {'detail': {message: 'Note successfully updated!', link: ''}})
         document.dispatchEvent(eventCreated);
     }
 
