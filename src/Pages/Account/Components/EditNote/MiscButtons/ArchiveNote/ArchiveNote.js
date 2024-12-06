@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import {useTheme} from '~/Hooks'
+import Dialog from '~/Common/Components/Dialog';
 import { ClipLoader } from 'react-spinners';
 import {usePostRequest} from '~/Hooks';
 import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
-import {AnimatePresence, motion} from 'framer-motion';
-import { overlayVariant, dialogVariant} from './Variants';
 
 function ArchiveNote({id, archived}){
     const [open, setOpen] = useState(false);
@@ -66,44 +65,28 @@ function ArchiveNote({id, archived}){
                     <img className={changeClass('misc_icon')} id={styles.archive}/>
                     Archive Note
                 </button>}   
-                <AnimatePresence>
-                    {open && <motion.div 
-                        className={styles.overlay}
-                        initial={'hide'}
-                        animate={'show'}
-                        exit={'exit'}
-                        variants={overlayVariant}
-                        >
-                        <motion.dialog 
-                            className={changeClass('dialog')} 
-                            initial={'hide'}
-                            animate={'show'}
-                            exit={'exit'}
-                            variants={dialogVariant}
-                            open={true}>
-                                <section className={styles.dialog_header}>
-                                    <div className={changeClass('dialog_box')}>
-                                        <img className={changeClass('dialog_icon')}/>
-                                    </div>
-                                    <h2 className={changeClass('dialog_title')}>
-                                        Archive Note
-                                    </h2>
-                                    <p className={changeClass('dialog_desc')}>
-                                        Are you sure you want to archive this note? You can find it in the Archived Notes section and restore it anytime.
-                                    </p>                        
-                                </section>
-                                <hr className={changeClass('dialog_line')}/>
-                                <section className={styles.dialog_buttons}>
-                                    <button className={changeClass('dialog_cancel')} onClick={handleOpen}>
-                                        Cancel
-                                    </button>
-                                    <button className={styles.dialog_archive} onClick={handleArchive}>
-                                        {loading ? <ClipLoader size='30px' color='#FFF'/> : 'Archive Note'}
-                                    </button>
-                                </section>
-                        </motion.dialog>
-                    </motion.div>}                
-                </AnimatePresence>     
+                <Dialog open={open}>
+                    <section className={styles.dialog_header}>
+                        <div className={changeClass('dialog_box')}>
+                            <img className={changeClass('dialog_icon')}/>
+                        </div>
+                        <h2 className={changeClass('dialog_title')}>
+                            Archive Note
+                        </h2>
+                        <p className={changeClass('dialog_desc')}>
+                            Are you sure you want to archive this note? You can find it in the Archived Notes section and restore it anytime.
+                        </p>                        
+                    </section>
+                    <hr className={changeClass('dialog_line')}/>
+                    <section className={styles.dialog_buttons}>
+                        <button className={changeClass('dialog_cancel')} onClick={handleOpen}>
+                            Cancel
+                        </button>
+                        <button className={styles.dialog_archive} onClick={handleArchive}>
+                            {loading ? <ClipLoader size='30px' color='#FFF'/> : 'Archive Note'}
+                        </button>
+                    </section>
+                </Dialog>   
             </>   
 }
 

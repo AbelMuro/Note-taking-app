@@ -3,7 +3,6 @@ import {useTheme} from '~/Hooks'
 import {Outlet} from 'react-router-dom';
 import NavigationBar from './NavigationBar';
 import HeaderBar from './HeaderBar';
-import DisplaySuccessMessage from './Components/DisplaySuccessMessage';
 import * as styles from './styles.module.css';
 
 function Account() {
@@ -14,7 +13,6 @@ function Account() {
             <NavigationBar/>
             <HeaderBar/>
             <Outlet/>
-            <DisplaySuccessMessage/>
         </main>
     )
 }

@@ -11,11 +11,12 @@ import AllNotes from './Pages/Account/Components/AllNotes';
 import AllArchivedNotes from './Pages/Account/Components/AllArchivedNotes';
 import AllTaggedNotes from './Pages/Account/Components/AllTaggedNotes';
 import AllSearchedNotes from './Pages/Account/Components/AllSearchedNotes';
-import Settings from './Pages/Settings';
-import ColorTheme from './Pages/Settings/Components/ColorTheme';
-import FontTheme from './Pages/Settings/Components/FontTheme';
+import Settings from './Pages/Account/Components/Settings';
+import ColorTheme from './Pages/Account/Components/Settings/Components/ColorTheme';
+import FontTheme from './Pages/Account/Components/Settings/Components/FontTheme';
 import EditNote from './Pages/Account/Components/EditNote';
-import ChangePassword from './Pages/Settings/Components/ChangePassword';
+import ChangePassword from './Pages/Account/Components/Settings/Components/ChangePassword';
+import DisplaySuccessMessage from './Common/Components/DisplaySuccessMessage';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 
@@ -36,6 +37,7 @@ function App() {
 
     return(
             <BrowserRouter>
+                <DisplaySuccessMessage/>
                 <Routes>
                     <Route path='/' element={<Login/>}/>
                     <Route path='/signup' element={<SignUp/>}/>

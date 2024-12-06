@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
+import LogOut from './LogOut';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 
@@ -46,11 +47,7 @@ function NavigationBar(){
                 {setting === 'password' && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
             </button>
             <hr className={changeClass('nav_line')}/>
-            <button className={changeClass('nav_button')} onClick={() => handleSetting('logout')} style={handleStyles('logout')}>
-                <img className={changeClass('nav_icon_logout')} style={handleIcon('logout')}/>
-                 Logout
-                {setting === 'logout' && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
-            </button>
+            <LogOut/>
         </nav>
     )
 }

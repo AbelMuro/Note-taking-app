@@ -20,24 +20,26 @@ function Form() {
                 },
                 body: JSON.stringify({email})
             });
+
+            let result;
             
-            if(response.status === 200){
-                const result = await response.text();
-                alert(result);
-            }
-            else {
-                const message = await response.text();
-                alert(message);
-            }
+            if(response.status === 200)
+                result = await response.text();
+            else 
+                result = await response.text();
+            
+            const event = new CustomEvent('display-message', {'detail': {message: result}});
+            document.dispatchEvent(event);
 
         }
         catch(error){
             const message = error.message;
-            alert('Internal Server Error has occurred');
-            console.log(message);
+            console.log(message);            
+            const event = new CustomEvent('display-message', {'detail': {message: message}});
+            document.dispatchEvent(event);
         }
         finally{
-            setLoading(false);    
+            setLoading && setLoading(false);    
         }
     }   
 

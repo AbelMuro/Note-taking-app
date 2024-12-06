@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
-import {useTheme} from '~/Hooks';
+import {useTheme, usePassword} from '~/Hooks';
 import * as styles from './styles.module.css';
 import icons from '`/icons'
 import {useNavigate} from 'react-router-dom';
 
 function EnterPassword(){
     const [theme, changeClass] = useTheme(styles);
-    const [password, setPassword] = useState('');
+    const [password, error, handlePassword, handleBlur, handleInvalid] = usePassword();
     const [displayPassword, setDisplayPassword] = useState(false);
-    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleForgot = () => {
@@ -18,27 +17,6 @@ function EnterPassword(){
     const handleDisplayPassword = () => {
         setDisplayPassword(!displayPassword);
     } 
-
-    const handlePassword = (e) => {
-        setPassword(e.target.value);
-        e.target.setCustomValidity('');
-        setError('');
-    }
-
-    const handleBlur = (e) => {
-        const isEmpty = e.target.validity.valueMissing;
-
-        if(isEmpty)
-            setError('empty');
-    }
-
-    const handleInvalid = (e) => {
-        const isEmpty = e.target.validity.valueMissing;
-        e.target.setCustomValidity(' ');
-
-        if(isEmpty)
-            setError('empty');
-    }
 
     return(
         <fieldset className={styles.container}>

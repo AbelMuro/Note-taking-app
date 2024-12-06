@@ -53,8 +53,7 @@
 
 .nav_icon_theme, 
 .nav_icon_font,
-.nav_icon_lock,
-.nav_icon_logout{
+.nav_icon_lock{
     width: 20px;
     height: 20px;
     mask-size: 20px 20px;
@@ -65,15 +64,13 @@
 
 .nav_icon_theme.light, 
 .nav_icon_font.light,
-.nav_icon_lock.light,
-.nav_icon_logout.light{
+.nav_icon_lock.light{
     background-color: #0E121B;    
 }
 
 .nav_icon_theme.dark, 
 .nav_icon_font.dark,
-.nav_icon_lock.dark,
-.nav_icon_logout.dark{
+.nav_icon_lock.dark{
     background-color: #E0E4EA;    
 }
 
@@ -89,14 +86,9 @@
     mask-image: url('/public/icons/icon-lock.svg');
 }
 
-.nav_icon_logout{
-    mask-image: url('/public/icons/icon-logout.svg');
-}
-
 .nav_button:hover > .nav_icon_theme,
 .nav_button:hover > .nav_icon_font,
-.nav_button:hover > .nav_icon_lock,
-.nav_button:hover > .nav_icon_logout{
+.nav_button:hover > .nav_icon_lock{
     background-color: #335CFF;
 }
 

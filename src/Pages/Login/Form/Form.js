@@ -35,7 +35,8 @@ function Form() {
             }
             else{
                 const message = await response.text();
-                alert(message);
+                const event = new CustomEvent('display-message', {'detail': {message, error: true}});
+                document.dispatchEvent(event);
             }
         }
         catch(error){

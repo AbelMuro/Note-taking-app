@@ -17,5 +17,6 @@ import arrowRightDark from './icon-chevron-dark-right.svg';
 import checkmark from './icon-checkmark.svg';
 import close from './icon-cross.svg';
 import checked from './icon-checked.svg';
+import errorMark from './icon-error-mark.svg';
 
-export default {logo, logoDark, error, archive, tag, tagDark, home, hide, show, hideDark, showDark, clock, trash, restore, arrowRight, arrowRightDark, checkmark, close, checked}
+export default {logo, logoDark, error, archive, tag, tagDark, home, hide, show, hideDark, showDark, clock, trash, restore, arrowRight, arrowRightDark, checkmark, close, checked, errorMark}

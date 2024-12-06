@@ -1,50 +1,29 @@
 import React, {useState} from 'react';
-import {useTheme} from '~/Hooks';
+import {useTheme, usePassword} from '~/Hooks';
 import * as styles from './styles.module.css';
-import icons from '`/icons'
+import icons from  '`/icons';
 
-function ConfirmPassword(){
+function EnterPassword(){
     const [theme, changeClass] = useTheme(styles);
-    const [password, setPassword] = useState('');
+    const [password, error, handlePassword, handleBlur, handleInvalid] = usePassword();
     const [displayPassword, setDisplayPassword] = useState(false);
-    const [error, setError] = useState('');
-    
+
     const handleDisplayPassword = () => {
         setDisplayPassword(!displayPassword);
     } 
 
-    const handlePassword = (e) => {
-        setPassword(e.target.value);
-        e.target.setCustomValidity('');
-        setError('');
-    }
-
-    const handleBlur = (e) => {
-        const isEmpty = e.target.validity.valueMissing;
-
-        if(isEmpty)
-            setError('empty');
-    }
-
-    const handleInvalid = (e) => {
-        const isEmpty = e.target.validity.valueMissing;
-        e.target.setCustomValidity(' ');
-
-        if(isEmpty)
-            setError('empty');
-    }
-
     return(
         <fieldset className={styles.container}>
             <label className={changeClass('label')}>
-                Confirm New Password
+                New Password
             </label>
             <div className={styles.input_container}>
                 <input 
                     type={displayPassword ? 'text' : 'password'} 
-                    name='confirm-password'
+                    name='new-password'
                     value={password}
                     className={changeClass('input')} 
+                    pattern={'.{8,}'}
                     onBlur={handleBlur}
                     onChange={handlePassword}
                     onInvalid={handleInvalid}
@@ -57,13 +36,12 @@ function ConfirmPassword(){
                     <img className={styles.eye_icon} src={theme === 'light' ? icons['show'] : icons['showDark']} onClick={handleDisplayPassword}/>
                 }
             </div>
-            {error === 'empty' && 
-                <div className={styles.error}>
-                    <img className={styles.error_icon} src={icons['error']}/>
-                    Can't be empty
-                </div>}
+            <div className={changeClass('password_requirement')} style={error ? {color: '#FB3748'} : {}}>
+                <img style={error ? {backgroundColor: '#FB3748'} : {}}/>
+                At least 8 characters
+            </div>
         </fieldset>
     )
 }
 
-export default ConfirmPassword;
+export default EnterPassword;

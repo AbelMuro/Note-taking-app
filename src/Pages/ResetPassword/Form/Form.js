@@ -8,12 +8,12 @@ import * as styles from './styles.module.css';
 function Form({token}) {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const password = e.target.elements['password'].value;
+        const confirmPassword = e.target.elements['confirm-password'].value;
 
         if(password !== confirmPassword){
             setError('unequal');
@@ -28,46 +28,37 @@ function Form({token}) {
                 },
                 body: JSON.stringify({token, password})
             });
+            let result;
 
             if(response.status === 200){
-                const result = await response.text();
+                result = await response.text();
                 navigate('/');
-                setTimeout(() => {
-                    alert(result);
-                }, 500);
             }
             else if(response.status === 400){
-                const message = await response.text();
+                result = await response.text();
                 navigate('/forgot')
-                setTimeout(() => {
-                    alert(message);
-                }, 500);
             }
-            else{
-                const message = await response.text();
-                setTimeout(() => {
-                    alert(message);
-                })
-            }     
+            else
+                result = await response.text();
+                
+            const event = new CustomEvent('display-message', {'detail': {message: result, error: response.status !== 200}});
+            document.dispatchEvent(event);
         }
         catch(error){
             const message = error.message;
-            console.log(message);            
-            alert('Internal Server Error has occurred, please try again later');
+            console.log(message);     
+            const event = new CustomEvent('display-message', {'detail': {message: 'Internal Server Error has occurred, please try again later'}});
+            document.dispatchEvent(event);       
         }
         finally{
             setLoading && setLoading(false);
         }
     }
 
-    useEffect(() => {
-        setError('');
-    }, [password, confirmPassword])
-
     return(
         <form className={styles.form} onSubmit={handleSubmit}>
-            <EnterPassword password={password} setPassword={setPassword}/>
-            <ReEnterPassword password={confirmPassword} setPassword={setConfirmPassword}/>
+            <EnterPassword/>
+            <ReEnterPassword/>
             {error && 
                 <div className={styles.error}> 
                     <img className={styles.error_icon}/>

@@ -1,62 +1,54 @@
-.deleteButton{
-    height: 44px;
-    padding: 12px 16px;
+.nav_button{
+    border: none;
+    border-radius: var(--spacing-075, 6px);
+    background-color: transparent;
+    padding: 8px;
     display: flex;
     align-items: center;
     gap: 8px;
-    border-radius: var(--corner-radius-8, 8px);    
-    background-color: transparent;
-    cursor: pointer;
-    color: var(--colors-neutral-950, #0E121B);
     font-family: var(--font);
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 500;
     line-height: 120%; /* 16.8px */
     letter-spacing: -0.2px;
+    position: relative;
+    cursor: pointer;
 }
 
-.deleteButton:disabled{
-    cursor: not-allowed;
+.nav_button.light{
+    color: var(--colors-neutral-950, #0E121B);
 }
 
-.deleteButton.light{
-    border: 1px solid var(--colors-neutral-300, #CACFD8);
-    color: #0E121B;;
+.nav_button.dark{
+    color: #E0E4EA;
 }
 
-.deleteButton.dark{
-    border: 1px solid var(--colors-neutral-600, #525866);
-    color: white;
-}
-
-.deleteButton_icon{
+.nav_icon_logout{
     width: 20px;
     height: 20px;
     mask-size: 20px 20px;
     mask-repeat: no-repeat;
     mask-position: center;
+    background-color: #0E121B;    
 }
 
-.deleteButton_icon.light{
-    background-color: #0E121B;
+.nav_icon_logout.light{
+    background-color: #0E121B;    
 }
 
-.deleteButton_icon.dark{
-    background-color: white;
+.nav_icon_logout.dark{
+    background-color: #E0E4EA;    
 }
 
-.deleteButton:hover > .deleteButton_icon{
-    background-color: rgb(51, 92, 255);
+.nav_icon_logout{
+    mask-image: url('/public/icons/icon-logout.svg');
 }
 
-.deleteButton:nth-of-type(1) > .deleteButton_icon{
-    mask-image: url('/public/icons/icon-archive.svg');
+.nav_button:hover > .nav_icon_logout{
+    background-color: #335CFF;
 }
 
-.deleteButton:nth-of-type(2) > .deleteButton_icon{
-    mask-image: url('/public/icons/icon-delete.svg');
-}
 
 .dialog_header{
     display: grid;
@@ -88,7 +80,7 @@
 .dialog_icon{
     width: 24px;
     height: 25px;
-    mask-image: url('/public/icons/icon-delete.svg');
+    mask-image: url('/public/icons/icon-logout.svg');
     mask-size: 24px 25px;
     mask-position: center;
     mask-repeat: no-repeat;
@@ -201,13 +193,13 @@
     background-color: #494d55;
 }
 
-.dialog_delete{
+.dialog_logout{
     width: 110px;
     border: none;
     background-color: var(--colors-red-500, #FB3748);
     color: var(--colors-base-white, #FFF);
 }
 
-.dialog_delete:hover{
+.dialog_logout:hover{
     background-color: #b11e2a;
 }

@@ -6,11 +6,14 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { messageVariant } from './Variants';
 import * as styles from './styles.module.css';
 
+
+//this is where i left off, i need to finish the error state of this component
 function DisplaySuccessMessage(){
     const [,changeClass] = useTheme(styles);
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState('');
+    const [error, setError] = useState(false);
     const [link, setLink] = useState('');
 
     const handleOpen = () => {
@@ -27,8 +30,10 @@ function DisplaySuccessMessage(){
     const displayMessage = (e) => {
         const message = e.detail.message;
         const link = e.detail.link;
+        const error = e.detail.error;
         setMessage(message);
         setLink(link);
+        setError(error);
         handleOpen();
     }
 
@@ -57,7 +62,7 @@ function DisplaySuccessMessage(){
                     initial={'hide'}
                     animate={'show'}
                     exit={'exit'}>
-                        <img className={styles.success_icon} src={icons['checkmark']}/>     
+                        <img className={styles.success_icon} src={error ? icons['errorMark'] : icons['checkmark']}/>     
                         {message}
                         <a className={changeClass('success_link')} onClick={handleNavigate}>
                             {link}

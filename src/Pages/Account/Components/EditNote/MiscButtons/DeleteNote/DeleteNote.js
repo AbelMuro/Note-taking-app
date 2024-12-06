@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
+import Dialog from '~/Common/Components/Dialog';
 import {usePostRequest} from '~/Hooks';
 import { ClipLoader } from 'react-spinners';
 import {useNavigate} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
-import {motion, AnimatePresence} from 'framer-motion';
-import { overlayVariant, dialogVariant } from './Variants';
 import * as styles from './styles.module.css';
 
 function DeleteNote({id}) {
@@ -45,45 +44,28 @@ function DeleteNote({id}) {
                 {!loading && <img className={changeClass('deleteButton_icon')}/>}
                 {loading ? <ClipLoader size='30px' color='#335CFF'/> : 'Delete Note'}
             </button>      
-            <AnimatePresence>
-                {open && <motion.div 
-                    className={styles.overlay}
-                    initial={'hide'}
-                    animate={'show'}
-                    exit={'exit'}
-                    variants={overlayVariant}
-                    >
-                    <motion.dialog 
-                        className={changeClass('dialog')} 
-                        initial={'hide'}
-                        animate={'show'}
-                        exit={'exit'}
-                        variants={dialogVariant}
-                        open={true}>
-                            <section className={styles.dialog_header}>
-                                <div className={changeClass('dialog_box')}>
-                                    <img className={changeClass('dialog_icon')}/>
-                                </div>
-                                <h2 className={changeClass('dialog_title')}>
-                                    Delete Note
-                                </h2>
-                                <p className={changeClass('dialog_desc')}>
-                                    Are you sure you want to permanently delete this note? This action cannot be undone.
-                                </p>                        
-                            </section>
-                            <hr className={changeClass('dialog_line')}/>
-                            <section className={styles.dialog_buttons}>
-                                <button className={changeClass('dialog_cancel')} onClick={handleOpen}>
-                                    Cancel
-                                </button>
-                                <button className={styles.dialog_delete} onClick={handleDelete}>
-                                    {loading ? <ClipLoader size='30px' color='#FFF'/> : 'Delete Note'}
-                                </button>
-                            </section>
-                    </motion.dialog>
-                </motion.div>}                
-            </AnimatePresence>  
-
+            <Dialog open={open}>
+                <section className={styles.dialog_header}>
+                    <div className={changeClass('dialog_box')}>
+                        <img className={changeClass('dialog_icon')}/>
+                    </div>
+                    <h2 className={changeClass('dialog_title')}>
+                        Delete Note
+                    </h2>
+                    <p className={changeClass('dialog_desc')}>
+                        Are you sure you want to permanently delete this note? This action cannot be undone.
+                    </p>                        
+                </section>
+                <hr className={changeClass('dialog_line')}/>
+                <section className={styles.dialog_buttons}>
+                    <button className={changeClass('dialog_cancel')} onClick={handleOpen}>
+                        Cancel
+                    </button>
+                    <button className={styles.dialog_delete} onClick={handleDelete}>
+                        {loading ? <ClipLoader size='30px' color='#FFF'/> : 'Delete Note'}
+                    </button>
+                </section>
+            </Dialog>
         </>
 
     )
