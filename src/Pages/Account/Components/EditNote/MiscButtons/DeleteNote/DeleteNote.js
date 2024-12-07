@@ -41,8 +41,8 @@ function DeleteNote({id}) {
     return(
         <>
             <button type='button' className={changeClass('deleteButton')} onClick={handleOpen} style={loading ? {justifyContent: 'center'} : {}}>
-                {!loading && <img className={changeClass('deleteButton_icon')}/>}
-                {loading ? <ClipLoader size='30px' color='#335CFF'/> : 'Delete Note'}
+                <img className={changeClass('deleteButton_icon')}/>
+                Delete Note
             </button>      
             <Dialog open={open}>
                 <section className={styles.dialog_header}>

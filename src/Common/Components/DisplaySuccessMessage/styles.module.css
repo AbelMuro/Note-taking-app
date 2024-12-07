@@ -1,5 +1,5 @@
 .success_message{
-    position: absolute;
+    position: fixed;
     right: 64px;
     bottom: 64px;
     width: 400px;

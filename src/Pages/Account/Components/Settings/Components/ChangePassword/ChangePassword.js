@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
+import { ClipLoader } from 'react-spinners';
 import icons from '`/icons';
-import {usePostRequest} from '~/Hooks';
-import {useTheme} from '~/Hooks'
+import {usePostRequest, useTheme} from '~/Hooks';
 import EnterOldPassword from './EnterOldPassword';
 import EnterNewPassword from './EnterNewPassword';
 import ConfirmPassword from './ConfirmPassword';
@@ -9,11 +9,13 @@ import * as styles from './styles.module.css';
 
 function ChangePassword() {
     const [, changeClass] = useTheme(styles);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [makeFetch] = usePostRequest();
  
     const handleSubmit = async (e) => {
-        e.preventDefault();        
+        e.preventDefault();       
+        setLoading(true); 
         const newPassword = e.target.elements['new-password'].value;
         const confirmPassword = e.target.elements['confirm-password'].value;
         const oldPassword = e.target.elements['old-password'].value;
@@ -33,8 +35,9 @@ function ChangePassword() {
             }),
             credentials: 'include'
         });
-        if(!result) return;
+        setLoading(false);
 
+        if(!result) return;
         const event = new CustomEvent('display-message', {'detail': {message: result, link: ''}})
         document.dispatchEvent(event);
     }
@@ -53,7 +56,7 @@ function ChangePassword() {
                     {error}
                 </div>}
             <button className={styles.form_submit}>
-                Save Password
+                {loading ? <ClipLoader size='30px' color='white'/> : 'Save Password'}
             </button>
         </form>
     );

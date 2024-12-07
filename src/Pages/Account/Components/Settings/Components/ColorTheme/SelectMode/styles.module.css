@@ -1,6 +1,6 @@
 .button{
     width: 528px;
-    height: 72px;
+    min-height: 72px;
     padding: 16px;
     background-color: transparent;
     display: grid;
@@ -126,4 +126,10 @@
 
 .radio > input{
     display: none;
+}
+
+@media(max-width: 1130px){
+    .button{
+        width: 100%;
+    }
 }

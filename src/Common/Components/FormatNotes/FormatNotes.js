@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import LoadingNotes from './LoadingNotes'
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function FormatNotes({allNotes, loading}) {
+    const {note, archiveNote, tag} = useParams();
     const [theme, changeClass] = useTheme(styles);
     const [selectedNote, setSelectedNote] = useState('');
     const navigate = useNavigate();
@@ -24,6 +25,11 @@ function FormatNotes({allNotes, loading}) {
     useEffect(() => {
         setSelectedNote('');
     }, [allNotes])
+
+    useEffect(() => {
+        if(!note && !archiveNote && !tag)
+            setSelectedNote('');
+    }, [note, archiveNote, tag])
 
     return loading ? 
                 <LoadingNotes/> : 

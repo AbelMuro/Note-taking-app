@@ -16,14 +16,14 @@ function CreateNewNote() {
     }
 
     return(
-        <>
+        <div className={styles.container}>
             <button type='button' className={styles.notes_button} onClick={handleNewNote}>
                 + Create New Note
             </button>   
             {pathname === '/account/untitled' && <div className={changeClass('notes_untitled')}>
                 Untitled Note
             </div>}        
-        </>
+        </div>
     )
 }
 

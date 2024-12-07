@@ -36,7 +36,7 @@ function Form({token}) {
             }
             else if(response.status === 400){
                 result = await response.text();
-                navigate('/forgot')
+                navigate('/forgot');
             }
             else
                 result = await response.text();
@@ -47,7 +47,7 @@ function Form({token}) {
         catch(error){
             const message = error.message;
             console.log(message);     
-            const event = new CustomEvent('display-message', {'detail': {message: 'Internal Server Error has occurred, please try again later'}});
+            const event = new CustomEvent('display-message', {'detail': {message: 'Internal Server Error has occurred, please try again later', error: true}});
             document.dispatchEvent(event);       
         }
         finally{

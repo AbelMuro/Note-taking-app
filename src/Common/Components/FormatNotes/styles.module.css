@@ -7,6 +7,7 @@
 }
 
 .notes_all{
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -100,11 +101,11 @@
 }
 
 #selected.light{
-    background-color: '#F3F5F8'    
+    background-color: '#F3F5F8';    
 }
 
 #selected.dark{
-    background-color: '#232530'   
+    background-color: '#232530';  
 }
 
 .notes_date.light{
@@ -137,4 +138,23 @@
     border: 1px solid var(--colors-neutral-700, #2B303B);
     background-color: var(--colors-neutral-800, #232530);
     color: white;
+}
+
+@media(max-width: 1150px){
+    .notes_all{
+        width: initial;
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 16px;
+    }
+
+    .notes_note{
+        width: 120px;
+    }
+
+    .notes_note::after{
+        display: none;
+    }
+    
+    
 }

@@ -27,23 +27,25 @@ function Form() {
                 body: JSON.stringify({email, password})
             });
 
+            let result;
+
             if(response.status === 200){
-                const result = await response.text();
+                result = await response.text();
                 console.log(result);
-                navigate('/');                
-                setTimeout(() => {
-                    alert('Account has been created, you can log-in now')
-                }, 500);
+                navigate('/');       
             }
             else {
-                const message = await response.text();
-                alert(message);
+                result = await response.text();
                 console.log(`Server Error: ${message}`);
             }
+            const event = new CustomEvent('display-message', {'detail': {message: result, error: response.status !== 200}})         
+            document.dispatchEvent(event);
         }
         catch(error){
-            alert('Internal Server Error has occured, please try again later')
-            console.log(`Unknown Error: ${error}`);
+            const message = error.message;
+            console.log(message);            
+            const event = new CustomEvent('display-message', {'detail': {message: 'Internal Server Error has occured, please try again later', error: true}})         
+            document.dispatchEvent(event);
         }
         finally{
             setLoading && setLoading(false);

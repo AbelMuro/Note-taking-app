@@ -3,9 +3,7 @@ import {useTheme, useFont} from '~/Hooks';
 import SelectMode from './SelectMode';
 import * as styles from './styles.module.css';
 
-//this is where i left off, i will need to use the local storage to store the users prefered font 
-//and i will need extract it and place it in the local state of this component
-//i will also need to get the font option from the local storage before the app is mounted.
+//this is where i left off, i will need to work on the responsiveness of this component
 function ColorTheme(){
     const [, changeClass] = useTheme(styles);
     const [font, setFont] = useFont();

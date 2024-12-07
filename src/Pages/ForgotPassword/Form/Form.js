@@ -28,14 +28,14 @@ function Form() {
             else 
                 result = await response.text();
             
-            const event = new CustomEvent('display-message', {'detail': {message: result}});
+            const event = new CustomEvent('display-message', {'detail': {message: result, error: response.status !== 200}});
             document.dispatchEvent(event);
 
         }
         catch(error){
             const message = error.message;
             console.log(message);            
-            const event = new CustomEvent('display-message', {'detail': {message: message}});
+            const event = new CustomEvent('display-message', {'detail': {message: 'Internal Server Error has occurred, please try again later', error: true}});
             document.dispatchEvent(event);
         }
         finally{

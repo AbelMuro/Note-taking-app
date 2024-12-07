@@ -15,6 +15,7 @@ function EnterTitle({prevTitle}) {
         e.target.setCustomValidity('');
         setError('');        
         const input = e.target.value;
+        if(input.length > 20) return;
         setTitle(input);
     }
 

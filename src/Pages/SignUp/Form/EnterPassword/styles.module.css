@@ -92,6 +92,7 @@
 .password_requirement > img{
     width: 16px;
     height: 16px;
+    background-color: #525866;
     mask-image: url('./icons/icon-exclamation.svg');
     mask-size: 16px 16px;
     mask-repeat: no-repeat;

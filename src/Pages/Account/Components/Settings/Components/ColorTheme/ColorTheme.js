@@ -2,9 +2,7 @@ import React from 'react';
 import {useTheme} from '~/Hooks';
 import SelectMode from './SelectMode';
 import * as styles from './styles.module.css';
-
-//this is where i left off, i will need to use redux persist to 'persist' the theme state with the local storage and i also need to implement the logic for the system theme
-//also, make sure to optimize the app when the theme is changed (prevent unnecessary re-renders)
+//this is where i left off, i will need to work on the responsiveness of this component
 function ColorTheme(){
     const [, changeClass] = useTheme(styles);
 

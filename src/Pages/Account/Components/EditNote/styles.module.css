@@ -26,7 +26,7 @@
 }
 
 .note_line.dark{
-    background: var(--colors-neutral-800, #232530); 
+    background-color: var(--colors-neutral-800, #232530); 
 }
 
 .note_metadata{
@@ -155,4 +155,18 @@
 
 .cancel.dark:hover{
     background-color: #424242;
+}
+
+@media(max-width: 1150px){
+    .note{
+        padding-bottom: 42px;
+    }
+
+    .note.light{
+        border-bottom: 2px solid var(--colors-neutral-200, #E0E4EA)
+    }
+
+    .note.dark{
+        border-bottom: 2px solid var(--colors-neutral-800, #232530);
+    }
 }

@@ -17,3 +17,19 @@
     background-color: var(--colors-base-black, #0E121B);
 }
 
+
+@media(max-width: 1150px){
+    .notes{
+        padding-bottom: 42px;
+    }
+
+    .notes.light{
+        border-right: 0px;
+        border-bottom: 2px solid var(--colors-neutral-200, #E0E4EA);
+    }
+
+    .notes.dark{
+        border-right: 0px;
+        border-bottom: 2px solid var(--colors-neutral-800, #232530);
+    }
+}

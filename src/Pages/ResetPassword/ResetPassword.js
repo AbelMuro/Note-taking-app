@@ -1,20 +1,15 @@
 import React from 'react';
 import {useTheme} from '~/Hooks';
-import {useLocation, useNavigate} from 'react-router-dom'
+import {useLocation} from 'react-router-dom'
 import Form from './Form';
 import icons from '`/icons'
 import * as styles from './styles.module.css';
 
 function ResetPassword() {
     const [theme, changeClass] = useTheme(styles);
-    const navigate = useNavigate();
     const location = useLocation();
     const pathname = location.pathname || '';
     const token = pathname.slice(7, pathname.length);
-    if(!token){
-        navigate('/');
-        return;
-    }
 
 
     return(
