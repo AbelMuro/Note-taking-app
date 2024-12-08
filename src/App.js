@@ -1,4 +1,5 @@
 import React, {useEffect, useLayoutEffect} from 'react';
+import {useMediaQuery} from '~/Hooks';
 import { useSelector } from 'react-redux';
 import './styles.css';
 import Login from './Pages/Login';
@@ -17,11 +18,13 @@ import FontTheme from './Pages/Account/Components/Settings/Components/FontTheme'
 import EditNote from './Pages/Account/Components/EditNote';
 import ChangePassword from './Pages/Account/Components/Settings/Components/ChangePassword';
 import DisplaySuccessMessage from './Common/Components/DisplaySuccessMessage';
+import AllMobileNotes from './Pages/Account/Components/AllMobileNotes';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 
 function App() {
     const theme = useSelector(state => state.theme.theme);
+    const [tablet] = useMediaQuery('(max-width: 850px)');
 
     useLayoutEffect(() => {
         const preferredFont = localStorage.getItem('users-preferred-font');
@@ -44,7 +47,7 @@ function App() {
                     <Route path='/forgot' element={<ForgotPassword/>}/>
                     <Route path='/reset/:token' element={<ResetPassword/>}/>
                     <Route path='/account' element={<Account/>}>
-                        <Route path='/account/' element={<DisplayNotes><AllNotes/></DisplayNotes>}>
+                        <Route path='/account/' element={tablet ? <AllMobileNotes/> : <DisplayNotes><AllNotes/></DisplayNotes>}>                {/*<DisplayNotes/> has an <Outlet/> that is used to render <EditNote/>*/}
                             <Route path='/account/:note' element={<EditNote/>}/>
                         </Route>
                         <Route path='/account/archived-notes' element={<DisplayNotes><AllArchivedNotes/></DisplayNotes>}>

@@ -15,8 +15,16 @@ function EnterTags({prevTags}) {
         let input = e.target.value;
         input = input.replaceAll(',')
 
-        if(input.match(/[^a-zA-Z]/))
-            return;
+        if(input.match(/[^a-zA-Z]/)) return;
+
+        input = e.target.value;
+        input = input.split(',');
+
+        if(input.length > 5) return;
+
+        const tagIsTooLong = input.some(tag => tag.length > 10);
+
+        if(tagIsTooLong) return;
 
         e.target.setCustomValidity('');
         setError('');

@@ -127,3 +127,9 @@
 .radio > input{
     display: none;
 }
+
+@media(max-width: 1130px){
+    .button{
+        width: 100%;
+    }
+}

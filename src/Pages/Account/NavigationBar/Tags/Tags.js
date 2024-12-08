@@ -44,7 +44,7 @@ function Tags({option, handleStyles, handleColor}){
                     return(
                         <div className={changeClass('tags_tag')} style={handleStyles(tag)} onClick={() => handleTag(tag)} key={tag}>
                             <img className={changeClass('tags_icon')} style={handleColor(tag)}/>
-                            {tag}
+                            <span>{tag}</span>
                             {option === tag && <img className={styles.tags_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
                         </div>
                     )

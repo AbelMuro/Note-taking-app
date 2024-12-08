@@ -2,11 +2,12 @@
     grid-column: 2/3;
     grid-row: 1/2;
     width: 100%;
-    height: 81px;
-    padding: 0px 32px;
+    min-height: 81px;
+    padding: 15px 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 
 .header.light{
@@ -17,24 +18,6 @@
 .header.dark{
     background-color: var(--colors-base-black, #0E121B);
     border-bottom: 1px solid var(--colors-neutral-800, #232530);
-}
-
-.header_title{
-    font-family: var(--font);
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%; /* 28.8px */
-    letter-spacing: -0.5px;
-    margin: 0px;
-}
-
-.header_title.light{
-    color: var(--colors-neutral-950, #0E121B);
-}
-
-.header_title.dark{
-    color: white;
 }
 
 .header_group{

@@ -18,7 +18,7 @@
 
 .tags_tag{
     width: 100%;
-    height: 40px;
+    min-height: 40px;
     padding: 10px 12px;
     display: flex;
     align-items: center;
@@ -32,6 +32,11 @@
     letter-spacing: -0.2px;
     cursor: pointer;
     position: relative;
+    word-break: break-all;
+}
+
+.tags_tag > span{
+    width: 160px;
 }
 
 

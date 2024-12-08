@@ -1,4 +1,5 @@
 .form{
+    width: 528px;
     padding: 32px;
     display: flex;
     flex-direction: column;
@@ -63,4 +64,10 @@
 .message_icon{
     width: 16px;
     height: 16px;
+}
+
+@media(max-width: 1060px){
+    .form{
+        width: 100%;
+    }
 }

@@ -1,0 +1,30 @@
+.title, .title_path > span{
+    font-family: var(--font);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 28.8px */
+    letter-spacing: -0.5px;
+    margin: 0px;
+    word-break: break-all;
+}
+
+.title_path > span{
+    margin: 0px;
+}
+
+.title_path.light > span{
+    color: var(--colors-neutral-600, #525866);
+}
+
+.title_path.dark > span{
+    color: #CACFD8;
+}
+
+.title.light{
+    color: var(--colors-neutral-950, #0E121B);
+}
+
+.title.dark{
+    color: white;
+}

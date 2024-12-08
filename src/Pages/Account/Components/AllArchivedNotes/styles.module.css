@@ -9,6 +9,7 @@
 
 
 .notes_message{
+    text-align: center;
     color: var(--colors-neutral-200, #E0E4EA);
     font-family: var(--font);
     font-size: 0.875rem;
@@ -38,7 +39,7 @@
     background-color: var(--colors-base-black, #0E121B);
 }
 
-@media(max-width: 1150px){
+@media(max-width: 1100px){
     .notes{
         padding-bottom: 42px;
     }

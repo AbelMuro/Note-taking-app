@@ -7,7 +7,7 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
 
 function NavigationBar(){
-    const {pathname, state} = useLocation();
+    const {pathname} = useLocation();
     const navigate = useNavigate();
     const [theme, changeClass] = useTheme(styles);
     const [option, setOption] = useState('all');

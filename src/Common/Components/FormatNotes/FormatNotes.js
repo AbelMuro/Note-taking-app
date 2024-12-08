@@ -4,6 +4,10 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
+//this is where i left off, i will need to make this component responsive for tablet and mobile devices,
+//also, make sure to finish the header and navbar components for tablet and mobile
+//i may need to double check this component to ensure that the correct note is still selected when i switch from desktop to tablet
+
 function FormatNotes({allNotes, loading}) {
     const {note, archiveNote, tag} = useParams();
     const [theme, changeClass] = useTheme(styles);
@@ -19,7 +23,7 @@ function FormatNotes({allNotes, loading}) {
 
     const handleNote = (note) => {
         setSelectedNote(note.id);
-        navigate(`${note.title}`, {state: {note}})
+        navigate(`${note.title}`, {state: {note}});
     } 
 
     useEffect(() => {

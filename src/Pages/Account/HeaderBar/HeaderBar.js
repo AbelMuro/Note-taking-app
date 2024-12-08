@@ -1,4 +1,5 @@
 import React from 'react';
+import RouteTitle from './RouteTitle';
 import SearchBox from './SearchBox';
 import Settings from './Settings';
 import {useTheme} from '~/Hooks';
@@ -10,9 +11,7 @@ function HeaderBar() {
 
     return(
         <header className={changeClass('header')}>
-            <h1 className={changeClass('header_title')}>
-                All Notes
-            </h1>
+            <RouteTitle/>
             <div className={styles.header_group}>
                 <SearchBox/>        
                 <Settings/>        
