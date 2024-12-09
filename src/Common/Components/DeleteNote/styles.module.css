@@ -1,0 +1,93 @@
+.deleteButton{
+    height: 44px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: var(--corner-radius-8, 8px);    
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--colors-neutral-950, #0E121B);
+    font-family: var(--font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 16.8px */
+    letter-spacing: -0.2px;
+}
+
+.deleteButton:disabled{
+    cursor: not-allowed;
+}
+
+.deleteButton.light{
+    border: 1px solid var(--colors-neutral-300, #CACFD8);
+    color: #0E121B;;
+}
+
+.deleteButton.dark{
+    border: 1px solid var(--colors-neutral-600, #525866);
+    color: white;
+}
+
+.deleteButton_icon{
+    width: 20px;
+    height: 20px;
+    mask-size: 20px 20px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+.deleteButton_icon.light{
+    background-color: #0E121B;
+}
+
+.deleteButton_icon.dark{
+    background-color: white;
+}
+
+.deleteButton:hover > .deleteButton_icon{
+    background-color: rgb(51, 92, 255);
+}
+
+.deleteButton:nth-of-type(1) > .deleteButton_icon{
+    mask-image: url('/public/icons/icon-archive.svg');
+}
+
+.deleteButton:nth-of-type(2) > .deleteButton_icon{
+    mask-image: url('/public/icons/icon-delete.svg');
+}
+
+.deleteMobile{
+    width: 18px;
+    height: 18px;
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.deleteMobile_icon{
+    width: 18px;
+    height: 18px;
+    mask-image: url('/public/icons/icon-delete.svg');
+    mask-size: 18px 18px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+.deleteMobile.dark > .deleteMobile_icon{
+    background-color: #CACFD8;
+}
+
+.deleteMobile.dark:hover > .deleteMobile_icon{
+    background-color: white;
+}
+
+.deleteMobile.light > .deleteMobile_icon{
+    background-color: #525866;
+}
+
+.deleteMobile.light:hover > .deleteMobile_icon{
+    background-color: #0E121B;
+}

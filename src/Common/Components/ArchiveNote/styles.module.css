@@ -1,6 +1,6 @@
-.deleteButton{
+.button{
     height: 44px;
-    padding: 12px 16px;
+    padding: 0px 16px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -16,47 +16,72 @@
     letter-spacing: -0.2px;
 }
 
-.deleteButton:disabled{
-    cursor: not-allowed;
-}
-
-.deleteButton.light{
+.button.light{
     border: 1px solid var(--colors-neutral-300, #CACFD8);
-    color: #0E121B;;
+    color: #0E121B;
 }
 
-.deleteButton.dark{
+.button.dark{
     border: 1px solid var(--colors-neutral-600, #525866);
     color: white;
 }
 
-.deleteButton_icon{
+.icon{
     width: 20px;
     height: 20px;
+    mask-image: url('/public/icons/icon-archive.svg');
     mask-size: 20px 20px;
     mask-repeat: no-repeat;
     mask-position: center;
 }
 
-.deleteButton_icon.light{
+.icon.light{
     background-color: #0E121B;
 }
 
-.deleteButton_icon.dark{
+.icon.dark{
     background-color: white;
 }
 
-.deleteButton:hover > .deleteButton_icon{
+.button:hover > .icon{
     background-color: rgb(51, 92, 255);
 }
 
-.deleteButton:nth-of-type(1) > .deleteButton_icon{
-    mask-image: url('/public/icons/icon-archive.svg');
+
+.button_mobile{
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    cursor: pointer;
 }
 
-.deleteButton:nth-of-type(2) > .deleteButton_icon{
-    mask-image: url('/public/icons/icon-delete.svg');
+.icon_mobile{
+    width: 18px;
+    height: 18px;
+    mask-image: url('/public/icons/icon-archive.svg');
+    mask-size: 18px 18px;
+    mask-repeat: no-repeat;
+    mask-position: center;
 }
+
+.button_mobile.light > .icon_mobile{
+    background-color: #525866;
+}
+
+.button_mobile.light:hover > .icon_mobile{
+    background-color: #0E121B;
+}
+
+.button_mobile.dark > .icon_mobile{
+    background-color: #CACFD8;
+} 
+
+.button_mobile.dark:hover > .icon_mobile{
+    background-color: white;
+}
+
 
 .dialog_header{
     display: grid;
@@ -88,7 +113,7 @@
 .dialog_icon{
     width: 24px;
     height: 25px;
-    mask-image: url('/public/icons/icon-delete.svg');
+    mask-image: url('/public/icons/icon-archive.svg');
     mask-size: 24px 25px;
     mask-position: center;
     mask-repeat: no-repeat;
@@ -201,13 +226,13 @@
     background-color: #494d55;
 }
 
-.dialog_delete{
+.dialog_archive{
     width: 110px;
     border: none;
-    background-color: var(--colors-red-500, #FB3748);
+    background-color: #335CFF;
     color: var(--colors-base-white, #FFF);
 }
 
-.dialog_delete:hover{
-    background-color: #b11e2a;
+.dialog_archive:hover{
+    background-color: #2643b8;
 }

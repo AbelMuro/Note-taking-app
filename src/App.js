@@ -17,7 +17,7 @@ import ColorTheme from './Pages/Account/Components/Settings/Components/ColorThem
 import FontTheme from './Pages/Account/Components/Settings/Components/FontTheme';
 import EditNote from './Pages/Account/Components/EditNote';
 import ChangePassword from './Pages/Account/Components/Settings/Components/ChangePassword';
-import DisplaySuccessMessage from './Common/Components/DisplaySuccessMessage';
+import DisplayMessage from './Common/Components/DisplayMessage';
 import AllMobileNotes from './Pages/Account/Components/AllMobileNotes';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -40,7 +40,7 @@ function App() {
 
     return(
             <BrowserRouter>
-                <DisplaySuccessMessage/>
+                <DisplayMessage/>
                 <Routes>
                     <Route path='/' element={<Login/>}/>
                     <Route path='/signup' element={<SignUp/>}/>
@@ -67,7 +67,6 @@ function App() {
                     </Route>
                 </Routes>
             </BrowserRouter>            
-
     )
 }
 

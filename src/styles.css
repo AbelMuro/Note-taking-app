@@ -15,7 +15,6 @@
 
 body{
     min-height: 100vh;
-    background-color: var(--colors-neutral-100, #F3F5F8);
     padding: 0px;
     margin: 0px;
 }

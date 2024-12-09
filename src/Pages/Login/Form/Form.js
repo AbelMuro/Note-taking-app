@@ -41,8 +41,9 @@ function Form() {
         }
         catch(error){
             const message = error.message;
-            alert('Internal Server Error has occurred, please try again later');
             console.log(message);
+            const event = new CustomEvent('display-message', {'detail': {message: 'Server is offline, please try again later.', error: true}});
+            document.dispatchEvent(event);
         }
         finally{
             setLoading && setLoading(false);

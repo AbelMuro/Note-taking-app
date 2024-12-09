@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import {ClipLoader} from 'react-spinners';
 import {useTheme} from '~/Hooks';
 import Dialog from '~/Common/Components/Dialog';
 import * as styles from './styles.module.css';
@@ -25,18 +24,24 @@ function LogOut() {
                 },
                 body: '',
             })
+            let message;
 
             if(response.status === 200){
                 navigate('/');   
-                const event = new CustomEvent('display-message', {'detail': {message: 'User has been logged out'}});
-                document.dispatchEvent(event);
+                message = 'User has been logged out';
             }
+            else
+                message = 'Internal Server Error has occurred, please try again later.';
+            
+            const event = new CustomEvent('display-message', {'detail': {message: message, error: response.status !== 200}});
+            document.dispatchEvent(event);
                              
         }
         catch(error){
             const message = error.message;
             console.log(message)
-            alert('Internal Server has occurred, please try again later');
+            const event = new CustomEvent('display-message', {'detail': {message: 'Server is offline, please try again later.', error: true}});
+            document.dispatchEvent(event);
         }
         finally{
             setLoading && setLoading(false);
@@ -49,28 +54,18 @@ function LogOut() {
                 <img className={changeClass('nav_icon_logout')}/>
                  Logout
             </button>
-            <Dialog open={open}>
-                <section className={styles.dialog_header}>
-                    <div className={changeClass('dialog_box')}>
-                        <img className={changeClass('dialog_icon')}/>
-                    </div>
-                    <h2 className={changeClass('dialog_title')}>
-                        Logout
-                    </h2>
-                    <p className={changeClass('dialog_desc')}>
-                        Are you sure you want to logout?
-                    </p>                        
-                </section>
-                <hr className={changeClass('dialog_line')}/>
-                <section className={styles.dialog_buttons}>
-                    <button className={changeClass('dialog_cancel')} onClick={handleOpen}>
-                        Cancel
-                    </button>
-                    <button className={styles.dialog_logout} onClick={handleLogout}>
-                        {loading ? <ClipLoader size='30px' color='#FFF'/> : 'Logout'}
-                    </button>
-                </section>
-            </Dialog>
+            <Dialog 
+                open={open} 
+                loading={loading}
+                handleOpen={handleOpen} 
+                handleAction={handleLogout} 
+                title='Log out' 
+                desc='Are you sure you want to log out?' 
+                icon='icon-logout.svg'
+                confirm='Log out'
+                confirmButtonColor='#FB3748'
+                confimrButtonColorHover='#b11e2a'
+                />
         </>
     )
 }

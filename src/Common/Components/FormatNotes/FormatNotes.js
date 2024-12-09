@@ -4,10 +4,6 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
-//this is where i left off, i will need to make this component responsive for tablet and mobile devices,
-//also, make sure to finish the <Header/> and <MobileNavigationBar/> components for tablet and mobile
-//i may need to double check this component to ensure that the correct note is still selected when i switch from desktop to tablet
-//oh and dont forget to add a loading screen for the <AllMobileNotes/> component
 
 function FormatNotes({allNotes, loading}) {
     const {note, archiveNote, tag} = useParams();
@@ -39,37 +35,40 @@ function FormatNotes({allNotes, loading}) {
     return loading ? 
                 <LoadingNotes/> : 
                 <div className={styles.notes_all}>
-                    {allNotes.length !== 0 ? allNotes.map((currentNote) => {
+                    {allNotes.length !== 0 ? allNotes.map((currentNote, i) => {
                         const id = currentNote.id;
                         const title = currentNote.title;
                         const tags = currentNote.tags.split(',');
                         const date = currentNote.lastEdited;
 
                         return(
-                            <article 
-                                id={id === selectedNote ? 'selected' : ''}
-                                style={handleStyles(id)}
-                                className={changeClass('notes_note')} 
-                                onClick={() => handleNote(currentNote)}
-                                key={id}>
-                                    <h2 className={changeClass('notes_title')}>
-                                        {title}
-                                    </h2>
-                                    <div className={changeClass('notes_tags')}>
-                                        {
-                                            tags.map((tag) => {
-                                                return(
-                                                    <div className={styles.notes_tag} key={tag}>
-                                                        {tag}
-                                                    </div> 
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                    <p className={changeClass('notes_date')}>
-                                        {date}
-                                    </p>
-                            </article>
+                            <React.Fragment key={`${id}`}>
+                                <article 
+                                    id={id === selectedNote ? 'selected' : ''}
+                                    style={handleStyles(id)}
+                                    className={changeClass('notes_note')} 
+                                    onClick={() => handleNote(currentNote)}>
+                                        <h2 className={changeClass('notes_title')}>
+                                            {title}
+                                        </h2>
+                                        <div className={changeClass('notes_tags')}>
+                                            {
+                                                tags.map((tag, i) => {
+                                                    return(
+                                                        <div className={styles.notes_tag} key={`${tag} ${i}`}>
+                                                            {tag}
+                                                        </div> 
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                        <p className={changeClass('notes_date')}>
+                                            {date}
+                                        </p>
+                                </article>          
+                                {i !== allNotes.length - 1 && <hr className={changeClass('verticalLine')}/> }                 
+                            </React.Fragment>
+
                         )
                     }) : <p className={changeClass('message')}>
                             You don’t have any notes yet. Start a new note to capture your thoughts and ideas.

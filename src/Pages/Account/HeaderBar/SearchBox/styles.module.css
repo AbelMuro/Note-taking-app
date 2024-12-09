@@ -60,7 +60,7 @@
 .search_icon{
     width: 20px;
     height: 20px;
-    mask-image: url('./icons/icon-search.svg');
+    mask-image: url('/public/icons/icon-search.svg');
     mask-size: 20px 20px;
     mask-repeat: no-repeat;
     mask-position: center;

@@ -1,7 +1,8 @@
 import React from 'react';
-import ArchiveNote from './ArchiveNote';
 import {useLocation} from 'react-router-dom';
-import DeleteNote from './DeleteNote';
+import DeleteNote from '~/Common/Components/DeleteNote';
+import ArchiveNote from '~/Common/Components/ArchiveNote';
+import RestoreNote from '~/Common/Components/RestoreNote';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
@@ -9,14 +10,12 @@ function MiscButtons() {
     const [,changeClass] = useTheme(styles);
     const {state} = useLocation();
     const note = state && state.note;
+    if(note.newNote) return <></>;
 
     return(
         <section className={changeClass('container')}>
-            {!note.newNote && 
-            <>
-                <ArchiveNote id={note.id} archived={note.archived} />
-                <DeleteNote id={note.id}/>            
-            </>}
+            {note.archived ? <RestoreNote id={note.id} /> : <ArchiveNote id={note.id}/>}
+            <DeleteNote id={note.id}/>            
         </section>
     )
 }

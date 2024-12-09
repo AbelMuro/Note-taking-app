@@ -19,4 +19,12 @@
         grid-template-columns: 1fr;
         grid-template-rows: 74px 1fr 74px;
     }
+
+    .container.light{
+        background-color: #F3F5F8;
+    }
+
+    .container.dark{
+        background-color: #232530;
+    }
 }

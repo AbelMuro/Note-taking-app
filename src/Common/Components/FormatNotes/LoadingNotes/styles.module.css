@@ -39,3 +39,10 @@
         flex-wrap: wrap;
     }
 }
+
+@media(max-width: 850px){
+    .container{
+        width: 300px;
+        flex-direction: column;
+    }
+}

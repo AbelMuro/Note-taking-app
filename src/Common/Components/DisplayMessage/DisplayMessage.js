@@ -7,8 +7,7 @@ import { messageVariant } from './Variants';
 import * as styles from './styles.module.css';
 
 
-//this is where i left off, i need to finish the error state of this component
-function DisplaySuccessMessage(){
+function DisplayMessage(){
     const [,changeClass] = useTheme(styles);
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
@@ -73,4 +72,4 @@ function DisplaySuccessMessage(){
     )
 }
 
-export default DisplaySuccessMessage;
+export default DisplayMessage;

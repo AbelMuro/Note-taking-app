@@ -1,4 +1,5 @@
 import React, {useRef, useState} from 'react';
+import MobileHeaderBar from './MobileHeaderBar';
 import { ClipLoader } from 'react-spinners';
 import EnterTitle from './EnterTitle';
 import EnterTags from './EnterTags';
@@ -90,6 +91,7 @@ function EditNote() {
     return note && (
        <>
             <form className={changeClass('note')} onSubmit={note.newNote ? handleAddNewNote : handleUpdateNote}>
+                <MobileHeaderBar/>
                 <EnterTitle prevTitle={(note.title)}/>                
                 <fieldset className={styles.note_metadata}>
                     <EnterTags prevTags={(note.tags)}/>

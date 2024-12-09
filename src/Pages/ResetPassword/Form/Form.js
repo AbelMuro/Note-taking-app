@@ -47,7 +47,7 @@ function Form({token}) {
         catch(error){
             const message = error.message;
             console.log(message);     
-            const event = new CustomEvent('display-message', {'detail': {message: 'Internal Server Error has occurred, please try again later', error: true}});
+            const event = new CustomEvent('display-message', {'detail': {message: 'Server is offline, please try again later', error: true}});
             document.dispatchEvent(event);       
         }
         finally{

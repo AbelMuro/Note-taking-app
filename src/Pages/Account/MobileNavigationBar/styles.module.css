@@ -1,9 +1,130 @@
 .navbar{
     width: 100%;
     height: 100%;
+    padding: 12px 32px;
     grid-column: 1/2;
     grid-row: 3/4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar.light{
+    border-top: 1px solid var(--colors-neutral-200, #E0E4EA);
+    background-color: var(--colors-base-white, #FFF);
+    box-shadow: 0px -4px 6px 0px rgba(240, 240, 240, 0.60);
+}
+
+.navbar.dark{
     border-top: 1px solid var(--colors-neutral-800, #232530);
     background-color: var(--colors-neutral-950, #0E121B);
     box-shadow: 0px -4px 6px 0px rgba(0, 0, 0, 0.30);
+}
+
+.verticalLine{
+    width: 1px;
+    height: 50px;
+}
+
+.verticalLine.dark{
+    background-color: var(--colors-neutral-800, #232530);
+}
+
+.verticalLine.light{
+    background-color: var(--colors-neutral-100, #F3F5F8);
+}
+
+.navbar_links{
+    max-width: 704px; 
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar_links > li{
+    list-style-type: none;
+}
+
+.navbar_link{
+    width: 88px;
+    height: 50px;
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 14.4px */
+    letter-spacing: -0.2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.navbar_link.light{
+    color: #525866;
+}
+
+.navbar_link.dark{
+    color: #99A0AE;
+}
+
+
+.navbar_link.dark:hover{
+    color: white;
+}
+
+.navbar_link.light:hover{
+    color: #2B303B;
+}
+
+.navbar_link > img{
+    width: 24px;
+    height: 24px;
+    mask-size: 24px 24px;
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+.navbar_link.light > img{
+    background-color: #525866
+}
+
+.navbar_link.dark > img{
+    background-color: #99A0AE;
+}
+
+.navbar_link.dark:hover > img {
+    background-color: white;
+}
+
+.navbar_link.light:hover > img {
+    background-color: #2B303B;
+}
+
+.navbar_home{
+    mask-image: url('/public/icons/icon-home.svg');
+}
+
+.navbar_search{
+    mask-image: url('/public/icons/icon-search.svg');
+}
+
+.navbar_archived{
+    mask-image: url('/public/icons/icon-archive.svg');
+}
+
+.navbar_tags{
+    mask-image: url('/public/icons/icon-tag.svg');
+}
+
+.navbar_settings{
+    mask-image: url('/public/icons/icon-settings.svg')
 }

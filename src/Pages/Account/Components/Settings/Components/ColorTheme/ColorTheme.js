@@ -2,7 +2,8 @@ import React from 'react';
 import {useTheme} from '~/Hooks';
 import SelectMode from './SelectMode';
 import * as styles from './styles.module.css';
-//this is where i left off, i will need to work on the responsiveness of this component
+
+
 function ColorTheme(){
     const [, changeClass] = useTheme(styles);
 

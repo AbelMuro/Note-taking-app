@@ -35,13 +35,15 @@ function usePostRequest(){
             else{
                 const message = await response.text();
                 console.log(message);
-                alert('Internal Server Error has occurred');
+                const event = new CustomEvent('display-message', {'detail': {message: 'Internal Server Error has occurred, please try again later.', error: true}});
+                document.dispatchEvent(event);
             }
         }
         catch(error){
             const message = error.message;
             console.log(message);
-            alert('Server is offline, please try again later')
+            const event = new CustomEvent('display-message', {'detail': {message: 'Server is offline, please try again later.', error: true}});
+            document.dispatchEvent(event);
         }
     }
 
