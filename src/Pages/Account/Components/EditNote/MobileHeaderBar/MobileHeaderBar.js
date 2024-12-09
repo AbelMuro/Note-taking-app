@@ -7,8 +7,6 @@ import {useTheme, useMediaQuery} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 //this is where i left off, i will need to continue implementing the buttons for this component (cancel and save)
-//also, i may need to look more closely at the app.js file, i may be able to resuse the <AllMobileNotes/> component across all the routes in the app
-// i may need to refactor <AllMobileNotes/> to make only one component render at one time
 
 function MobileHeaderBar() {
     const [tablet] = useMediaQuery('(max-width: 850px)');

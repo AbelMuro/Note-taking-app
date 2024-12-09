@@ -1,5 +1,6 @@
 import React from 'react';
 import {useLocation} from 'react-router-dom';
+import {useMediaQuery} from '~/Hooks';
 import DeleteNote from '~/Common/Components/DeleteNote';
 import ArchiveNote from '~/Common/Components/ArchiveNote';
 import RestoreNote from '~/Common/Components/RestoreNote';

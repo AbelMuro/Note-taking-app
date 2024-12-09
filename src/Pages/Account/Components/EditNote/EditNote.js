@@ -8,11 +8,12 @@ import EnterNote from './EnterNote';
 import MiscButtons from './MiscButtons';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
-import {usePostRequest} from '~/Hooks';
+import {usePostRequest, useMediaQuery} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function EditNote() {
     const navigate = useNavigate();
+    const [tablet] = useMediaQuery('(max-width: 850px)');
     const [loading, setLoading] = useState(false);
     const [makeFetch] = usePostRequest();
     const [,changeClass] = useTheme(styles);
@@ -110,17 +111,17 @@ function EditNote() {
                 </fieldset>
                 <hr className={changeClass('note_line')}/>
                 <EnterNote prevNote={note.body}/>
-                <hr className={changeClass('note_line')}/>
-                <div className={styles.buttons}>
+                {!tablet && <hr className={changeClass('note_line')}/>}
+                {!tablet && <div className={styles.buttons}>
                     <button className={styles.save}>
                         {loading ? <ClipLoader size='30px' color='white'/>  : 'Save Note'}
                     </button>
                     <button type='button' className={changeClass('cancel')} onClick={handleCancel}>
                         Cancel
                     </button>
-                </div> 
+                </div>}
             </form>        
-            <MiscButtons/>                
+            {!tablet && <MiscButtons/>}                
         </>     
     )
 }

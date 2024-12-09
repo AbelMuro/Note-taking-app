@@ -8,6 +8,7 @@ import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
 import Account from './Pages/Account';
 import DisplayNotes from './Common/Components/DisplayNotes';
+import DisplayMobileNotes from './Common/Components/DisplayMobileNotes';
 import AllNotes from './Pages/Account/Components/AllNotes';
 import AllArchivedNotes from './Pages/Account/Components/AllArchivedNotes';
 import AllTaggedNotes from './Pages/Account/Components/AllTaggedNotes';
@@ -47,7 +48,7 @@ function App() {
                     <Route path='/forgot' element={<ForgotPassword/>}/>
                     <Route path='/reset/:token' element={<ResetPassword/>}/>
                     <Route path='/account' element={<Account/>}>
-                        <Route path='/account/' element={tablet ? <AllMobileNotes/> : <DisplayNotes><AllNotes/></DisplayNotes>}>                {/*<DisplayNotes/> has an <Outlet/> that is used to render <EditNote/>*/}
+                        <Route path='/account/' element={tablet ? <DisplayMobileNotes><AllMobileNotes/></DisplayMobileNotes>: <DisplayNotes><AllNotes/></DisplayNotes>}>                {/*<DisplayNotes/> has an <Outlet/> that is used to render <EditNote/>*/}
                             <Route path='/account/:note' element={<EditNote/>}/>
                         </Route>
                         <Route path='/account/archived-notes' element={<DisplayNotes><AllArchivedNotes/></DisplayNotes>}>
