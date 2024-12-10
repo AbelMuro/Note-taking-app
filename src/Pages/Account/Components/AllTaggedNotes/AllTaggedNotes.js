@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import CreateNewNote from '~/Common/Components/CreateNewNote';
+import CreateNewNote from '~/Common/Buttons/CreateNewNote';
 import {useNotes, useTheme} from '~/Hooks';
 import {useParams} from 'react-router-dom';
 import FormatNotes from '~/Common/Components/FormatNotes'

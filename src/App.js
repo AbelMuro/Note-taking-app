@@ -19,9 +19,7 @@ import FontTheme from './Pages/Account/Components/Settings/Components/FontTheme'
 import EditNote from './Pages/Account/Components/EditNote';
 import ChangePassword from './Pages/Account/Components/Settings/Components/ChangePassword';
 import DisplayMessage from './Common/Components/DisplayMessage';
-import AllMobileNotes from './Pages/Account/Components/AllMobileNotes';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-
 
 function App() {
     const theme = useSelector(state => state.theme.theme);
@@ -48,7 +46,7 @@ function App() {
                     <Route path='/forgot' element={<ForgotPassword/>}/>
                     <Route path='/reset/:token' element={<ResetPassword/>}/>
                     <Route path='/account' element={<Account/>}>
-                        <Route path='/account/' element={tablet ? <DisplayMobileNotes><AllMobileNotes/></DisplayMobileNotes>: <DisplayNotes><AllNotes/></DisplayNotes>}>                {/*<DisplayNotes/> has an <Outlet/> that is used to render <EditNote/>*/}
+                        <Route path='/account/' element={tablet ? <DisplayMobileNotes><AllNotes/></DisplayMobileNotes>: <DisplayNotes><AllNotes/></DisplayNotes>}>                {/*<DisplayNotes/> has an <Outlet/> that is used to render <EditNote/>*/}
                             <Route path='/account/:note' element={<EditNote/>}/>
                         </Route>
                         <Route path='/account/archived-notes' element={<DisplayNotes><AllArchivedNotes/></DisplayNotes>}>
@@ -57,7 +55,7 @@ function App() {
                         <Route path='/account/tags/:tags' element={<DisplayNotes><AllTaggedNotes/></DisplayNotes>}>
                             <Route path='/account/tags/:tags/:tag' element={<EditNote/>}/>
                         </Route>    
-                        <Route path='/account/search' element={<DisplayNotes><AllSearchedNotes/></DisplayNotes>}>
+                        <Route path='/account/search' element={tablet ? <DisplayMobileNotes><AllSearchedNotes/></DisplayMobileNotes> : <DisplayNotes><AllSearchedNotes/></DisplayNotes>}>
                             <Route path='/account/search/:note' element={<EditNote/>}/>
                         </Route>    
                         <Route path='/account/settings' element={<Settings/>}> 

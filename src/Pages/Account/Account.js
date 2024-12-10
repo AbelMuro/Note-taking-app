@@ -1,10 +1,10 @@
 import React from 'react';
 import {useTheme, useMediaQuery} from '~/Hooks'
 import {Outlet} from 'react-router-dom';
-import NavigationBar from './NavigationBar';
-import MobileNavigationBar from './MobileNavigationBar';
-import HeaderBar from './HeaderBar';
-import MobileHeaderBar from './MobileHeaderBar';
+import NavigationBar from './Components/NavigationBar';
+import MobileNavigationBar from './Components/MobileNavigationBar';
+import HeaderBar from './Components/HeaderBar';
+import MobileHeaderBar from './Components/MobileHeaderBar';
 import * as styles from './styles.module.css';
 
 function Account() {

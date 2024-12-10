@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {useTheme, useFont} from '~/Hooks';
 import SelectMode from './SelectMode';
 import * as styles from './styles.module.css';

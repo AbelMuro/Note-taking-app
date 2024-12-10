@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useTheme} from '~/Hooks';
-import EnterEmail from '~/Common/Components/EnterEmail';
+import EnterEmail from '~/Common/Inputs/EnterEmail';
 import EnterPassword from './EnterPassword';
 import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';

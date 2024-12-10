@@ -1,28 +1,42 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import DeleteNote from '~/Common/Components/DeleteNote';
-import ArchiveNote from '~/Common/Components/ArchiveNote';
-import RestoreNote from '~/Common/Components/RestoreNote/RestoreNote';
+import { useLocation, useNavigate } from 'react-router-dom';
+import DeleteNote from '~/Common/Buttons/DeleteNote';
+import ArchiveNote from '~/Common/Buttons/ArchiveNote';
+import RestoreNote from '~/Common/Buttons/RestoreNote';
 import {useTheme, useMediaQuery} from '~/Hooks';
 import * as styles from './styles.module.css';
 
-//this is where i left off, i will need to continue implementing the buttons for this component (cancel and save)
-
 function MobileHeaderBar() {
+    const navigate = useNavigate();
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const [, changeClass] = useTheme(styles);
     const {state} = useLocation();
     const note = state && state.note;
 
+    const handleNavigate = () => {
+        navigate('..');
+    }
+
 
     return tablet ? 
-        <section className={styles.header}>
-            <button type='button' className={changeClass('header_goBack')}>
+        <section className={changeClass('header')}>
+            <button type='button' className={changeClass('header_goBack')} onClick={handleNavigate}>
                 <img className={changeClass('header_arrow')}/>
                 Go Back
             </button>
-            <DeleteNote/>
-            {note.archived ? <RestoreNote id={note.id}/> : <ArchiveNote id={note.id}/>}
+            <div className={styles.header_buttons}>
+                {!note.newNote && 
+                    <>
+                        <DeleteNote/>
+                        {note.archived ? <RestoreNote id={note.id}/> : <ArchiveNote id={note.id}/>}            
+                    </>}
+                <button type='button' className={changeClass('header_cancel')} onClick={ handleNavigate}>
+                    Cancel
+                </button>
+                <button className={styles.header_save}>
+                    Save Note
+                </button>                
+            </div>
         </section>
     : <></>
 }

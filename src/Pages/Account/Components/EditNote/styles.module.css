@@ -170,3 +170,10 @@
         border-bottom: 2px solid var(--colors-neutral-800, #232530);
     }
 }
+
+
+@media(max-width: 850px){
+    .note.light, .note.dark{
+        border-bottom: none
+    }
+}

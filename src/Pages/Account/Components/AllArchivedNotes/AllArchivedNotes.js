@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateNewNote from '~/Common/Components/CreateNewNote'
+import CreateNewNote from '~/Common/Buttons/CreateNewNote'
 import {useNotes} from '~/Hooks';
 import FormatNotes from '~/Common/Components/FormatNotes'
 import {useTheme} from '~/Hooks';

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import EnterEmail from '~/Common/Components/EnterEmail';
+import EnterEmail from '~/Common/Inputs/EnterEmail';
 import {ClipLoader} from 'react-spinners'
 import * as styles from './styles.module.css';
 
