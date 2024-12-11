@@ -45,9 +45,9 @@
 
 .status{
     height: 26px;
-    display: flex;
+    display: grid;
     align-items: center;
-    gap: 59px;
+    grid-template-columns: 121px 1fr;
 }
 
 .status_header{
@@ -174,6 +174,10 @@
 
 @media(max-width: 850px){
     .note.light, .note.dark{
-        border-bottom: none
+        border-bottom: none;
+    }
+
+    .status{
+        grid-template-columns: 123px 1fr;
     }
 }

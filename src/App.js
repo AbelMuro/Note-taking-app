@@ -49,10 +49,10 @@ function App() {
                         <Route path='/account/' element={tablet ? <DisplayMobileNotes><AllNotes/></DisplayMobileNotes>: <DisplayNotes><AllNotes/></DisplayNotes>}>                {/*<DisplayNotes/> has an <Outlet/> that is used to render <EditNote/>*/}
                             <Route path='/account/:note' element={<EditNote/>}/>
                         </Route>
-                        <Route path='/account/archived-notes' element={<DisplayNotes><AllArchivedNotes/></DisplayNotes>}>
+                        <Route path='/account/archived-notes' element={tablet ? <DisplayMobileNotes><AllArchivedNotes/></DisplayMobileNotes> : <DisplayNotes><AllArchivedNotes/></DisplayNotes>}>
                             <Route path='/account/archived-notes/:archiveNote' element={<EditNote/>}/>
                         </Route>
-                        <Route path='/account/tags/:tags' element={<DisplayNotes><AllTaggedNotes/></DisplayNotes>}>
+                        <Route path='/account/tags/:tags' element={tablet ? <></> : <DisplayNotes><AllTaggedNotes/></DisplayNotes>}>
                             <Route path='/account/tags/:tags/:tag' element={<EditNote/>}/>
                         </Route>    
                         <Route path='/account/search' element={tablet ? <DisplayMobileNotes><AllSearchedNotes/></DisplayMobileNotes> : <DisplayNotes><AllSearchedNotes/></DisplayNotes>}>

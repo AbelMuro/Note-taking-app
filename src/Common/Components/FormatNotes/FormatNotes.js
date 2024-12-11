@@ -5,7 +5,7 @@ import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 
-function FormatNotes({allNotes, loading}) {
+function FormatNotes({allNotes, loading, emptyMessage}) {
     const {note, archiveNote, tag} = useParams();
     const [theme, changeClass] = useTheme(styles);
     const [selectedNote, setSelectedNote] = useState('');
@@ -22,6 +22,7 @@ function FormatNotes({allNotes, loading}) {
         setSelectedNote(note.id);
         navigate(`${note.title}`, {state: {note}});
     } 
+
 
     useEffect(() => {
         setSelectedNote('');
@@ -68,10 +69,9 @@ function FormatNotes({allNotes, loading}) {
                                 </article>          
                                 {i !== allNotes.length - 1 && <hr className={changeClass('verticalLine')}/> }                 
                             </React.Fragment>
-
                         )
                     }) : <p className={changeClass('message')}>
-                            You don’t have any notes yet. Start a new note to capture your thoughts and ideas.
+                            {emptyMessage}
                         </p>}                    
                 </div>
             

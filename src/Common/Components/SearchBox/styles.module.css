@@ -79,3 +79,9 @@
 .search_icon.dark{
     background-color: #99A0AE
 }
+
+@media(max-width: 850px){
+    .search_box{
+        width: 100%;
+    }
+}

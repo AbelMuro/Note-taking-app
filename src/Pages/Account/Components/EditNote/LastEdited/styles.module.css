@@ -1,5 +1,7 @@
 .container{
+    height: 26px;
     display: grid;
+    align-items: center;
     grid-template-columns: 121px 1fr;
 }
 

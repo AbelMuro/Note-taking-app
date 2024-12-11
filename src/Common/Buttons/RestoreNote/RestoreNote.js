@@ -30,7 +30,7 @@ function RestoreNote({id}) {
     }
 
     return tablet ? 
-        <button className={changeClass('button_mobile')}>
+        <button type='button' className={changeClass('button_mobile')} onClick={handleRestore}>
             <img className={styles.icon_mobile}/>
         </button> : 
         <button type='button' className={changeClass('button')} onClick={handleRestore} style={loading ? {justifyContent: 'center'} : {}}>

@@ -20,7 +20,7 @@ function AllNotes() {
                     All Notes
                 </h1>   
             }
-            <FormatNotes allNotes={allNotes} loading={loading}/>
+            <FormatNotes allNotes={allNotes} loading={loading} emptyMessage={'You don’t have any notes yet. Start a new note to capture your thoughts and ideas.'}/>
         </div>
     )
 }

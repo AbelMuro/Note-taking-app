@@ -64,6 +64,7 @@
     border: none;
     cursor: pointer;
     position: absolute;
+    z-index: 1;
     bottom: 106px;
     right: 35px;
 }
