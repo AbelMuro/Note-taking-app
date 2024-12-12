@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import LoadingTags from './LoadingTags';
+import LoadingTags from '~/Common/Components/LoadingTags';
 import {useGetRequest} from '~/Hooks';
 import {useTheme} from '~/Hooks';
 import icons from '`/icons';

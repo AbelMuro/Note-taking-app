@@ -1,37 +1,50 @@
 import React, {useEffect} from 'react';
 import CreateNewNote from '~/Common/Buttons/CreateNewNote';
+import {useNavigate} from 'react-router-dom';
 import {useNotes, useTheme, useMediaQuery} from '~/Hooks';
 import {useParams} from 'react-router-dom';
 import FormatNotes from '~/Common/Components/FormatNotes'
 import * as styles from './styles.module.css';
 
-//i need to think about this more carefully, i may need to refactor this component for 
-//tablet in a way that i can display the tags first, then the notes, then the EditNote 
 
 function AllTaggedNotes() {
+    const navigate = useNavigate();
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const {tags} = useParams();
-    const [allNotes, loading, setUrl] = useNotes(`http://localhost:4000/get-notes/${tags}`);
+    const [allNotes, loading, setUrl] = useNotes(`http://localhost:4000/get-notes/tags:${tags}`);
     const [, changeClass] = useTheme(styles);
 
+    const handleGoBack = () => {
+        navigate('/account/tags');
+    }
+
     useEffect(() => {
-        setUrl(`http://localhost:4000/get-notes/${tags}`);
+        setUrl(`http://localhost:4000/get-notes/tags:${tags}`);
     }, [tags])
 
-    return tablet ? 
-        <div className={styles.notes_mobile}>
-            <h1 className={styles.notes_mobile_title}>
-                Tags
-            </h1>
-
-        </div> :
+    return (
         <div className={changeClass('notes')}>
             <CreateNewNote/>
+            {tablet && 
+                <div className={styles.notes_data}>
+                    <button className={changeClass('notes_goBack')} onClick={handleGoBack}>
+                        <img className={changeClass('notes_arrow')}/>
+                        All Tags
+                    </button>
+                    <h1 className={changeClass('notes_title')}>
+                        Notes Tagged: <span>{tags}</span>
+                    </h1>
+                    <p className={changeClass('notes_message')}>
+                        All notes with the <span>"{tags}"</span> are shown here.
+                    </p>
+                </div>
+            }
             <FormatNotes 
                 allNotes={allNotes} 
                 loading={loading} 
-                emptyMessage={'You don’t have any notes yet. Start a new note to capture your thoughts and ideas.'}/>
+                emptyMessage={'No tags have been selected, please select a tag to view the notes.'}/>
         </div>
+    )
 
 }
 

@@ -17,12 +17,121 @@
     background-color: var(--colors-base-black, #0E121B);
 }
 
-.notes_mobile{
 
+.notes_data{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.notes_mobile_title{
-    
+.notes_goBack{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    font-family: var(--font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 16.8px */
+    letter-spacing: -0.2px;
+    cursor: pointer;
+}
+
+.notes_goBack.dark{
+    color: var(--colors-base-white, #FFF);
+}
+
+.notes_goBack.dark:hover{
+    color: rgb(176, 176, 176);
+}
+
+.notes_goBack.light{
+    color: #525866;
+}
+
+.notes_goBack.light:hover{
+    color: #0E121B;
+}
+
+.notes_arrow{
+    width: 18px;
+    height: 18px;
+    mask-image: url('./icons/icon-left-arrow.svg');
+    mask-size: 18px 18px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+.notes_arrow.light{
+    background-color: #525866;
+}
+
+.notes_goBack.light:hover > .notes_arrow{
+    background-color: #0E121B;
+}
+
+.notes_arrow.dark{
+    background-color: white;
+}
+
+.notes_goBack.dark:hover > .notes_arrow{
+    background-color: rgb(176, 176, 176);
+}
+
+.notes_title{
+    font-family: var(--font);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 28.8px */
+    letter-spacing: -0.5px;
+    margin: 0px;
+}
+
+.notes_title.dark{
+    color: var(--colors-neutral-400, #99A0AE);
+}
+
+.notes_title.light{
+    color: var(--colors-neutral-600, #525866);
+}
+
+.notes_title.dark > span{
+    color: white;
+}
+
+.notes_title.light > span{
+    color: #0E121B;
+}
+
+.notes_message{
+    font-family: var(--font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 18.2px */
+    letter-spacing: -0.2px;
+    margin: 0px;
+}
+
+
+.notes_message.dark{
+    color: var(--colors-neutral-300, #CACFD8);
+}
+
+.notes_message.light{
+    color: var(--colors-neutral-700, #2B303B);
+}
+
+.notes_message.dark > span{
+    color: white;
+}
+
+.notes_message.light > span{
+    color: #0E121B;
 }
 
 @media(max-width: 1100px){
@@ -38,5 +147,12 @@
     .notes.dark{
         border-right: 0px;
         border-bottom: 2px solid var(--colors-neutral-800, #232530);
+    }
+}
+
+@media(max-width: 850px){
+    .notes{
+        padding: 24px 32px;
+        border-radius: 16px 16px 0px 0px;
     }
 }

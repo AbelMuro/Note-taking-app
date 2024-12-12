@@ -19,8 +19,12 @@ import FontTheme from './Pages/Account/Components/Settings/Components/FontTheme'
 import EditNote from './Pages/Account/Components/EditNote';
 import ChangePassword from './Pages/Account/Components/Settings/Components/ChangePassword';
 import DisplayMessage from './Common/Components/DisplayMessage';
+import DisplayMobileTags from './Pages/Account/Components/DisplayMobileTags';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
+
+//i am finished with the tablet version of /account/tags component
+//before going on to the settings route, i want to see if i can refactor the routes below
 function App() {
     const theme = useSelector(state => state.theme.theme);
     const [tablet] = useMediaQuery('(max-width: 850px)');
@@ -52,9 +56,11 @@ function App() {
                         <Route path='/account/archived-notes' element={tablet ? <DisplayMobileNotes><AllArchivedNotes/></DisplayMobileNotes> : <DisplayNotes><AllArchivedNotes/></DisplayNotes>}>
                             <Route path='/account/archived-notes/:archiveNote' element={<EditNote/>}/>
                         </Route>
-                        <Route path='/account/tags/:tags' element={tablet ? <></> : <DisplayNotes><AllTaggedNotes/></DisplayNotes>}>
+                        <Route path='/account/tags' element={tablet ? <DisplayMobileTags/> : <DisplayNotes><AllTaggedNotes/></DisplayNotes>}/>
+                        <Route path='/account/tags/:tags' element={tablet ? <DisplayMobileNotes><AllTaggedNotes/></DisplayMobileNotes> : <DisplayNotes><AllTaggedNotes/></DisplayNotes>}>
                             <Route path='/account/tags/:tags/:tag' element={<EditNote/>}/>
-                        </Route>    
+                        </Route>
+  
                         <Route path='/account/search' element={tablet ? <DisplayMobileNotes><AllSearchedNotes/></DisplayMobileNotes> : <DisplayNotes><AllSearchedNotes/></DisplayNotes>}>
                             <Route path='/account/search/:note' element={<EditNote/>}/>
                         </Route>    
