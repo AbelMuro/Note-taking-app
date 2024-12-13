@@ -27,7 +27,7 @@ function MobileHeaderBar() {
             <div className={styles.header_buttons}>
                 {!note.newNote && 
                     <>
-                        <DeleteNote/>
+                        <DeleteNote id={note.id}/>
                         {note.archived ? <RestoreNote id={note.id}/> : <ArchiveNote id={note.id}/>}            
                     </>}
                 <button type='button' className={changeClass('header_cancel')} onClick={ handleNavigate}>

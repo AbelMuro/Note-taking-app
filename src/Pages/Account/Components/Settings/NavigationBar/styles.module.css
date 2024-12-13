@@ -15,6 +15,24 @@
     border-right: 1px solid var(--colors-neutral-800, #232530);
 }
 
+.nav_title{
+    font-family: var(--font);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 28.8px */
+    letter-spacing: -0.5px;
+    margin: 0px 0px 8px 0px;
+}
+
+.nav_title.dark{
+    color: var(--colors-base-white, #FFF);
+}
+
+.nav_title.light{
+    color: #0E121B;
+}
+
 .nav_button{
     border: none;
     border-radius: var(--spacing-075, 6px);
@@ -108,3 +126,16 @@
     background-color: var(--colors-neutral-800, #232530);
 }
 
+@media(max-width: 850px){
+    .nav{
+        border-radius: var(--spacing-150, 12px) var(--spacing-150, 12px) 0px 0px;
+    }
+
+    .nav.light{
+        background-color: #FFF;
+    }
+
+    .nav.dark{
+        background: var(--colors-neutral-950, #0E121B);
+    }
+}

@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {useTheme} from '~/Hooks';
+import {useTheme, useMediaQuery} from '~/Hooks';
 import LogOut from './LogOut';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 
+//this is where i left off, i will need to work on the responsiveness of this component
+
 function NavigationBar(){
+    const [tablet] = useMediaQuery('(max-width: 850px)');
     const navigate = useNavigate();
     const [setting, setSetting] = useState('');
     const [theme, changeClass] = useTheme(styles);
@@ -26,25 +29,35 @@ function NavigationBar(){
     }
 
     useEffect(() => {
-        navigate(`/account/settings/${setting}`)
+        if(!setting) return;
+        navigate(`/account/settings/${setting}`);
     }, [setting])
+
+    useEffect(() => {
+        if(tablet === false)
+            setSetting('theme');
+    
+    }, [tablet])
 
     return(
         <nav className={changeClass('nav')}>
-            <button className={changeClass('nav_button')} onClick={() => handleSetting('')} style={handleStyles('')}>
-                <img className={changeClass('nav_icon_theme')} style={handleIcon('')}/>
+            <h1 className={changeClass('nav_title')}>
+                Settings
+            </h1>
+            <button className={changeClass('nav_button')} onClick={() => handleSetting('theme')} style={tablet ? {} : handleStyles('theme')}>
+                <img className={changeClass('nav_icon_theme')} style={tablet ? {} : handleIcon('theme')}/>
                 Color Theme
-                {setting === '' && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
+                {(setting === 'theme' && !tablet) && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
             </button>
-            <button className={changeClass('nav_button')} onClick={() => handleSetting('font')} style={handleStyles('font')}>
-                <img className={changeClass('nav_icon_font')} style={handleIcon('font')}/>
+            <button className={changeClass('nav_button')} onClick={() => handleSetting('font')} style={tablet ? {} : handleStyles('font')}>
+                <img className={changeClass('nav_icon_font')} style={tablet ? {} : handleIcon('font')}/>
                 Font Theme
-                {setting === 'font' && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
+                {(setting === 'font' && !tablet) && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
             </button>
-            <button className={changeClass('nav_button')} onClick={() => handleSetting('password')} style={handleStyles('password')}>
-                <img className={changeClass('nav_icon_lock')} style={handleIcon('password')}/>
+            <button className={changeClass('nav_button')} onClick={() => handleSetting('password')} style={tablet ? {} : handleStyles('password')}>
+                <img className={changeClass('nav_icon_lock')} style={tablet ? {} : handleIcon('password')}/>
                  Change Password
-                {setting === 'password' && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
+                {(setting === 'password' && !tablet) && <img className={styles.nav_arrow} src={theme === 'light' ? icons['arrowRight'] : icons['arrowRightDark']}/>}
             </button>
             <hr className={changeClass('nav_line')}/>
             <LogOut/>

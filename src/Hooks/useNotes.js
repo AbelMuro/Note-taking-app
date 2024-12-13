@@ -5,7 +5,7 @@ function useNotes(initialUrl){
     const [url, setUrl] = useState(initialUrl);
     const [makeFetch] = useGetRequest();
     const [allNotes, setAllNotes] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const fetchNotes = async () => {
         setLoading(true);

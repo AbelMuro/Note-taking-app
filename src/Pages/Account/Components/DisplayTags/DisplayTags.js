@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import CreateNewNote from '~/Common/Buttons/CreateNewNote';
 import LoadingTags from '~/Common/Components/LoadingTags';
 import {useNavigate} from 'react-router-dom';
-import {useTheme, useGetRequest} from '~/Hooks';
+import {useTheme, useGetRequest, useMediaQuery} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function DisplayMobileTags() {
+    const [tablet] = useMediaQuery('(max-width: 850px)');
     const [allTags, setAllTags] = useState([]);
     const [loading, setLoading] = useState(false);
     const [makeFetch] = useGetRequest();
@@ -27,10 +28,11 @@ function DisplayMobileTags() {
     }
 
     useEffect(() => {
+        if(!tablet) return;
         getTags();
-    }, [])
+    }, [tablet])
 
-    return(
+    return tablet ? 
         <section className={changeClass('tags')}>
             <CreateNewNote/>
             <h1 className={changeClass('tags_title')}>
@@ -51,8 +53,13 @@ function DisplayMobileTags() {
                     })
                 }                
             </div>
-        </section>
-    )
+        </section> :    
+        <div className={changeClass('column')}>
+            <CreateNewNote/>
+            <p className={changeClass('empty_message')}>
+                No tags have been selected, please select a tag to view the notes.          
+            </p>    
+        </div>       
 }
 
 export default DisplayMobileTags;

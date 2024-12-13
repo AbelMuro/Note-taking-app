@@ -22,6 +22,13 @@ function AllTaggedNotes() {
         setUrl(`http://localhost:4000/get-notes/tags:${tags}`);
     }, [tags])
 
+    useEffect(() => {
+        if(loading) return;
+
+        if(!allNotes.length) 
+            navigate('/account/tags');
+    }, [allNotes, loading])
+
     return (
         <div className={changeClass('notes')}>
             <CreateNewNote/>
