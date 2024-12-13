@@ -8,7 +8,7 @@ function Settings() {
     const navigate = useNavigate();
 
     const handleSettings = () => {
-        navigate('/account/settings');
+        navigate('/account/settings/theme');
     }
 
     return(

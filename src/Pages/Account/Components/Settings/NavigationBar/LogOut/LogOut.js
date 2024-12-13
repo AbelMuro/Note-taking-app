@@ -50,8 +50,8 @@ function LogOut() {
 
     return(
         <>
-            <button className={changeClass('nav_button')} onClick={handleOpen}>
-                <img className={changeClass('nav_icon_logout')}/>
+            <button className={changeClass('logout_button')} onClick={handleOpen}>
+                <img className={changeClass('logout_icon')}/>
                  Logout
             </button>
             <Dialog 

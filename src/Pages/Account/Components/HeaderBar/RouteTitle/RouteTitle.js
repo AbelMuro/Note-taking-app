@@ -32,7 +32,7 @@ function RouteTitle() {
                     {paths[2] || ''}
                 </div>)
         else if(paths[1] === 'settings')
-            return '';
+            return 'Settings';
         else
             return 'All Notes';
 

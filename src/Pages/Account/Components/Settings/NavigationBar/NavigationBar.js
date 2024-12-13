@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 import {useTheme, useMediaQuery} from '~/Hooks';
 import LogOut from './LogOut';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 
-//this is where i left off, i will need to work on the responsiveness of this component
-
 function NavigationBar(){
+    const {pathname} = useLocation()
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const navigate = useNavigate();
     const [setting, setSetting] = useState('');
@@ -25,25 +24,37 @@ function NavigationBar(){
     }
 
     const handleSetting = (setting) => {
-        setSetting(setting);
+        navigate(`/account/settings/${setting}`);
     }
 
     useEffect(() => {
-        if(!setting) return;
-        navigate(`/account/settings/${setting}`);
-    }, [setting])
+        if(pathname === '/account/settings/theme')
+            setSetting('theme');
+        else if(pathname === '/account/settings/font')
+            setSetting('font')
+        else if(pathname === '/account/settings/password')
+            setSetting('password');
+        else{
+            if(tablet === false)
+                setSetting('theme');
+            console.log(tablet)
+        } 
+        
+        
+    }, [pathname, tablet])
 
     useEffect(() => {
         if(tablet === false)
-            setSetting('theme');
+            navigate(`/account/settings/theme`);
     
     }, [tablet])
 
     return(
         <nav className={changeClass('nav')}>
-            <h1 className={changeClass('nav_title')}>
-                Settings
-            </h1>
+            {tablet && 
+                <h1 className={changeClass('nav_title')}>
+                    Settings
+                </h1>}
             <button className={changeClass('nav_button')} onClick={() => handleSetting('theme')} style={tablet ? {} : handleStyles('theme')}>
                 <img className={changeClass('nav_icon_theme')} style={tablet ? {} : handleIcon('theme')}/>
                 Color Theme

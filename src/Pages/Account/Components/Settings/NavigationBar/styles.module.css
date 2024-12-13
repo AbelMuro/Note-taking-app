@@ -129,6 +129,7 @@
 @media(max-width: 850px){
     .nav{
         border-radius: var(--spacing-150, 12px) var(--spacing-150, 12px) 0px 0px;
+        padding: 24px 32px;
     }
 
     .nav.light{
@@ -137,5 +138,9 @@
 
     .nav.dark{
         background: var(--colors-neutral-950, #0E121B);
+    }
+
+    .nav_button{
+        padding: 8px 0px;
     }
 }
