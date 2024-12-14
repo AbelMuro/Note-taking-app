@@ -1,0 +1,60 @@
+
+.theme_button{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    border: none;
+    font-family: var(--font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 16.8px */
+    letter-spacing: -0.2px;
+    cursor: pointer;
+    padding: 0px;
+    margin-bottom: -4px;
+}
+
+.theme_button.light{
+    color: var(--colors-neutral-600, #525866);
+}
+
+.theme_button.light:hover{
+    color: #0E121B;
+}
+
+.theme_button.dark{
+    color: white;
+}
+
+
+.theme_button.dark:hover{
+    color: #CACFD8;
+}
+
+
+.theme_button_icon{
+    width: 20px;
+    height: 20px;
+    mask-image: url('/public/icons/icon-chevron-left.svg');
+    mask-size: 20px 20px;
+    mask-position: center;
+    mask-repeat: no-repeat;
+}
+
+.theme_button_icon.dark{
+    background-color: white;
+}
+
+.theme_button.dark:hover > .theme_button_icon{
+    background-color: #CACFD8;
+}
+
+.theme_button_icon.light{
+    background-color: #525866;
+}
+
+.theme_button.light:hover > .theme_button_icon{
+    background-color: #0E121B;
+}

@@ -37,10 +37,7 @@ function NavigationBar(){
         else{
             if(tablet === false)
                 setSetting('theme');
-            console.log(tablet)
         } 
-        
-        
     }, [pathname, tablet])
 
     useEffect(() => {

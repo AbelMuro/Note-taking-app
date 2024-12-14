@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useTheme} from '~/Hooks';
 import icons from '`/icons';
@@ -49,4 +49,4 @@ function SelectMode({mode, title, desc}) {
     )
 }
 
-export default SelectMode;
+export default memo(SelectMode);

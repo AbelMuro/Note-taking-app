@@ -21,9 +21,6 @@ import DisplayMessage from './Common/Components/DisplayMessage';
 import DisplayTags from './Pages/Account/Components/DisplayTags';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-
-//i am finished with the tablet version of /account/tags component
-//before going on to the settings route, i want to see if i can refactor the routes below
 function App() {
     const theme = useSelector(state => state.theme.theme);
 

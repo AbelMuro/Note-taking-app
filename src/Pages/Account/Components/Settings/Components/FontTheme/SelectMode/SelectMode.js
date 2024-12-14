@@ -8,7 +8,7 @@ function SelectMode({font, setFont, mode, title, desc}) {
 
     const handleStyles = () => {
         if(font === mode)
-            return theme === 'light' ? {backgroundColor: '#F3F5F8'} : {backgroundColor: '#2B303B'};
+            return theme === 'light' ? {backgroundColor: '#F3F5F8'} : {backgroundColor: '#232530'};
         else
             return {};
     }

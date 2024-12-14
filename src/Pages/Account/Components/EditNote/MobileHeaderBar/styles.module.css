@@ -58,7 +58,7 @@
 .header_arrow{
     width: 18px;
     height: 18px;
-    mask-image: url('./icons/icon-chevron-left.svg');
+    mask-image: url('/public/icons/icon-chevron-left.svg');
     mask-size: 18px 18px;
     mask-position: center;
     mask-repeat: no-repeat;
