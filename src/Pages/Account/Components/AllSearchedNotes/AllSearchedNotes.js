@@ -7,9 +7,6 @@ import FormatNotes from '~/Common/Components/FormatNotes';
 import {useNotes, useTheme, useMediaQuery} from '~/Hooks';
 import * as styles from './styles.module.css';
 
-//this is where i left off, i will need to make the searchbox input component re-usabled by removing it from the HeaderBar 
-//and placing it in the Common/Components folder
-
 function AllSearchedNotes() {
     const navigate = useNavigate();
     const [tablet] = useMediaQuery('(max-width: 850px)');
@@ -35,9 +32,10 @@ function AllSearchedNotes() {
                         Search
                     </h1>
                     <SearchBox/>
-                    {(search && allNotes.length > 0) && <p className={changeClass('notes_message')}>
-                        All notes matching <span>"{search}"</span> are displayed below.
-                    </p>}
+                    {search && 
+                        <p className={changeClass('notes_message')}>
+                            All notes matching <span>"{search}"</span> are displayed below.
+                        </p>}
                 </section>
                 }
             <FormatNotes allNotes={allNotes} loading={loading} emptyMessage={

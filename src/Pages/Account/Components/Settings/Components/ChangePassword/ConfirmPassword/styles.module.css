@@ -142,3 +142,9 @@ input::-ms-reveal{
     outline: 2px solid var(--colors-neutral-600, #525866);
     Outline-offset: 1px;
 }
+
+@media(max-width: 850px){
+    .container{
+        margin-bottom: -4px;
+    }
+}

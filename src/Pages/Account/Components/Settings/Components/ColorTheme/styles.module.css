@@ -98,7 +98,7 @@
 
     .theme_group{
         gap: 8px;
-        margin-bottom: 4px;
+        margin: -4px 0px 8px 0px;
     }
 
     .theme_title{
@@ -108,4 +108,11 @@
     .theme_desc{
         margin: 0px;
     }
+}
+
+@media(max-width: 550px){
+    .theme{
+        padding: 24px 16px;
+    }
+
 }

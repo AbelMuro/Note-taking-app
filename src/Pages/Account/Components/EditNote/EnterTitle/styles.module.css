@@ -62,5 +62,10 @@ input.dark:focus{
 .error_icon{
     width: 16px;
     height: 16px;
+}
 
+@media(max-width: 850px){
+    .container{
+        gap: 6px;
+    }
 }

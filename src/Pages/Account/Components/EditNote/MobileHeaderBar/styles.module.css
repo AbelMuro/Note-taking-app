@@ -130,3 +130,16 @@
 .header_save:hover{
     color: #2547D0;
 }
+
+@media(max-width: 550px){
+    .header{
+        height: 30px;
+        gap: 6px;
+    }
+}
+
+@media(max-width: 370px){
+    .header_buttons{
+        gap: 8px;
+    }
+}

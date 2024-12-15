@@ -1,12 +1,11 @@
-import React, {useState, useTransition} from 'react';
+import React from 'react';
 import {useTheme} from '~/Hooks';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as styles from './styles.module.css';
 
 function SearchBox() {
-    const [, startTransition] = useTransition();
-    const [search, setSearch] = useState('')
+    const search = useSelector(state => state.search.search);
     const navigate = useNavigate();
     const {pathname} = useLocation();
     const [, changeClass] = useTheme(styles);
@@ -14,12 +13,10 @@ function SearchBox() {
 
     const handleSearch = (e) => {
         const query = e.target.value;
-        setSearch(query);
         if(pathname !== '/account/search')
             navigate('/account/search');
-        startTransition(() => {
-            dispatch({type: 'UPDATE_SEARCH', payload: query});
-        })
+        dispatch({type: 'UPDATE_SEARCH', payload: query});
+        
     }
 
     return(

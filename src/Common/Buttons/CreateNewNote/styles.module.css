@@ -84,3 +84,10 @@
         justify-content: center;
     }
 }
+
+@media(max-width: 550px){
+    .mobile_button{
+        width: 48px;
+        height: 48px;
+    }
+}

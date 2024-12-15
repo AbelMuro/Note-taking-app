@@ -17,7 +17,6 @@ function MobileHeaderBar() {
         navigate('..');
     }
 
-
     return tablet ? 
         <section className={changeClass('header')}>
             <button type='button' className={changeClass('header_goBack')} onClick={handleNavigate}>

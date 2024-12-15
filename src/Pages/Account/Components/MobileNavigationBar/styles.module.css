@@ -128,3 +128,19 @@
 .navbar_settings{
     mask-image: url('/public/icons/icon-settings.svg')
 }
+
+@media(max-width: 550px){
+    .navbar{
+        padding: 12px;
+    }
+
+    .navbar_links{
+        justify-content: center;
+    }
+
+
+    .navbar_link{
+        width: 62.2px;
+        height: 32px;
+    }
+}

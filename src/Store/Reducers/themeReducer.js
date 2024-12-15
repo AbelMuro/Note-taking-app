@@ -11,7 +11,8 @@ const counterReducer = createReducer(initialState, (builder) => {       //builde
       state.theme = action.payload;
     })
     .addCase(resetTheme, (state) => {
-      state.theme = initialState.theme;
+      const theme = localStorage.getItem('users-preferred-theme')
+      state.theme = theme || 'light';
     })
 })
 

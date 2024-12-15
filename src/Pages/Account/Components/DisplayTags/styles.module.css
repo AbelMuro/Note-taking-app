@@ -182,3 +182,9 @@
         border-radius: 16px 16px 0px 0px;
     }
 }
+
+@media(max-width: 550px){
+    .tags{
+        padding: 24px 16px;
+    }
+}

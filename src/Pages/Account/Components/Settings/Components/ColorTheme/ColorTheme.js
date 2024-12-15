@@ -5,8 +5,6 @@ import {useTheme, useMediaQuery} from '~/Hooks';
 import SelectMode from './SelectMode';
 import * as styles from './styles.module.css';
 
-//this is where i left off, i will need to fix the useEffect of this component
-//idk why the savedChanges is returning false
 function ColorTheme(){
     const [savedChanges, setSavedChanges] = useState(false);
     const dispatch = useDispatch();
@@ -23,10 +21,12 @@ function ColorTheme(){
     }
 
     useEffect(() => {
-        return () => {
-            if(!savedChanges)
+        const unmount = () => {
+            if(!savedChanges)                     
                 dispatch({type: 'RESET_THEME'});
         }
+
+        return unmount;
     }, [savedChanges])
 
     return(

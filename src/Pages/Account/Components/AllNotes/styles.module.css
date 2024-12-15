@@ -63,3 +63,10 @@
         border-bottom: none;
     }
 }
+
+@media(max-width: 550px){
+    .notes{
+        padding: 16px;
+        border-radius: 8px 8px 0px 0px;
+    }
+}

@@ -52,6 +52,6 @@
 
 @media(max-width: 850px){
     .logout_button{
-        padding: 8px 0px;
+        padding: 8px;
     }
 }

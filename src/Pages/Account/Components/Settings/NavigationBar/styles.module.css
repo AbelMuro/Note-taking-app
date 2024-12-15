@@ -128,9 +128,18 @@
 
 @media(max-width: 850px){
     .nav{
-        border-radius: var(--spacing-150, 12px) var(--spacing-150, 12px) 0px 0px;
+        border-radius: 12px 12px 0px 0px;
         padding: 24px 32px;
     }
+
+    .nav.light{
+        border-right: 0px;
+    }
+    
+    .nav.dark{
+        border-right: 0px;
+    }
+    
 
     .nav.light{
         background-color: #FFF;
@@ -141,6 +150,16 @@
     }
 
     .nav_button{
-        padding: 8px 0px;
+        padding: 8px;
+    }
+}
+
+@media(max-width: 550px){
+    .nav{
+        padding: 24px 16px;
+    }
+
+    .nav_button{
+
     }
 }

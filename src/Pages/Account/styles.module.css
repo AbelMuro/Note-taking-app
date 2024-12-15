@@ -28,3 +28,9 @@
         background-color: #232530;
     }
 }
+
+@media(max-width: 550px){
+    .container{
+        grid-template-rows: 54px 1fr 56px;
+    }
+}

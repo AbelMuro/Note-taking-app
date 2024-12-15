@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {useTheme} from '~/Hooks';
+import {useTheme, useMediaQuery} from '~/Hooks';
 import {getRootofRoute} from '~/Common/Functions';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as styles from './styles.module.css';
 
 function MobileNavigationBar() {
+    const [mobile] = useMediaQuery('(max-width: 550px)');
     const [link, setLink] = useState('');
     const [theme, changeClass] = useTheme(styles);
     const navigate = useNavigate();
@@ -50,35 +51,35 @@ function MobileNavigationBar() {
                 <li>
                     <button className={changeClass('navbar_link')} onClick={() => {handleLink('')}} style={handleStyles('')}>
                         <img className={styles.navbar_home} style={handleIcon('')}/>
-                        Home
+                        {!mobile && 'Home'}
                     </button>
                 </li>
-                <div className={changeClass('verticalLine')}/>
+                {!mobile && <div className={changeClass('verticalLine')}/> }
                 <li>
                     <button className={changeClass('navbar_link')} onClick={() => {handleLink('search')}} style={handleStyles('search')}>
                         <img className={styles.navbar_search} style={handleIcon('search')}/>
-                        Search
+                        {!mobile && 'Search'}
                     </button>
                 </li>
-                <div className={changeClass('verticalLine')}/>
+                {!mobile && <div className={changeClass('verticalLine')}/> }
                 <li>
                     <button className={changeClass('navbar_link')} onClick={() => {handleLink('archived-notes')}} style={handleStyles('archived-notes')}>
                         <img className={styles.navbar_archived} style={handleIcon('archived-notes')}/>
-                        Archived
+                        {!mobile && 'Archived'}
                     </button>
                 </li>
-                <div className={changeClass('verticalLine')}/>
+                {!mobile && <div className={changeClass('verticalLine')}/> }
                 <li>
                     <button className={changeClass('navbar_link')} onClick={() => {handleLink('tags')}} style={handleStyles('tags')}>
                         <img className={styles.navbar_tags} style={handleIcon('tags')}/>
-                        Tags
+                        {!mobile && 'Tags'}
                     </button>
                 </li>
-                <div className={changeClass('verticalLine')}/>
+                {!mobile && <div className={changeClass('verticalLine')}/> }
                 <li>
                     <button className={changeClass('navbar_link')} onClick={() => {handleLink('settings')}} style={handleStyles('settings')}>
                         <img className={styles.navbar_settings} style={handleIcon('settings')}/>
-                        Settings
+                        {!mobile && 'Settings'}
                     </button>
                 </li>
             </ul>

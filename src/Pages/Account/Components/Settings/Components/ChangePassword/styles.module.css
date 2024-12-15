@@ -6,6 +6,20 @@
     gap: 24px;
 }
 
+.form.light{
+    background-color: white;
+}
+
+.form.dark{
+    background-color: var(--colors-neutral-950, #0E121B);
+}
+
+.form_group{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .form_title{
     font-family: var(--font);
     font-size: 1rem;
@@ -70,4 +84,17 @@
     .form{
         width: 100%;
     }
+}
+
+@media(max-width: 850px){
+    .form{
+        border-radius: 16px 16px 0px 0px;
+    }
+}
+
+@media(max-width: 550px){
+    .form{
+        padding: 24px 16px;
+    }
+
 }

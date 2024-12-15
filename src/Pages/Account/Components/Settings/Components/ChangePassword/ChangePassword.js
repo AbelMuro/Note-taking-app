@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { ClipLoader } from 'react-spinners';
 import icons from '`/icons';
-import {usePostRequest, useTheme} from '~/Hooks';
+import {usePostRequest, useTheme, useMediaQuery} from '~/Hooks';
+import GoBackButton from '../GoBackButton';
 import EnterOldPassword from './EnterOldPassword';
 import EnterNewPassword from './EnterNewPassword';
 import ConfirmPassword from './ConfirmPassword';
@@ -12,6 +13,7 @@ function ChangePassword() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [makeFetch] = usePostRequest();
+    const [tablet] = useMediaQuery('(max-width: 850px)');
  
     const handleSubmit = async (e) => {
         e.preventDefault();       
@@ -43,10 +45,13 @@ function ChangePassword() {
     }
 
     return(
-        <form className={styles.form} onSubmit={handleSubmit}>
-            <h2 className={changeClass('form_title')}>
-                Change Password
-            </h2>
+        <form className={changeClass('form')} onSubmit={handleSubmit}>
+            <div className={styles.form_group}>
+                {tablet && <GoBackButton/>}
+                <h2 className={changeClass('form_title')}>
+                    Change Password
+                </h2>                
+            </div>
             <EnterOldPassword/>            
             <EnterNewPassword/>
             <ConfirmPassword/>

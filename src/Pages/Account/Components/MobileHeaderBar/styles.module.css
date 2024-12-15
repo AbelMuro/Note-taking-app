@@ -22,3 +22,10 @@
     width: 95px;
     height: 28px;
 }
+
+@media(max-width: 550px){
+    .header{
+        height: 54px;
+        padding: 12px 16px;
+    }
+}

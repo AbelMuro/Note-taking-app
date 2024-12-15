@@ -117,7 +117,6 @@
     margin: 0px;
 }
 
-
 .notes_message.dark{
     color: var(--colors-neutral-300, #CACFD8);
 }
@@ -154,5 +153,25 @@
     .notes{
         padding: 24px 32px;
         border-radius: 16px 16px 0px 0px;
+    }
+}
+
+
+@media(max-width: 550px){
+    .notes{
+        padding: 24px 16px;
+    }
+
+    .notes.light{
+        border-bottom: 0px;
+    }
+
+    .notes.dark{
+        border-bottom: 0px;
+    }
+
+    .notes_arrow{
+        width: 20px;
+        height: 20px;
     }
 }

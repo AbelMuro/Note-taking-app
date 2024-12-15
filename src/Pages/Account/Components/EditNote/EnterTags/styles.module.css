@@ -1,5 +1,5 @@
 .container{
-    height: 26px;
+    min-height: 26px;
     display: grid;
     align-items: center;
     grid-template-columns: 121px 1fr;
@@ -97,7 +97,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: 140%; /* 16.8px */
-    margin-top: 8px;
 }
 
 .error_icon{
@@ -109,5 +108,6 @@
 @media(max-width: 850px){
     .container{
         grid-template-columns: 123px 1fr;
-    }
+        row-gap: 6px;
+    }  
 }

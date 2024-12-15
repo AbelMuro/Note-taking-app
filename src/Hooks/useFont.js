@@ -5,10 +5,6 @@ function useFont() {
     const [font, setFont] = useState(preferredFont || 'sans-serif');
 
     useEffect(() => {
-        localStorage.setItem('users-preferred-font', font);
-    }, [font])
-
-    useEffect(() => {
         const root = document.documentElement;
         root.style.setProperty('--font', font);
     }, [font]);

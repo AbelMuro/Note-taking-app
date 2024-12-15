@@ -4,7 +4,6 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
-
 function FormatNotes({allNotes, loading, emptyMessage}) {
     const {note, archiveNote, tag} = useParams();
     const [theme, changeClass] = useTheme(styles);
