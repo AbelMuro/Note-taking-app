@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useTheme} from '~/Hooks';
-import { useNavigate } from 'react-router-dom';
+import { usePreNavigate } from '~/Hooks';
 import icons from '`/icons';
 import { AnimatePresence, motion } from 'framer-motion';
 import { messageVariant } from './Variants';
@@ -9,7 +9,7 @@ import * as styles from './styles.module.css';
 
 function DisplayMessage(){
     const [,changeClass] = useTheme(styles);
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [error, setError] = useState(false);

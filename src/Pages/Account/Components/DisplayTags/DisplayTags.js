@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import CreateNewNote from '~/Common/Buttons/CreateNewNote';
 import LoadingTags from '~/Common/Components/LoadingTags';
-import {useNavigate} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import {useTheme, useGetRequest, useMediaQuery} from '~/Hooks';
 import * as styles from './styles.module.css';
 
@@ -11,7 +11,7 @@ function DisplayMobileTags() {
     const [loading, setLoading] = useState(false);
     const [makeFetch] = useGetRequest();
     const [,changeClass] = useTheme(styles);
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
 
     const handleTag = (tag) => {
         navigate(`${tag}`);

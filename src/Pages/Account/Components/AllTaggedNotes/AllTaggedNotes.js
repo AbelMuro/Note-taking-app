@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import CreateNewNote from '~/Common/Buttons/CreateNewNote';
-import {useNavigate} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import {useNotes, useTheme, useMediaQuery} from '~/Hooks';
 import {useParams} from 'react-router-dom';
 import FormatNotes from '~/Common/Components/FormatNotes'
@@ -8,7 +8,7 @@ import * as styles from './styles.module.css';
 
 
 function AllTaggedNotes() {
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const {tags} = useParams();
     const [allNotes, loading, setUrl] = useNotes(`http://localhost:4000/get-notes/tags:${tags}`);

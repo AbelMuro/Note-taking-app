@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
 import Dialog from '~/Common/Components/Dialog';
-import {usePostRequest, useMediaQuery} from '~/Hooks';
+import {usePostRequest, useMediaQuery, useTheme} from '~/Hooks';
 import {useNavigate} from 'react-router-dom';
-import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function DeleteNote({id}) {
@@ -28,14 +28,14 @@ function DeleteNote({id}) {
         });
 
         setLoading && setLoading(false);
-        setOpen && setOpen(false);
-        navigate('..')        
+        setOpen && setOpen(false);    
         const eventNotes = new Event('notes-updated');
         document.dispatchEvent(eventNotes);     
         const eventTags = new Event('update-tags');
         document.dispatchEvent(eventTags);
         const eventCreated = new CustomEvent('display-message', {'detail': {message: 'Note has been deleted', link: ''}})
         document.dispatchEvent(eventCreated);
+        navigate('..')    
     }
 
     return(

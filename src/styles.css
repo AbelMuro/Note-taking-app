@@ -25,5 +25,10 @@ body{
 }
 
 :root{
-    --font: 'sans-serif'
+    --font: 'sans-serif';
+    --closest: 100;
+    --closer: 75;
+    --close: 50;
+    --far: 25;
+    --farthest: 1;
 }

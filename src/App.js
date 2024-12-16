@@ -1,5 +1,4 @@
 import React, {useEffect, useLayoutEffect} from 'react';
-import {useMediaQuery} from '~/Hooks';
 import { useSelector } from 'react-redux';
 import './styles.css';
 import Login from './Pages/Login';
@@ -20,6 +19,8 @@ import ChangePassword from './Pages/Account/Components/Settings/Components/Chang
 import DisplayMessage from './Common/Components/DisplayMessage';
 import DisplayTags from './Pages/Account/Components/DisplayTags';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
+//i think im finished with this app, i may need to double check everything
 
 function App() {
     const theme = useSelector(state => state.theme.theme);

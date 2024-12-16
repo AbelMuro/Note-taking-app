@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { usePreNavigate } from '~/Hooks';
 import {useTheme} from '~/Hooks';
 import Dialog from '~/Common/Components/Dialog';
 import * as styles from './styles.module.css';
 
 function LogOut() {
     const [open, setOpen] = useState(false);
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [loading, setLoading] = useState(false);
     const [,changeClass] = useTheme(styles);
 

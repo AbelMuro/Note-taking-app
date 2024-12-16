@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
+import {useDispatch} from 'react-redux';
 import {useLocation} from 'react-router-dom';
-import {useTheme} from '~/Hooks';
+import {useTheme, useSessionStorage} from '~/Hooks';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 
 function EnterNote({prevNote}) {
+    const dispatch = useDispatch();
     const [, changeClass] = useTheme(styles);
+    const [unsavedNote] = useSessionStorage('note-body');
     const [note, setNote] = useState('');
     const [error, setError] = useState('');
     const {state} = useLocation();
@@ -16,6 +19,8 @@ function EnterNote({prevNote}) {
         setError('');
         const input = e.target.value;
         setNote(input);
+        sessionStorage.setItem('note-body', note);
+        dispatch({type: 'SET_CHANGES', payload: false});
     }
 
     const handleBlur = (e) => {
@@ -31,13 +36,18 @@ function EnterNote({prevNote}) {
     }
 
     useEffect(() => {
-        setNote(prevNote || '');
-    }, [prevNote])
+        if(unsavedNote)
+            setNote(unsavedNote)
+        else if(prevNote)
+            setNote(prevNote);
+        else
+            setNote('');
+    }, [prevNote, unsavedNote])
 
     useEffect(() => {
         setError('');
     }, [oldNote])
-    
+
     return(
         <>
             <textarea 

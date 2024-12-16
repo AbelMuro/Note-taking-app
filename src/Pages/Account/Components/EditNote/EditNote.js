@@ -6,12 +6,14 @@ import EnterTags from './EnterTags';
 import LastEdited from './LastEdited';
 import EnterNote from './EnterNote';
 import MiscButtons from './MiscButtons';
+import {useDispatch} from 'react-redux';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {useTheme} from '~/Hooks';
-import {usePostRequest, useMediaQuery} from '~/Hooks';
+import {usePostRequest, useMediaQuery, useTheme} from '~/Hooks';
+import { clearSessionStorage } from '~/Common/Functions';
 import * as styles from './styles.module.css';
 
 function EditNote() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const [loading, setLoading] = useState(false);
@@ -58,6 +60,8 @@ function EditNote() {
         document.dispatchEvent(eventTags);
         const eventCreated = new CustomEvent('display-message', {'detail': {message: 'Note successfully created!', link: 'All Notes'}})
         document.dispatchEvent(eventCreated);
+        dispatch({type: 'SET_CHANGES', payload: true});
+        clearSessionStorage();
     }
 
     const handleUpdateNote = async (e) => {
@@ -85,8 +89,10 @@ function EditNote() {
         document.dispatchEvent(eventNotes);  
         const event = new Event('update-tags');
         document.dispatchEvent(event);
-        const eventCreated = new CustomEvent('display-message', {'detail': {message: 'Note successfully updated!', link: ''}})
+        const eventCreated = new CustomEvent('display-message', {'detail': {message: 'Note updated.', link: ''}})
         document.dispatchEvent(eventCreated);
+        dispatch({type: 'SET_CHANGES', payload: true});
+        clearSessionStorage();
     }
 
     return note && (

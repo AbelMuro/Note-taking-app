@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import {useTheme, useMediaQuery} from '~/Hooks';
 import LogOut from './LogOut';
 import icons from '`/icons';
@@ -8,7 +9,7 @@ import * as styles from './styles.module.css';
 function NavigationBar(){
     const {pathname} = useLocation()
     const [tablet] = useMediaQuery('(max-width: 850px)');
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [setting, setSetting] = useState('');
     const [theme, changeClass] = useTheme(styles);
 

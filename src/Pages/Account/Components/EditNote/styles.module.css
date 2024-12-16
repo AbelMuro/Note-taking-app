@@ -8,10 +8,12 @@
 
 .note.light{
     background-color: white;
+    border-right: 1px solid var(--colors-neutral-200, #E0E4EA);
 }
 
 .note.dark{
     background-color: var(--colors-base-black, #0E121B);
+    border-right: 1px solid var(--colors-neutral-800, #232530);
 }
 
 .note_line{
@@ -163,10 +165,12 @@
     }
 
     .note.light{
+        border-right: 0px;
         border-bottom: 2px solid var(--colors-neutral-200, #E0E4EA)
     }
 
     .note.dark{
+        border-right: 0px;
         border-bottom: 2px solid var(--colors-neutral-800, #232530);
     }
 }

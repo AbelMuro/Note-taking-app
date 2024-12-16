@@ -1,6 +1,6 @@
 import React, {useEffect, useDeferredValue} from 'react';
 import {useSelector} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import SearchBox from '~/Common/Components/SearchBox';
 import CreateNewNote from '~/Common/Buttons/CreateNewNote';
 import FormatNotes from '~/Common/Components/FormatNotes';
@@ -8,7 +8,7 @@ import {useNotes, useTheme, useMediaQuery} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function AllSearchedNotes() {
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const search = useSelector(state => state.search.search);
     const deferredSearch = useDeferredValue(search, {timeoutMs: 500});

@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import {useTheme, useMediaQuery} from '~/Hooks'
+import {useTheme, useMediaQuery, usePostRequest} from '~/Hooks'
+import {useSelector, useDispatch} from 'react-redux';
 import Dialog from '~/Common/Components/Dialog';
-import {usePostRequest} from '~/Hooks';
 import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
 
 function ArchiveNote({id}){
+    const dispatch = useDispatch();
+    const changesSaved = useSelector(state => state.changesSaved.changesSaved);
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const [open, setOpen] = useState(false);
     const [,changeClass] = useTheme(styles);
@@ -14,10 +16,15 @@ function ArchiveNote({id}){
     const [makeFetch] = usePostRequest();
 
     const handleOpen = () => {
-        setOpen(!open);
+        setOpen(!open)
     }
 
     const handleArchive = async () => {
+        if(!changesSaved && !confirm('You have unsaved changes, are you sure you wish to proceed?'))
+            return;
+        else
+            dispatch({type: 'SET_CHANGES', payload: true});
+
         setLoading(true);
         await makeFetch('http://localhost:4000/archive-note', {
             method: 'PUT',
@@ -30,9 +37,9 @@ function ArchiveNote({id}){
         setLoading && setLoading(false);
         const eventNotes = new Event('notes-updated');
         document.dispatchEvent(eventNotes);  
-        navigate('..');
         const eventCreated = new CustomEvent('display-message', {'detail': {message: 'Note has been archived', link: 'Archived Notes'}})
         document.dispatchEvent(eventCreated);
+        navigate('..');
     }
 
     return <>

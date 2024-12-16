@@ -9,12 +9,10 @@
 
 .container.light{
     background-color: white;
-    border-left: 1px solid var(--colors-neutral-200, #E0E4EA);
 }
 
 .container.dark{
     background-color: var(--colors-base-black, #0E121B);
-    border-left: 1px solid var(--colors-neutral-800, #232530);
 }
 
 

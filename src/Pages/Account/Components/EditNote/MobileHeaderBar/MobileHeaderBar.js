@@ -1,5 +1,6 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import DeleteNote from '~/Common/Buttons/DeleteNote';
 import ArchiveNote from '~/Common/Buttons/ArchiveNote';
 import RestoreNote from '~/Common/Buttons/RestoreNote';
@@ -7,7 +8,7 @@ import {useTheme, useMediaQuery} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function MobileHeaderBar() {
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const [, changeClass] = useTheme(styles);
     const {state} = useLocation();

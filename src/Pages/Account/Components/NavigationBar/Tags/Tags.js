@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import LoadingTags from '~/Common/Components/LoadingTags';
 import {useGetRequest} from '~/Hooks';
 import {useTheme} from '~/Hooks';
@@ -7,7 +7,7 @@ import icons from '`/icons';
 import * as styles from './styles.module.css';
 
 function Tags({option, handleStyles, handleColor}){
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [allTags, setAllTags] = useState([]);
     const [loading, setLoading] = useState(false);
     const [makeFetch] = useGetRequest();

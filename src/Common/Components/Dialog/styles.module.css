@@ -12,7 +12,7 @@
 }
 
 .dialog{
-    width: 400px;
+    width: 440px;
     border-radius: 12px;
     padding: 0px;
     transition: transform 0s, all 0.2s linear;
@@ -182,4 +182,11 @@
 
 .dialog_action:hover{
     background-color: #b11e2a;
+}
+
+
+@media(max-width: 550px){
+    .dialog{
+        width: 343px;
+    }
 }

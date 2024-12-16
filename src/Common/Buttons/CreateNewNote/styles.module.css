@@ -64,7 +64,7 @@
     border: none;
     cursor: pointer;
     position: fixed;
-    z-index: 1;
+    z-index: var(--closer);
     bottom: 106px;
     right: 35px;
 }
@@ -89,5 +89,7 @@
     .mobile_button{
         width: 48px;
         height: 48px;
+        right: 16px;
+        bottom: 72px;
     }
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import icons from './icons';
 import {useMediaQuery} from '~/Hooks';
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
@@ -9,7 +10,7 @@ function CreateNewNote() {
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const {pathname} = useLocation();
     const [,changeClass] = useTheme(styles);
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
 
     const handleNewNote = () => {
         const selectedNote = document.getElementById('selected');

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import CreateNewNote from '~/Common/Buttons/CreateNewNote'
 import {useNotes} from '~/Hooks';
 import FormatNotes from '~/Common/Components/FormatNotes'
@@ -7,7 +7,7 @@ import {useTheme, useMediaQuery} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function AllArchivedNotes(){
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const [allNotes, loading] = useNotes('http://localhost:4000/get-notes/archived');
     const [, changeClass] = useTheme(styles);

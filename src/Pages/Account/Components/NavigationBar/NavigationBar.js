@@ -3,12 +3,13 @@ import {useTheme} from '~/Hooks';
 import icons from '`/icons'
 import Tags from './Tags';
 import {getRootofRoute} from '~/Common/Functions';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function NavigationBar(){
     const {pathname} = useLocation();
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [theme, changeClass] = useTheme(styles);
     const [option, setOption] = useState('all');
 

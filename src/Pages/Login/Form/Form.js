@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import {useTheme} from '~/Hooks';
 import EnterEmail from '~/Common/Inputs/EnterEmail';
 import EnterPassword from './EnterPassword';
-import {useNavigate} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import * as styles from './styles.module.css';
 import { ClipLoader } from 'react-spinners';
 
 function Form() {
     const [,changeClass] = useTheme(styles);
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {

@@ -1,12 +1,13 @@
 import React from 'react';
 import {useTheme} from '~/Hooks';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import {useDispatch, useSelector} from 'react-redux';
 import * as styles from './styles.module.css';
 
 function SearchBox() {
     const search = useSelector(state => state.search.search);
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const {pathname} = useLocation();
     const [, changeClass] = useTheme(styles);
     const dispatch = useDispatch();

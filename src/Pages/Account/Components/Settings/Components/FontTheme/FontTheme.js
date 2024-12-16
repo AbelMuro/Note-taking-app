@@ -15,7 +15,7 @@ function FontTheme(){
         const root = document.documentElement;
         const font = root.style.getPropertyValue('--font');
         localStorage.setItem('users-preferred-font', font);
-        const event = new CustomEvent('display-message', {'detail': {message: 'Font has been updated'}});
+        const event = new CustomEvent('display-message', {'detail': {message: 'Font updated.'}});
         document.dispatchEvent(event);
         setSavedChanges(true);
     }

@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import {useTheme, useMediaQuery} from '~/Hooks';
 import {getRootofRoute} from '~/Common/Functions';
-import { useNavigate, useLocation } from 'react-router-dom';
+import {useLocation } from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function MobileNavigationBar() {
     const [mobile] = useMediaQuery('(max-width: 550px)');
     const [link, setLink] = useState('');
     const [theme, changeClass] = useTheme(styles);
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const {pathname} = useLocation();
 
     const handleStyles = (currentLink) => {

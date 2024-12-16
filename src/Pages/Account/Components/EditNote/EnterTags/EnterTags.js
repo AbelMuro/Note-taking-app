@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
+import { useDispatch } from 'react-redux';
 import {useLocation} from 'react-router-dom';
-import {useTheme} from '~/Hooks';
+import {useTheme, useSessionStorage} from '~/Hooks';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 
 function EnterTags({prevTags}) {
+    const dispatch = useDispatch();
     const [,changeClass] = useTheme(styles);
+    const [unsavedTags] = useSessionStorage('note-tags');
     const [tags, setTags] = useState('');
     const [error, setError] = useState('');
     const {state} = useLocation();
@@ -29,6 +32,8 @@ function EnterTags({prevTags}) {
         e.target.setCustomValidity('');
         setError('');
         setTags(e.target.value);
+        sessionStorage.setItem('note-tags', e.target.value);
+        dispatch({type: 'SET_CHANGES', payload: false});
     }
 
     const handleBlur = (e) => {
@@ -44,12 +49,18 @@ function EnterTags({prevTags}) {
     }
 
     useEffect(() => {
-        setTags(prevTags || '');
-    }, [prevTags])
+        if(unsavedTags)
+            setTags(unsavedTags)
+        else if(prevTags)
+            setTags(prevTags);
+        else
+            setTags('');
+    }, [prevTags, unsavedTags])
 
     useEffect(() => {
         setError('');
     }, [note])
+
 
     return(
         <fieldset className={styles.container}>

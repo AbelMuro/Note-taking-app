@@ -5,9 +5,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { overlayVariant, dialogVariant } from './Variants';
 import * as styles from './styles.module.css';
 
-
-//i need to work on the responsiveness of this componenent now, i already finished all the routes' responsiveness
-//dont forget to work on the responsiveness of the message that pops up with the event listener
 function Dialog({open, handleOpen, loading, handleAction, title, desc, icon, confirm, confirmButtonColor, confimrButtonColorHover}){
     const [,changeClass] = useTheme(styles);
 

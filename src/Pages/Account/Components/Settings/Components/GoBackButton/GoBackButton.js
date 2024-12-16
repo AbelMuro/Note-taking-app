@@ -1,11 +1,11 @@
 import React, {memo} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function GoBackButton() {
     const [,changeClass] = useTheme(styles);
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
 
     const handleNavigate = () => {
         navigate('..');

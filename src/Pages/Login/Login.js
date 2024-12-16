@@ -4,10 +4,10 @@ import Form from './Form';
 import GoogleLogin from '~/Common/Components/GoogleLogin';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
-import {useNavigate} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 
 function Login(){
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [theme, changeClass] = useTheme(styles);
 
     const handleSignUp = () => {

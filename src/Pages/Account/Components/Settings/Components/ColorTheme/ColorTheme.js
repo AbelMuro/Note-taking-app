@@ -15,7 +15,7 @@ function ColorTheme(){
     const handleSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem('users-preferred-theme', theme);
-        const event = new CustomEvent('display-message', {'detail': {message: 'Color theme has been saved'}})
+        const event = new CustomEvent('display-message', {'detail': {message: 'Color theme saved.'}})
         document.dispatchEvent(event);
         setSavedChanges(true);
     }

@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 import EnterPassword from './EnterPassword';
 import ReEnterPassword from './ReEnterPassword';
 import { ClipLoader } from 'react-spinners';
-import {useNavigate} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function Form({token}) {
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('')
 

@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import {useTheme, usePassword} from '~/Hooks';
 import * as styles from './styles.module.css';
 import icons from '`/icons'
-import {useNavigate} from 'react-router-dom';
+import {usePreNavigate} from '~/Hooks';
 
 function EnterPassword(){
     const [theme, changeClass] = useTheme(styles);
     const [password, error, handlePassword, handleBlur, handleInvalid] = usePassword();
     const [displayPassword, setDisplayPassword] = useState(false);
-    const navigate = useNavigate();
+    const navigate = usePreNavigate();
 
     const handleForgot = () => {
         navigate('/forgot');
