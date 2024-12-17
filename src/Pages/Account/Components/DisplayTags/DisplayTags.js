@@ -19,7 +19,7 @@ function DisplayMobileTags() {
 
     const getTags = async () => {
         setLoading(true);
-        const tags = await makeFetch(`http://localhost:4000/get-notes/tags`, {
+        const tags = await makeFetch(`https://note-taking-server-thr9.onrender.com/get-notes/tags`, {
             method: 'GET',
             credentials: 'include'
         });

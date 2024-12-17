@@ -43,7 +43,7 @@ function EditNote() {
         const body = e.target.elements.note.value;
         const lastEdited = getCurrentDate();
 
-        const result = await makeFetch(`http://localhost:4000/add-note/notes`, {
+        const result = await makeFetch(`https://note-taking-server-thr9.onrender.com/add-note/notes`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ function EditNote() {
         const body = e.target.elements.note.value;
         const lastEdited = getCurrentDate();
 
-        const result = await makeFetch(`http://localhost:4000/update-note`, {
+        const result = await makeFetch(`https://note-taking-server-thr9.onrender.com/update-note`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

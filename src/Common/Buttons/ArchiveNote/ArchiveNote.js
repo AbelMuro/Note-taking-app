@@ -26,7 +26,7 @@ function ArchiveNote({id}){
             dispatch({type: 'SET_CHANGES', payload: true});
 
         setLoading(true);
-        await makeFetch('http://localhost:4000/archive-note', {
+        await makeFetch('https://note-taking-server-thr9.onrender.com/archive-note', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

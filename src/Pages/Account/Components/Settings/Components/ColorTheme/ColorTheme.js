@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { ClipLoader } from 'react-spinners';
 import GoBackButton from '../GoBackButton';
 import {useSelector, useDispatch} from 'react-redux';
 import {useTheme, useMediaQuery} from '~/Hooks';
@@ -6,28 +7,31 @@ import SelectMode from './SelectMode';
 import * as styles from './styles.module.css';
 
 function ColorTheme(){
-    const [savedChanges, setSavedChanges] = useState(false);
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
     const theme = useSelector(state => state.theme.theme);
+    const changesSaved = useSelector(state => state.changesSaved.changedSaved);
     const [, changeClass] = useTheme(styles);
     const [tablet] = useMediaQuery('(max-width: 850px)');
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true);
         localStorage.setItem('users-preferred-theme', theme);
         const event = new CustomEvent('display-message', {'detail': {message: 'Color theme saved.'}})
         document.dispatchEvent(event);
-        setSavedChanges(true);
+        dispatch({type: 'SET_CHANGES', payload: true});
+        setLoading(false);
     }
 
     useEffect(() => {
         const unmount = () => {
-            if(!savedChanges)                     
+            if(!changesSaved)                     
                 dispatch({type: 'RESET_THEME'});
         }
 
         return unmount;
-    }, [savedChanges])
+    }, [changesSaved])
 
     return(
         <form className={changeClass('theme')} onSubmit={handleSubmit}>
@@ -44,7 +48,7 @@ function ColorTheme(){
             <SelectMode mode='dark' title='Dark Mode' desc='Select a sleek and modern dark theme'/>
             <SelectMode mode='system' title='System' desc='Adapts to your device’s theme'/>
             <button className={styles.theme_submit}>
-                Apply Changes
+                {loading ? <ClipLoader size='30px' color='white'/> : 'Apply Changes'}
             </button>
         </form>
     )

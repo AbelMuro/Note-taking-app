@@ -1,7 +1,7 @@
 import { createAction, createReducer } from '@reduxjs/toolkit'
             
 const setChanges = createAction('SET_CHANGES');
-const initialState = { changesSaved: true }
+const initialState = { changesSaved: true}
 
 const changesReducer = createReducer(initialState, (builder) => {  
   builder

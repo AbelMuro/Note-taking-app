@@ -13,7 +13,7 @@ function Form() {
         const email = e.target.elements.email.value;
 
         try{
-            const response = await fetch('http://localhost:4000/send_link', {
+            const response = await fetch('https://note-taking-server-thr9.onrender.com/send_link', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

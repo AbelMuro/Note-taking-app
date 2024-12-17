@@ -1,5 +1,4 @@
-import React, {useEffect, useLayoutEffect} from 'react';
-import { useSelector } from 'react-redux';
+import React, {useLayoutEffect} from 'react';
 import './styles.css';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
@@ -18,12 +17,10 @@ import EditNote from './Pages/Account/Components/EditNote';
 import ChangePassword from './Pages/Account/Components/Settings/Components/ChangePassword';
 import DisplayMessage from './Common/Components/DisplayMessage';
 import DisplayTags from './Pages/Account/Components/DisplayTags';
+import ChangeBackground from './Common/Components/ChangeBackground';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-//i think im finished with this app, i may need to double check everything
-
 function App() {
-    const theme = useSelector(state => state.theme.theme);
 
     useLayoutEffect(() => {
         const preferredFont = localStorage.getItem('users-preferred-font');
@@ -31,15 +28,10 @@ function App() {
         root.style.setProperty('--font', preferredFont || 'sans-serif');
     }, [])
 
-    useEffect(() => {
-        const body = document.body;
-        body.style.backgroundColor = theme === 'light' ? '#F3F5F8' : '#2B303B';
-    }, [theme]);
-
-
     return(
             <BrowserRouter>
                 <DisplayMessage/>
+                <ChangeBackground/>
                 <Routes>
                     <Route path='/' element={<Login/>}/>
                     <Route path='/signup' element={<SignUp/>}/>
