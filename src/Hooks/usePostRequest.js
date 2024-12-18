@@ -4,6 +4,8 @@ function usePostRequest(){
     const navigate = useNavigate();
     
     const makeFetch = async (url, options) => {
+        let event;
+
         try {
             const response = await fetch(url, options);
 
@@ -16,34 +18,31 @@ function usePostRequest(){
                 const message = await response.text();
                 console.log(message);
                 navigate('/');
-                setTimeout(() => {
-                    alert(message);
-                }, 500)
+                event = new CustomEvent('display-message', {'detail': {message}});
             }
             else if(response.status === 403){
                 const message = await response.text();
                 console.log(message);
-                setTimeout(() => {
-                    alert(message);
-                }, 600)
+                event = new CustomEvent('display-message', {'detail': {message}});
             }
             else if(response.status === 404){
                 const message = await response.text();
                 console.log(message);
-                alert(message);
+                event = new CustomEvent('display-message', {'detail': {message}});
             }
             else{
                 const message = await response.text();
                 console.log(message);
-                const event = new CustomEvent('display-message', {'detail': {message: 'Internal Server Error has occurred, please try again later.', error: true}});
-                document.dispatchEvent(event);
+                event = new CustomEvent('display-message', {'detail': {message: 'Internal Server Error has occurred, please try again later.', error: true}});
             }
         }
         catch(error){
             const message = error.message;
             console.log(message);
-            const event = new CustomEvent('display-message', {'detail': {message: 'Server is offline, please try again later.', error: true}});
-            document.dispatchEvent(event);
+            event = new CustomEvent('display-message', {'detail': {message: 'Server is offline, please try again later.', error: true}});
+        }
+        finally{
+           event && document.dispatchEvent(event);
         }
     }
 
