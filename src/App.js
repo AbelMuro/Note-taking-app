@@ -1,4 +1,5 @@
 import React, {useLayoutEffect} from 'react';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import './styles.css';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
@@ -29,6 +30,7 @@ function App() {
     }, [])
 
     return(
+        <GoogleOAuthProvider clientId={process.env.CLIENT_ID}> 
             <BrowserRouter>
                 <DisplayMessage/>
                 <ChangeBackground/>
@@ -58,7 +60,9 @@ function App() {
                         </Route>                
                     </Route>
                 </Routes>
-            </BrowserRouter>            
+            </BrowserRouter>         
+        </GoogleOAuthProvider>
+           
     )
 }
 
