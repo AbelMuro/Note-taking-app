@@ -1,6 +1,7 @@
 import React, {useLayoutEffect} from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import './styles.css';
+import PageNotFound from './Pages/404Page';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import ForgotPassword from './Pages/ForgotPassword';
@@ -35,6 +36,7 @@ function App() {
                 <DisplayMessage/>
                 <ChangeBackground/>
                 <Routes>
+                    <Route path='*' element={<PageNotFound/>}/>
                     <Route path='/' element={<Login/>}/>
                     <Route path='/signup' element={<SignUp/>}/>
                     <Route path='/forgot' element={<ForgotPassword/>}/>
