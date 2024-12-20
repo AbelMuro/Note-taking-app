@@ -7,7 +7,7 @@ import * as styles from './styles.module.css';
 
 function AllNotes() {
     const [tablet] = useMediaQuery('(max-width: 850px)');
-    const [allNotes, loading] = useNotes('https://note-taking-server-thr9.onrender.com/get-notes/notes');
+    const [allNotes, loading] = useNotes('https://note-taking-server.netlify.app/get-notes/notes');
     const [, changeClass] = useTheme(styles);
     
   

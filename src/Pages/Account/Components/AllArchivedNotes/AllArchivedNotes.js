@@ -9,7 +9,7 @@ import * as styles from './styles.module.css';
 function AllArchivedNotes(){
     const navigate = usePreNavigate();
     const [tablet] = useMediaQuery('(max-width: 850px)');
-    const [allNotes, loading] = useNotes('https://note-taking-server-thr9.onrender.com/get-notes/archived');
+    const [allNotes, loading] = useNotes('https://note-taking-server.netlify.app/get-notes/archived');
     const [, changeClass] = useTheme(styles);
 
     const handleNavigate = () => {

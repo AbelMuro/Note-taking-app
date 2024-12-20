@@ -21,7 +21,7 @@ function Form({token}) {
         }
         setLoading(true);
         try{
-            const response = await fetch(`https://note-taking-server-thr9.onrender.com/reset_password`, {
+            const response = await fetch(`https://note-taking-server.netlify.app/reset_password`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

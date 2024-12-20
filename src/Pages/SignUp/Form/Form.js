@@ -19,7 +19,7 @@ function Form() {
         const password = e.target.elements.password.value;
 
         try{
-            const response = await fetch('https://note-taking-server-thr9.onrender.com/register', {
+            const response = await fetch('https://note-taking-server.netlify.app/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

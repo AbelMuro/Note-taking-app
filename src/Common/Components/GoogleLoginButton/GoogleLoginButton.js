@@ -9,7 +9,7 @@ function GoogleLoginButton() {
     const navigate = useNavigate();
     const login = useGoogleLogin({
         onSuccess: async (token) => {
-           const response = await fetch('https://note-taking-server-thr9.onrender.com/google-login', {
+           const response = await fetch('https://note-taking-server.netlify.app/google-login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

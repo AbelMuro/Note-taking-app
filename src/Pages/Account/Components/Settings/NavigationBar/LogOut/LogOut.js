@@ -17,7 +17,7 @@ function LogOut() {
     const handleLogout = async () => {
         setLoading(true);
         try{
-            const response = await fetch('https://note-taking-server-thr9.onrender.com/logout', {
+            const response = await fetch('https://note-taking-server.netlify.app/logout', {
                 method: 'PUT',
                 headers: {
                     'Content-Type' : 'application/json'
