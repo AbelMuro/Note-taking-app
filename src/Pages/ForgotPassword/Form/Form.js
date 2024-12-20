@@ -13,7 +13,7 @@ function Form() {
         const email = e.target.elements.email.value;
 
         try{
-            const response = await fetch('https://note-taking-server.netlify.app/send_link', {
+            const response = await fetch('https://note-taking-server.netlify.app/.netlify/functions/app/send_link', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

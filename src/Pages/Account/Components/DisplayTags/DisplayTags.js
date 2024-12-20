@@ -19,7 +19,7 @@ function DisplayMobileTags() {
 
     const getTags = async () => {
         setLoading(true);
-        const tags = await makeFetch(`https://note-taking-server.netlify.app/get-notes/tags`, {
+        const tags = await makeFetch(`https://note-taking-server.netlify.app/.netlify/functions/app/get-notes/tags`, {
             method: 'GET',
             credentials: 'include'
         });
