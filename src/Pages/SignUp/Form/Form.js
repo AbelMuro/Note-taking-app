@@ -36,7 +36,7 @@ function Form() {
             }
             else {
                 result = await response.text();
-                console.log(`Server Error: ${message}`);
+                console.log(`Server Error: ${result}`);
             }
             const event = new CustomEvent('display-message', {'detail': {message: result, error: response.status !== 200}})         
             document.dispatchEvent(event);
