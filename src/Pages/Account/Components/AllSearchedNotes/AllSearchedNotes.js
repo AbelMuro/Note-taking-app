@@ -12,7 +12,7 @@ function AllSearchedNotes() {
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const search = useSelector(state => state.search.search);
     const deferredSearch = useDeferredValue(search, {timeoutMs: 500});
-    const [allNotes, loading, setUrl] = useNotes(`http://localhost:4000/get-notes/search:${search}`);
+    const [allNotes, loading, setUrl] = useNotes(`https://note-taking-server.netlify.app/get-notes/search:${search.toLowerCase()}`);
     const [, changeClass] = useTheme(styles);
 
     const handleNavigate = () => {
@@ -20,7 +20,7 @@ function AllSearchedNotes() {
     }
 
     useEffect(() => {
-        setUrl(`http://localhost:4000/get-notes/search:${deferredSearch}`);
+        setUrl(`http://localhost:4000/get-notes/search:${deferredSearch.toLowerCase()}`);
     }, [deferredSearch])
     
     return(

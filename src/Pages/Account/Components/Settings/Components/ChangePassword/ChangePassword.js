@@ -27,7 +27,7 @@ function ChangePassword() {
             return;
         }
 
-        const result = await makeFetch('http://localhost:4000/change-password', {
+        const result = await makeFetch('https://note-taking-server.netlify.app/change-password', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

@@ -17,6 +17,7 @@ function SelectMode({mode, title, desc}) {
     }
 
     const handleTheme = (theme) => {
+        dispatch({type: 'SET_CHANGES', payload: false});
         dispatch({type: 'UPDATE_THEME', payload: theme});
     }
 

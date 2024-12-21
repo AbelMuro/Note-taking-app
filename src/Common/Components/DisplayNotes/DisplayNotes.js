@@ -7,13 +7,12 @@ function DisplayNotes({children}){
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const {note, archiveNote, tag} = useParams();
 
-    return tablet ? 
-        (!note && !archiveNote && !tag) ? children : <Outlet/> :
-        <section className={styles.notes}>
-            {children}
+    return (
+        <section className={tablet ? '' : styles.notes}>
+            {(tablet ? (!note && !archiveNote && !tag) : true) && children}
             <Outlet/>
         </section>
-    
+    )
 }
 
 export default DisplayNotes;

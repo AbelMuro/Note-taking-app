@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTheme} from '~/Hooks';
 import Form from './Form';
-import GoogleLogin from '~/Common/Components/GoogleLogin';
+import GoogleLoginButton from '~/Common/Components/GoogleLoginButton';
 import icons from '`/icons';
 import * as styles from './styles.module.css';
 import {usePreNavigate} from '~/Hooks';
@@ -28,7 +28,7 @@ function SignUp() {
                 Sign up to start organizing your notes and boost your productivity.
             </h2>
             <Form/>
-            <GoogleLogin/>
+            <GoogleLoginButton/>
             <p className={changeClass('signup_account')}>
                 Already have an account? <a onClick={handleNavigate}>
                     Login

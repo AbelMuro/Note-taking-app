@@ -11,7 +11,7 @@ function AllTaggedNotes() {
     const navigate = usePreNavigate();
     const [tablet] = useMediaQuery('(max-width: 850px)');
     const {tags} = useParams();
-    const [allNotes, loading, setUrl] = useNotes(`http://localhost:4000/get-notes/tags:${tags}`);
+    const [allNotes, loading, setUrl] = useNotes(`https://note-taking-server.netlify.app/get-notes/tags:${tags}`);
     const [, changeClass] = useTheme(styles);
 
     const handleGoBack = () => {
@@ -19,7 +19,7 @@ function AllTaggedNotes() {
     }
 
     useEffect(() => {
-        setUrl(`http://localhost:4000/get-notes/tags:${tags}`);
+        setUrl(`https://note-taking-server.netlify.app/get-notes/tags:${tags}`);
     }, [tags])
 
     useEffect(() => {

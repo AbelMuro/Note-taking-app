@@ -17,7 +17,7 @@ function LogOut() {
     const handleLogout = async () => {
         setLoading(true);
         try{
-            const response = await fetch('http://localhost:4000/logout', {
+            const response = await fetch('https://note-taking-server.netlify.app/logout', {
                 method: 'PUT',
                 headers: {
                     'Content-Type' : 'application/json'

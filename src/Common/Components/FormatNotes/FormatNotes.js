@@ -41,7 +41,7 @@ function FormatNotes({allNotes, loading, emptyMessage}) {
     return loading ? 
                 <LoadingNotes/> : 
                 <div className={styles.notes_all}>
-                    {allNotes.length !== 0 ? allNotes.map((currentNote, i) => {
+                    {(allNotes && allNotes.length !== 0) ? allNotes.map((currentNote, i) => {
                         const id = currentNote.id;
                         const title = currentNote.title;
                         const tags = currentNote.tags.split(',');

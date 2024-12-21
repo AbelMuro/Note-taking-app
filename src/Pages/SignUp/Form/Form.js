@@ -19,7 +19,7 @@ function Form() {
         const password = e.target.elements.password.value;
 
         try{
-            const response = await fetch('http://localhost:4000/register', {
+            const response = await fetch('https://note-taking-server.netlify.app/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ function Form() {
             }
             else {
                 result = await response.text();
-                console.log(`Server Error: ${message}`);
+                console.log(`Server Error: ${result}`);
             }
             const event = new CustomEvent('display-message', {'detail': {message: result, error: response.status !== 200}})         
             document.dispatchEvent(event);

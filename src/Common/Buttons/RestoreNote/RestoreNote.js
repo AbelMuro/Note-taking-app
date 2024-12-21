@@ -28,7 +28,7 @@ function RestoreNote({id}) {
 
     const handleRestore = async () => {
         setLoading(true);
-        await makeFetch('http://localhost:4000/restore-note', {
+        await makeFetch('https://note-taking-server.netlify.app/restore-note', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

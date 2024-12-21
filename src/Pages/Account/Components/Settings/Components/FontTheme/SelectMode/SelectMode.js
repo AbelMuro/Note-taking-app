@@ -1,10 +1,12 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
 import icons from '`/icons';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
 function SelectMode({font, setFont, mode, title, desc}) {
     const [theme, changeClass] = useTheme(styles);
+    const dispatch = useDispatch();
 
     const handleStyles = () => {
         if(font === mode)
@@ -15,6 +17,7 @@ function SelectMode({font, setFont, mode, title, desc}) {
 
     const handleFont = (font) => {
         setFont(font);
+        dispatch({type: 'SET_CHANGES', payload: false});
     }
 
 
