@@ -43,7 +43,7 @@ function EditNote() {
         const body = e.target.elements.note.value;
         const lastEdited = getCurrentDate();
 
-        const result = await makeFetch(`https://note-taking-server.netlify.app/.netlify/functions/app/add-note/notes`, {
+        const result = await makeFetch(`https://note-taking-server.netlify.app/add-note/notes`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ function EditNote() {
         const body = e.target.elements.note.value;
         const lastEdited = getCurrentDate();
 
-        const result = await makeFetch(`https://note-taking-server.netlify.app/.netlify/functions/app/update-note`, {
+        const result = await makeFetch(`https://note-taking-server.netlify.app/update-note`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

@@ -19,7 +19,7 @@ function DeleteNote({id}) {
 
     const handleDelete = async () => {
         setLoading(true);
-        await makeFetch(`https://note-taking-server.netlify.app/.netlify/functions/app/delete-note/${id}`, {
+        await makeFetch(`https://note-taking-server.netlify.app/delete-note/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
