@@ -24,7 +24,7 @@ function GoogleLoginButton() {
            }
            else{
             const message = await response.text();
-            const event = new CustomEvent('display-message', {'detail' : {message}});
+            const event = new CustomEvent('display-message', {'detail' : {message, error: true}});
             document.dispatchEvent(event);
            }
         }
