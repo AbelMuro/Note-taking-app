@@ -20,7 +20,8 @@ function AllSearchedNotes() {
     }
 
     useEffect(() => {
-        setUrl(`http://localhost:4000/get-notes/search:${deferredSearch.toLowerCase()}`);
+        if(typeof(deferredSearch) === 'string')
+            setUrl(`https://note-taking-server.netlify.app/get-notes/search:${deferredSearch.toLowerCase()}`);
     }, [deferredSearch])
     
     return(

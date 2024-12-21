@@ -5,7 +5,6 @@ import Settings from './Settings';
 import {useTheme} from '~/Hooks';
 import * as styles from './styles.module.css';
 
-
 function HeaderBar() {
     const [,changeClass] = useTheme(styles);
 

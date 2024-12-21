@@ -29,8 +29,8 @@ function RouteTitle() {
                     <span>
                         Showing results for:&nbsp;
                     </span>
-                    {paths[2] || ''}
-                </div>)
+                    {search}
+                </div>)            
         else if(paths[1] === 'settings')
             return 'Settings';
         else
