@@ -9,24 +9,32 @@ function GoogleLoginButton() {
     const navigate = useNavigate();
     const login = useGoogleLogin({
         onSuccess: async (token) => {
-           const response = await fetch('https://note-taking-server.netlify.app/google-login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({token})
-           })
+            try{
+                const response = await fetch('https://note-taking-server.netlify.app/google-login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({token})
+                })
 
-           if(response.status === 200){
-                const result = await response.text();
-                console.log(result);
-                navigate('/account');
-           }
-           else{
-            const message = await response.text();
-            const event = new CustomEvent('display-message', {'detail' : {message, error: true}});
-            document.dispatchEvent(event);
-           }
+                if(response.status === 200){
+                        const result = await response.text();
+                        console.log(result);
+                        navigate('/account');
+                }
+                else{
+                    const message = await response.text();
+                    const event = new CustomEvent('display-message', {'detail' : {message, error: true}});
+                    document.dispatchEvent(event);
+                }                
+            }
+            catch(error){
+                const message = error.message;
+                const event = new CustomEvent('display-message', {'detail' : {message, error: true}})
+                document.dispatchEvent(event);
+            }
+
         }
     })
     const [theme, changeClass] = useTheme(styles);
