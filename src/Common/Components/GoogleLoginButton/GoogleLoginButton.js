@@ -60,7 +60,7 @@ function GoogleLoginButton() {
                     onClick={handleClick}>
                         {
                         loading ? 
-                            <ClipLoader size='30px' color={theme === 'light '? '#0E121B' : 'white'}/> : 
+                            <ClipLoader size='30px' color={theme === 'light' ? '#0E121B' : 'white'}/> : 
                             <>
                                 <img src={theme === 'light' ? icons['google'] : icons['googleDark']}/>
                                 Google
