@@ -7,6 +7,7 @@ import icons from './icons';
 import * as styles from './styles.module.css';
 
 function GoogleLoginButton() {
+    const [theme, changeClass] = useTheme(styles);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const login = useGoogleLogin({
@@ -40,10 +41,17 @@ function GoogleLoginButton() {
             finally {
                 setLoading && setLoading(false);
             }
-
+        },
+        onNonOAuthError: () => {
+            setLoading(false);
+        },
+        onError: (error) => {
+            const message = error.error_description;
+            const event = new CustomEvent('display-message', {'detail': {message, error: true}})
+            document.dispatchEvent(event);
         }
     })
-    const [theme, changeClass] = useTheme(styles);
+
 
     const handleClick = () => {
         setLoading(true);
