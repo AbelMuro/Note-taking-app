@@ -46,6 +46,7 @@ function GoogleLoginButton() {
             setLoading(false);
         },
         onError: (error) => {
+            setLoading(false);
             const message = error.error_description;
             const event = new CustomEvent('display-message', {'detail': {message, error: true}})
             document.dispatchEvent(event);
