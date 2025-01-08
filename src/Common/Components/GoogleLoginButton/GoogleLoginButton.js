@@ -56,7 +56,7 @@ function GoogleLoginButton() {
 
 
     const handleClick = () => {
-        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()) return;      
+              
         setLoading(true);
         login();
     }

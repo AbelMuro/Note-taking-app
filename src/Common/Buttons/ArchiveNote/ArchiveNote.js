@@ -21,10 +21,7 @@ function ArchiveNote({id}){
     }
 
     const handleArchive = async () => {
-        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
-            navigate('/');
-            return;
-        }
+
 
         if(!changesSaved && !confirm('You have unsaved changes, are you sure you wish to proceed?'))
             return;

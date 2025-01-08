@@ -36,10 +36,7 @@ function EditNote() {
     }   
 
     const handleAddNewNote = async (e) => {
-        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
-            navigate('/');
-            return;
-        }
+
 
         e.preventDefault();
         setLoading(true);
@@ -70,10 +67,7 @@ function EditNote() {
     }
 
     const handleUpdateNote = async (e) => {
-        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
-            navigate('/');
-            return;
-        }
+
 
         e.preventDefault()
         setLoading(true);

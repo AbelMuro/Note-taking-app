@@ -18,10 +18,7 @@ function DeleteNote({id}) {
     }
 
     const handleDelete = async () => {
-        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
-            navigate('/');
-            return;
-        }
+
         setLoading(true);
         await makeFetch(`https://note-taking-server.netlify.app/delete-note/${id}`, {
             method: 'DELETE',

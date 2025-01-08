@@ -14,7 +14,7 @@ function Form() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()) return;
+        
         setLoading(true);
         let email = e.target.elements.email.value;
         email = email.toLowerCase();

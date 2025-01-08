@@ -19,10 +19,7 @@ function DisplayMobileTags() {
     }
 
     const getTags = async () => {
-        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
-            navigate('/');
-            return;
-        }
+
 
         setLoading(true);
         const tags = await makeFetch(`https://note-taking-server.netlify.app/get-notes/tags`, {

@@ -26,10 +26,7 @@ function RestoreNote({id}) {
 
 
     const handleRestore = async () => {
-        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
-            navigate('/');
-            return;
-        }
+
 
         setLoading(true);
         await makeFetch('https://note-taking-server.netlify.app/restore-note', {

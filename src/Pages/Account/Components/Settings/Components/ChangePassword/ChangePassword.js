@@ -18,10 +18,7 @@ function ChangePassword() {
  
     const handleSubmit = async (e) => {
         e.preventDefault();       
-        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
-            navigate('/');
-            return;
-        }
+
 
         setLoading(true); 
         const newPassword = e.target.elements['new-password'].value;

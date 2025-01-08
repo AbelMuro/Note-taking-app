@@ -9,10 +9,7 @@ function useNotes(initialUrl){
     const [loading, setLoading] = useState(true);
 
     const fetchNotes = async () => {
-        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
-            navigate('/');
-            return;
-        }
+
         setLoading(true);
         const notes = await makeFetch(url,  {method: 'GET', credentials: 'include'});
         setAllNotes && setAllNotes(notes);
