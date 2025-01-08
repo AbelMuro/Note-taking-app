@@ -56,8 +56,8 @@ function GoogleLoginButton() {
 
 
     const handleClick = () => {
+        if(!cookiesEnabled()) return;        
         setLoading(true);
-        if(!cookiesEnabled()) return;
         login();
     }
 
