@@ -18,17 +18,17 @@ function useGetRequest(){
                 const message = await response.text();
                 console.log(message);
                 navigate('/')
-                event = new CustomEvent('display-message', {'detail': {message}});
+                event = new CustomEvent('display-message', {'detail': {message, error: true}});
             }
             else if(response.status === 403){
                 const message = await response.text();
                 console.log(message);
-                event = new CustomEvent('display-message', {'detail': {message}});
+                event = new CustomEvent('display-message', {'detail': {message, error: true}});
             }
             else if(response.status === 404){
                 const message = await response.text();
                 console.log(message);
-                event = new CustomEvent('display-message', {'detail': {message}});
+                event = new CustomEvent('display-message', {'detail': {message, error: true}});
             }
             else{
                 const message = await response.text();
