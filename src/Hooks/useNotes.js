@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react';
-import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions'
 import {useGetRequest} from '~/Hooks'
 
 function useNotes(initialUrl){

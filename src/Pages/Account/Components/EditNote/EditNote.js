@@ -9,7 +9,7 @@ import MiscButtons from './MiscButtons';
 import {useDispatch} from 'react-redux';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {usePostRequest, useMediaQuery, useTheme} from '~/Hooks';
-import { clearSessionStorage, thirdPartyCookiesEnabled, crossSiteTrackingEnabled } from '~/Common/Functions';
+import { clearSessionStorage} from '~/Common/Functions';
 import * as styles from './styles.module.css';
 
 function EditNote() {

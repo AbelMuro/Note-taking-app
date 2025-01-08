@@ -3,7 +3,6 @@ import {useTheme, useMediaQuery, usePostRequest} from '~/Hooks'
 import {useSelector, useDispatch} from 'react-redux';
 import Dialog from '~/Common/Components/Dialog';
 import {useNavigate} from 'react-router-dom';
-
 import * as styles from './styles.module.css';
 
 function ArchiveNote({id}){
@@ -21,8 +20,6 @@ function ArchiveNote({id}){
     }
 
     const handleArchive = async () => {
-
-
         if(!changesSaved && !confirm('You have unsaved changes, are you sure you wish to proceed?'))
             return;
         else
