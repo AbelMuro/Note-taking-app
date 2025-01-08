@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import {cookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions'
 import {useGetRequest} from '~/Hooks'
 
 function useNotes(initialUrl){
@@ -8,6 +9,10 @@ function useNotes(initialUrl){
     const [loading, setLoading] = useState(true);
 
     const fetchNotes = async () => {
+        if(!cookiesEnabled() || !crossSiteTrackingEnabled()){
+            navigate('/');
+            return;
+        }
         setLoading(true);
         const notes = await makeFetch(url,  {method: 'GET', credentials: 'include'});
         setAllNotes && setAllNotes(notes);

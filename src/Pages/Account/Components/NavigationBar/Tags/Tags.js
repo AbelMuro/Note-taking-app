@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {usePreNavigate} from '~/Hooks';
 import LoadingTags from '~/Common/Components/LoadingTags';
+import {cookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
 import {useGetRequest} from '~/Hooks';
 import {useTheme} from '~/Hooks';
 import icons from '`/icons';
@@ -18,6 +19,10 @@ function Tags({option, handleStyles, handleColor}){
     }
 
     const getTags = async () => {
+        if(!cookiesEnabled() || !crossSiteTrackingEnabled()){
+            navigate('/');
+            return;
+        }
         setLoading(true);
         const tags = await makeFetch(`https://note-taking-server.netlify.app/get-notes/tags`, {
             method: 'GET',

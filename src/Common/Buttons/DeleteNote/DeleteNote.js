@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
 import Dialog from '~/Common/Components/Dialog';
+import {cookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
 import {usePostRequest, useMediaQuery, useTheme} from '~/Hooks';
 import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
@@ -18,6 +18,10 @@ function DeleteNote({id}) {
     }
 
     const handleDelete = async () => {
+        if(!cookiesEnabled() || !crossSiteTrackingEnabled()){
+            navigate('/');
+            return;
+        }
         setLoading(true);
         await makeFetch(`https://note-taking-server.netlify.app/delete-note/${id}`, {
             method: 'DELETE',
