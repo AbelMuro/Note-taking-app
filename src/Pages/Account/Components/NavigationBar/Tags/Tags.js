@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {usePreNavigate} from '~/Hooks';
 import LoadingTags from '~/Common/Components/LoadingTags';
-import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+
 import {useGetRequest} from '~/Hooks';
 import {useTheme} from '~/Hooks';
 import icons from '`/icons';

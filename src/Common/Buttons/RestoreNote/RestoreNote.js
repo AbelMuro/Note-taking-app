@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {useTheme, usePostRequest, useMediaQuery} from '~/Hooks';
-import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+
 import { ClipLoader } from 'react-spinners';
 import * as styles from './styles.module.css';
 

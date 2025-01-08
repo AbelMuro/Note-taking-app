@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useTheme} from '~/Hooks';
-import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+
 import EnterEmail from '~/Common/Inputs/EnterEmail';
 import EnterPassword from './EnterPassword';
 import {usePreNavigate} from '~/Hooks';

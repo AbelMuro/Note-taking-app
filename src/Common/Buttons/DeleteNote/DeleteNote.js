@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Dialog from '~/Common/Components/Dialog';
-import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+
 import {usePostRequest, useMediaQuery, useTheme} from '~/Hooks';
 import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';

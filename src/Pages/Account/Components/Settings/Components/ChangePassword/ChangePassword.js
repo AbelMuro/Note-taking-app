@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { ClipLoader } from 'react-spinners';
 import icons from '`/icons';
 import {usePostRequest, useTheme, useMediaQuery} from '~/Hooks';
-import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+
 import GoBackButton from '../GoBackButton';
 import EnterOldPassword from './EnterOldPassword';
 import EnterNewPassword from './EnterNewPassword';

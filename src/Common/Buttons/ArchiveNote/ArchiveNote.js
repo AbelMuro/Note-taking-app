@@ -3,7 +3,7 @@ import {useTheme, useMediaQuery, usePostRequest} from '~/Hooks'
 import {useSelector, useDispatch} from 'react-redux';
 import Dialog from '~/Common/Components/Dialog';
 import {useNavigate} from 'react-router-dom';
-import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+
 import * as styles from './styles.module.css';
 
 function ArchiveNote({id}){

@@ -3,7 +3,7 @@ import CreateNewNote from '~/Common/Buttons/CreateNewNote';
 import LoadingTags from '~/Common/Components/LoadingTags';
 import {usePreNavigate} from '~/Hooks';
 import {useTheme, useGetRequest, useMediaQuery} from '~/Hooks';
-import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+
 import * as styles from './styles.module.css';
 
 function DisplayMobileTags() {

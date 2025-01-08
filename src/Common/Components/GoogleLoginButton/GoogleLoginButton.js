@@ -3,7 +3,7 @@ import { ClipLoader } from 'react-spinners';
 import {useNavigate} from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import {useTheme} from '~/Hooks';
-import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+
 import icons from './icons';
 import * as styles from './styles.module.css';
 
