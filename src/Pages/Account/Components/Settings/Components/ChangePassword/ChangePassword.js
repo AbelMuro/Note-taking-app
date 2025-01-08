@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { ClipLoader } from 'react-spinners';
 import icons from '`/icons';
 import {usePostRequest, useTheme, useMediaQuery} from '~/Hooks';
-import {cookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
 import GoBackButton from '../GoBackButton';
 import EnterOldPassword from './EnterOldPassword';
 import EnterNewPassword from './EnterNewPassword';
@@ -18,7 +18,7 @@ function ChangePassword() {
  
     const handleSubmit = async (e) => {
         e.preventDefault();       
-        if(!cookiesEnabled() || !crossSiteTrackingEnabled()){
+        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
             navigate('/');
             return;
         }

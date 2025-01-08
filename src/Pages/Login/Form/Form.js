@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useTheme} from '~/Hooks';
-import {cookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
 import EnterEmail from '~/Common/Inputs/EnterEmail';
 import EnterPassword from './EnterPassword';
 import {usePreNavigate} from '~/Hooks';
@@ -14,7 +14,7 @@ function Form() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(!cookiesEnabled() || !crossSiteTrackingEnabled()) return;
+        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()) return;
         setLoading(true);
         let email = e.target.elements.email.value;
         email = email.toLowerCase();

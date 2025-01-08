@@ -1,6 +1,6 @@
 import getRootofRoute from './getRootofRoute.js';
 import clearSessionStorage from './clearSessionStorage.js';
-import cookiesEnabled from './cookiesEnabled.js';
+import thirdPartyCookiesEnabled from './thirdPartyCookiesEnabled.js';
 import crossSiteTrackingEnabled from './crossSiteTrackingEnabled.js';
 
-export {getRootofRoute, clearSessionStorage, cookiesEnabled, crossSiteTrackingEnabled};
+export {getRootofRoute, clearSessionStorage, thirdPartyCookiesEnabled, crossSiteTrackingEnabled};

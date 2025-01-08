@@ -3,7 +3,7 @@ import {useTheme, useMediaQuery, usePostRequest} from '~/Hooks'
 import {useSelector, useDispatch} from 'react-redux';
 import Dialog from '~/Common/Components/Dialog';
 import {useNavigate} from 'react-router-dom';
-import {cookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
 import * as styles from './styles.module.css';
 
 function ArchiveNote({id}){
@@ -21,7 +21,7 @@ function ArchiveNote({id}){
     }
 
     const handleArchive = async () => {
-        if(!cookiesEnabled() || !crossSiteTrackingEnabled()){
+        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
             navigate('/');
             return;
         }

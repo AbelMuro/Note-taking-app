@@ -1,6 +1,6 @@
-const cookiesEnabled = () => {
-    document.cookie = 'testCookie';
-    const cookieExists = document.cookie.indexOf('testCookie') !== -1;
+const thirdPartyCookiesEnabled = () => {
+    document.cookie = 'thirdPartyTestCookie=test; SameSite=None; Secure';
+    const cookieExists = document.cookie.indexOf("thirdPartyTestCookie") !== -1;
 
     if(!cookieExists){
         const event = new CustomEvent('display-message', {'detail' : {message: 'Please enable third-party-cookies in your browser to use this app', error: true}})
@@ -11,4 +11,4 @@ const cookiesEnabled = () => {
     return true;   
 }
 
-export default cookiesEnabled;
+export default thirdPartyCookiesEnabled;

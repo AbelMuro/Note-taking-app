@@ -9,7 +9,7 @@ import MiscButtons from './MiscButtons';
 import {useDispatch} from 'react-redux';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {usePostRequest, useMediaQuery, useTheme} from '~/Hooks';
-import { clearSessionStorage, cookiesEnabled, crossSiteTrackingEnabled } from '~/Common/Functions';
+import { clearSessionStorage, thirdPartyCookiesEnabled, crossSiteTrackingEnabled } from '~/Common/Functions';
 import * as styles from './styles.module.css';
 
 function EditNote() {
@@ -36,7 +36,7 @@ function EditNote() {
     }   
 
     const handleAddNewNote = async (e) => {
-        if(!cookiesEnabled() || !crossSiteTrackingEnabled()){
+        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
             navigate('/');
             return;
         }
@@ -70,7 +70,7 @@ function EditNote() {
     }
 
     const handleUpdateNote = async (e) => {
-        if(!cookiesEnabled() || !crossSiteTrackingEnabled()){
+        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
             navigate('/');
             return;
         }

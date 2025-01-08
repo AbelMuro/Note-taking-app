@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Dialog from '~/Common/Components/Dialog';
-import {cookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
+import {thirdPartyCookiesEnabled, crossSiteTrackingEnabled} from '~/Common/Functions';
 import {usePostRequest, useMediaQuery, useTheme} from '~/Hooks';
 import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
@@ -18,7 +18,7 @@ function DeleteNote({id}) {
     }
 
     const handleDelete = async () => {
-        if(!cookiesEnabled() || !crossSiteTrackingEnabled()){
+        if(!thirdPartyCookiesEnabled() || !crossSiteTrackingEnabled()){
             navigate('/');
             return;
         }
