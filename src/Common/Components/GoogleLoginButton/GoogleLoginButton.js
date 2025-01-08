@@ -3,6 +3,7 @@ import { ClipLoader } from 'react-spinners';
 import {useNavigate} from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import {useTheme} from '~/Hooks';
+import {cookiesEnabled} from '~/Common/Functions';
 import icons from './icons';
 import * as styles from './styles.module.css';
 
@@ -56,6 +57,7 @@ function GoogleLoginButton() {
 
     const handleClick = () => {
         setLoading(true);
+        if(!cookiesEnabled()) return;
         login();
     }
 
